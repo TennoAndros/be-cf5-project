@@ -1,0 +1,30 @@
+{
+  "name": "be-final-project-andreas",
+  "version": "1.0.0",
+  "description": "The back end of a bookstore for CF5 final project",
+  "main": "index.js",
+  "scripts": {
+    "setup-dbs": "psql -f ./db/setup.sql",
+    "seed": "node ./db/seeds/run-seed.js",
+    "test": "jest",
+    "start": "node listen.js",
+    "seed-prod": "NODE_ENV=production npm run seed"
+  },
+  "user": "Andreas Apostolatos",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "jest-extended": "^4.0.2",
+    "pg-format": "^1.0.4"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.4.5",
+    "pg": "^8.12.0"
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "jest-extended/all"
+    ]
+  }
+}

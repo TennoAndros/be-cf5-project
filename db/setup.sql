@@ -1,0 +1,5 @@
+DROP DATABASE IF EXISTS book_talk_test;
+DROP DATABASE IF EXISTS book_talk;
+
+CREATE DATABASE book_talk_test;
+CREATE DATABASE book_talk;

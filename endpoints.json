@@ -6,7 +6,7 @@
     "description": "serves an array of all genres",
     "queries": [],
     "exampleResponse": {
-      "topics": [{ "genre": "Mystery" }]
+      "genres": [{ "genre": "Mystery" }]
     }
   },
   "GET /api/books": {

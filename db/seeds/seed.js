@@ -28,13 +28,13 @@ const seed = async ({ reviewData, genreData, bookData, userData }) => {
   await db.query(`
     CREATE TABLE books (
       book_id SERIAL PRIMARY KEY,
-      book_title VARCHAR(255) NOT NULL UNIQUE,
-      book_author VARCHAR(255) NOT NULL,
-      book_description TEXT NOT NULL,
-      book_image VARCHAR(255) NOT NULL,
+      title VARCHAR(255) NOT NULL UNIQUE,
+      author VARCHAR(255) NOT NULL,
+      description TEXT NOT NULL,
+      image_url VARCHAR(255) NOT NULL,
       amazon_book_url VARCHAR(255) NOT NULL UNIQUE,
-      book_publisher VARCHAR(255),
-      book_isbn VARCHAR(20) NOT NULL UNIQUE,
+      publisher VARCHAR(255),
+      isbn VARCHAR(20) NOT NULL UNIQUE,
       genre VARCHAR(50) NOT NULL,
       rating DECIMAL(3, 2) DEFAULT 0.0
     );`);
@@ -77,26 +77,26 @@ const seed = async ({ reviewData, genreData, bookData, userData }) => {
   await db.query(insertUsersQueryStr);
 
   const insertBooksQueryStr = format(
-    "INSERT INTO books (book_title, book_author, book_description, book_image, amazon_book_url, book_publisher, book_isbn, genre, rating) VALUES %L RETURNING *;",
+    "INSERT INTO books (title, author, description, image_url, amazon_book_url, publisher, isbn, genre, rating) VALUES %L RETURNING *;",
     bookData.map(
       ({
-        book_title,
-        book_author,
-        book_description,
-        book_image,
+        title,
+        author,
+        description,
+        image_url,
         amazon_book_url,
-        book_publisher,
-        book_isbn,
+        publisher,
+        isbn,
         genre,
         rating,
       }) => [
-        book_title,
-        book_author,
-        book_description,
-        book_image,
+        title,
+        author,
+        description,
+        image_url,
         amazon_book_url,
-        book_publisher,
-        book_isbn,
+        publisher,
+        isbn,
         genre,
         rating,
       ]
@@ -104,7 +104,7 @@ const seed = async ({ reviewData, genreData, bookData, userData }) => {
   );
   const { rows: bookRows } = await db.query(insertBooksQueryStr);
 
-  const bookIdLookup = createRef(bookRows, "book_title", "book_id");
+  const bookIdLookup = createRef(bookRows, "title", "book_id");
   const formattedReviewData = formatReviews(reviewData, bookIdLookup);
   const insertReviewsQueryStr = format(
     "INSERT INTO reviews (body, username, created_at, rating, book_id) VALUES %L;",

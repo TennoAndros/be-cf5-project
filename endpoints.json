@@ -11,17 +11,39 @@
   },
   "GET /api/books": {
     "description": "serves an array of all books",
-    "queries": ["author", "genre", "sort_by", "order"],
+    "queries": ["author", "genre", "sort_by", "order", "rating"],
     "exampleResponse": {
       "books": [
         {
-          "book_title": "CAMINO GHOSTS",
-          " book_image": "https://storage.googleapis.com/du-prd/books/images/9780385545990.jpg",
-          "book_description": "The third book in the Camino series. The last living inhabitant of a deserted island gets in the way of a resort developer.",
-          "book_author": "John Grisham",
-          "book_publisher": "Doubleday",
+          "title": "CAMINO GHOSTS",
+          " image_url": "https://storage.googleapis.com/du-prd/books/images/9780385545990.jpg",
+          "description": "The third book in the Camino series. The last living inhabitant of a deserted island gets in the way of a resort developer.",
+          "author": "John Grisham",
+          "publisher": "Doubleday",
           "amazon_book_url": "https://www.amazon.com/dp/0385545991?tag=thenewyorktim-20",
-          "book_isbn": "0385545991",
+          "isbn": "0385545991",
+          "genre": "Mystery/Thriller",
+          "rating": 0.0,
+          "review_count": 0
+        }
+      ],
+      "total_count": 1
+    }
+  },
+
+  "GET /api/books/:book_id": {
+    "description": "Serves an object of specified book based on book_id and a review_count of this book",
+    "queries": [],
+    "exampleResponse": {
+      "books": [
+        {
+          "title": "CAMINO GHOSTS",
+          " image_url": "https://storage.googleapis.com/du-prd/books/images/9780385545990.jpg",
+          "description": "The third book in the Camino series. The last living inhabitant of a deserted island gets in the way of a resort developer.",
+          "author": "John Grisham",
+          "publisher": "Doubleday",
+          "amazon_book_url": "https://www.amazon.com/dp/0385545991?tag=thenewyorktim-20",
+          "isbn": "0385545991",
           "genre": "Mystery/Thriller",
           "rating": 0.0,
           "review_count": 0

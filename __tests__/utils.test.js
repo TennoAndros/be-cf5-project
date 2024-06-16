@@ -50,27 +50,27 @@ describe("createRef", () => {
     expect(actual).toEqual(expected);
   });
   test("returns a reference object when passed an array with a single items", () => {
-    const input = [{ book_title: "title1", book_id: 1, username: "name1" }];
-    let actual = createRef(input, "book_title", "book_id");
+    const input = [{ title: "title1", book_id: 1, username: "name1" }];
+    let actual = createRef(input, "title", "book_id");
     let expected = { title1: 1 };
     expect(actual).toEqual(expected);
-    actual = createRef(input, "username", "book_title");
+    actual = createRef(input, "username", "title");
     expected = { name1: "title1" };
     expect(actual).toEqual(expected);
   });
   test("returns a reference object when passed an array with many items", () => {
     const input = [
-      { book_title: "title1", book_id: 1 },
-      { book_title: "title2", book_id: 2 },
-      { book_title: "title3", book_id: 3 },
+      { title: "title1", book_id: 1 },
+      { title: "title2", book_id: 2 },
+      { title: "title3", book_id: 3 },
     ];
-    const actual = createRef(input, "book_title", "book_id");
+    const actual = createRef(input, "title", "book_id");
     const expected = { title1: 1, title2: 2, title3: 3 };
     expect(actual).toEqual(expected);
   });
   test("does not mutate the input", () => {
-    const input = [{ book_title: "title1", book_id: 1 }];
-    const control = [{ book_title: "title1", book_id: 1 }];
+    const input = [{ title: "title1", book_id: 1 }];
+    const control = [{ title: "title1", book_id: 1 }];
     createRef(input);
     expect(input).toEqual(control);
   });

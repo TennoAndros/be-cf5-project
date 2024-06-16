@@ -1,4 +1,4 @@
-module.exports = module.exports = [
+module.exports = [
   { genre: "Mystery" },
   { genre: "Horror" },
   { genre: "Historical Fiction" },

@@ -21,7 +21,6 @@ const seed = async ({ reviewData, genreData, bookData, userData }) => {
       );`),
     db.query(`
       CREATE TABLE genres (
-        genre_id SERIAL PRIMARY KEY,
         genre VARCHAR(50) UNIQUE NOT NULL
       );`),
   ]);

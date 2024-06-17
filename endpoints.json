@@ -69,5 +69,50 @@
         { "review_count": 2 }
       ]
     }
+  },
+
+  "GET /api/users": {
+    "description": "Serves an array of the users as objects.",
+    "queries": [],
+    "exampleResponse": {
+      "users": [
+        {
+          "username": "andros",
+          "name": "andy",
+          "avatar_url": "link to an image"
+        },
+        {
+          "username": "wolfric",
+          "name": "albus",
+          "avatar_url": "link to an image"
+        }
+      ]
+    }
+  },
+
+  "POST /api/users": {
+    "description": "Posts a new user and serves an object with the new created user",
+    "queries": [],
+    "exampleResponse": {
+      "user": {
+        "username": "luffy",
+        "name": "monkey D",
+        "avatar_url": "link to an image"
+      }
+    }
+  },
+
+  "GET /api/users/:username": {
+    "description": "Serves a user object matching the given username",
+    "queries": [],
+    "exampleResponse": {
+      "user": [
+        {
+          "username": "aUserName",
+          "name": "name",
+          "avatar_url": "link to an avatar"
+        }
+      ]
+    }
   }
 }

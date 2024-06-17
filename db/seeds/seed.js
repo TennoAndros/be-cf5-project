@@ -5,8 +5,9 @@ const { hashPassword, createRef, formatReviews } = require("./utils");
 const seed = async ({ reviewData, genreData, bookData, userData }) => {
   await db.query(`DROP TABLE IF EXISTS reviews;`);
   await db.query(`DROP TABLE IF EXISTS books;`);
-  await db.query(`DROP TABLE IF EXISTS users;`);
   await db.query(`DROP TABLE IF EXISTS genres;`);
+  await db.query(`DROP TABLE IF EXISTS users;`);
+ 
 
   await Promise.all([
     db.query(`
@@ -17,11 +18,11 @@ const seed = async ({ reviewData, genreData, bookData, userData }) => {
         password VARCHAR(255) NOT NULL,
         first_name VARCHAR(50) NOT NULL,
         last_name VARCHAR(50) NOT NULL,
-        avatar_url VARCHAR(255)
+        avatar_url VARCHAR(255) DEFAULT 'https://images.pexels.com/photos/6373499/pexels-photo-6373499.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
       );`),
     db.query(`
       CREATE TABLE genres (
-        genre VARCHAR(50) UNIQUE NOT NULL
+        genre VARCHAR(50) PRIMARY KEY NOT NULL
       );`),
   ]);
 
@@ -35,7 +36,7 @@ const seed = async ({ reviewData, genreData, bookData, userData }) => {
       amazon_book_url VARCHAR(255) NOT NULL UNIQUE,
       publisher VARCHAR(255),
       isbn VARCHAR(20) NOT NULL UNIQUE,
-      genre VARCHAR(50) NOT NULL,
+      genre VARCHAR(50) NOT NULL REFERENCES genres(genre) ON DELETE CASCADE,
       rating DECIMAL(3, 2) DEFAULT 0.0
     );`);
 
@@ -43,7 +44,7 @@ const seed = async ({ reviewData, genreData, bookData, userData }) => {
     CREATE TABLE reviews (
       review_id SERIAL PRIMARY KEY,
       body TEXT NOT NULL,
-      username VARCHAR REFERENCES users(username) ON DELETE CASCADE NOT NULL,
+      username VARCHAR(50) REFERENCES users(username) ON DELETE CASCADE NOT NULL,
       created_at TIMESTAMP DEFAULT NOW(),
       rating DECIMAL(3, 2) DEFAULT 0.0 NOT NULL,
       book_id INT REFERENCES books(book_id) ON DELETE CASCADE NOT NULL

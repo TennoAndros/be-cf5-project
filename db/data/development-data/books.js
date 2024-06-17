@@ -10,7 +10,7 @@ module.exports = [
     amazon_book_url:
       "https://www.amazon.com/dp/0385545991?tag=thenewyorktim-20",
     isbn: "0385545991",
-    genre: "Mystery/Thriller",
+    genre: "Mystery",
     rating: 0.0,
   },
   {
@@ -80,7 +80,7 @@ module.exports = [
     amazon_book_url:
       "https://www.amazon.com/dp/1649374178?tag=thenewyorktim-20",
     isbn: "1649374178",
-    genre: "Fantasy/Romance",
+    genre: "Fantasy",
     rating: 0.0,
   },
   {
@@ -94,7 +94,7 @@ module.exports = [
     amazon_book_url:
       "https://www.amazon.com/dp/0062824694?tag=thenewyorktim-20",
     isbn: "0062824694",
-    genre: "Mystery/Crime",
+    genre: "Crime",
     rating: 0.0,
   },
   {
@@ -136,7 +136,7 @@ module.exports = [
     amazon_book_url:
       "https://www.amazon.com/dp/0593830679?tag=thenewyorktim-20",
     isbn: "0593830679",
-    genre: "Mystery/Crime",
+    genre: "Crime",
     rating: 0.0,
   },
   {
@@ -164,7 +164,7 @@ module.exports = [
     amazon_book_url:
       "http://www.amazon.com/Ends-Us-Novel-Colleen-Hoover-ebook/dp/B0176M3U10?tag=thenewyorktim-20",
     isbn: "1668055961",
-    genre: "Romance/Drama",
+    genre: "Romance",
     rating: 0.0,
   },
   {
@@ -1511,7 +1511,7 @@ module.exports = [
     amazon_book_url:
       "https://www.amazon.com/dp/0593492919?tag=thenewyorktim-20",
     isbn: "0593789687",
-    genre: "Mystery/Thriller",
+    genre: "Mystery",
     rating: 0.0,
   },
   {
@@ -1539,7 +1539,7 @@ module.exports = [
     amazon_book_url:
       "https://www.amazon.com/dp/0593422945?tag=thenewyorktim-20",
     isbn: "0593684125",
-    genre: "Mystery/Thriller",
+    genre: "Thriller",
     rating: 0.0,
   },
   {
@@ -1581,7 +1581,7 @@ module.exports = [
     amazon_book_url:
       "https://www.amazon.com/dp/1250880319?tag=thenewyorktim-20",
     isbn: "1250880319",
-    genre: "Mystery/Thriller",
+    genre: "Thriller",
     rating: 0.0,
   },
   {
@@ -1595,7 +1595,7 @@ module.exports = [
     amazon_book_url:
       "https://www.amazon.com/dp/0307269752?tag=thenewyorktim-20",
     isbn: "0307269752",
-    genre: "Mystery/Thriller",
+    genre: "Mystery",
     rating: 0.0,
   },
   {
@@ -1609,7 +1609,7 @@ module.exports = [
     amazon_book_url:
       "https://www.amazon.com/dp/0062905082?tag=thenewyorktim-20",
     isbn: "0062905082",
-    genre: "Mystery/Thriller",
+    genre: "Thriller",
     rating: 0.0,
   },
   {
@@ -1623,7 +1623,7 @@ module.exports = [
     amazon_book_url:
       "https://www.amazon.com/dp/0307588378?tag=thenewyorktim-20",
     isbn: "0307588378",
-    genre: "Mystery/Thriller",
+    genre: "Mystery",
     rating: 0.0,
   },
   {
@@ -1637,7 +1637,7 @@ module.exports = [
     amazon_book_url:
       "https://www.amazon.com/dp/1250301696?tag=thenewyorktim-20",
     isbn: "1250301696",
-    genre: "Mystery/Thriller",
+    genre: "Mystery",
     rating: 0.0,
   },
   {
@@ -1651,7 +1651,7 @@ module.exports = [
     amazon_book_url:
       "https://www.amazon.com/dp/1594634025?tag=thenewyorktim-20",
     isbn: "1594634025",
-    genre: "Mystery/Thriller",
+    genre: "Mystery",
     rating: 0.0,
   },
   {
@@ -1665,7 +1665,7 @@ module.exports = [
     amazon_book_url:
       "https://www.amazon.com/dp/0307474275?tag=thenewyorktim-20",
     isbn: "0307474275",
-    genre: "Mystery/Thriller",
+    genre: "Mystery",
     rating: 0.0,
   },
   {

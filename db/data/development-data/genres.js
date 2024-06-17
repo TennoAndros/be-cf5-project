@@ -39,4 +39,8 @@ module.exports = [
   { genre: "Young Adult Dystopian Fiction" },
   { genre: "Young Adult Fantasy" },
   { genre: "Young Adult Paranormal Fiction" },
+  { genre: "Health & Wellness" },
+  { genre: "Fiction" },
+  { genre: "Science" },
+  { genre: "Young Adult Fiction" },
 ];

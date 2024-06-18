@@ -28,6 +28,7 @@ describe("/api", () => {
             "POST /api/users": expect.any(Object),
             "GET /api/users/:username": expect.any(Object),
             "POST /api/users/login": expect.any(Object),
+            "POST /api/users/login": expect.any(Object),
           })
         );
       });

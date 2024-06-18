@@ -176,5 +176,14 @@
         "username": "someone"
       }
     }
+  },
+
+  "POST /api/users/logout": {
+    "description": "Logs out a user and invalidates the JWT token",
+    "queries": [],
+    "exampleRequest": {},
+    "exampleResponse": {
+      "msg": "Logged out successfully"
+    }
   }
 }

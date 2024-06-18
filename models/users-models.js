@@ -6,13 +6,16 @@ exports.selectUsers = async () => {
 };
 
 exports.selectUserByUsername = async (username) => {
+  if (!username) {
+    return Promise.reject({ code: 400, msg: "Username required!" });
+  }
   const { rows } = await db.query(`SELECT * FROM users WHERE username=$1`, [
     username,
   ]);
   if (!rows[0]) {
     return Promise.reject({
       code: 404,
-      msg: "User either doesn't exist or you don't have access to their profile",
+      msg: "User Not Found!",
     });
   }
   return rows[0];
@@ -36,16 +39,27 @@ exports.insertUser = async ({
   return rows[0];
 };
 
-exports.deleteUserByUsername = async (username) => {
+exports.deleteUserByUsername = async (loggedInUserId, deleteUsername) => {
   const { rows } = await db.query(
     `DELETE FROM users WHERE username=$1 RETURNING *`,
-    [username]
+    [deleteUsername]
   );
-  if (rows.length === 0)
+
+  if (rows.length === 0) {
     return Promise.reject({
       code: 404,
       msg: "User doesn't exist!",
     });
+  }
+
+  if (rows[0].user_id !== loggedInUserId) {
+    return Promise.reject({
+      code: 403,
+      msg: "Unauthorized - You can only delete your own account!",
+    });
+  }
+
+  return { success: true, msg: "User deleted successfully!" };
 };
 
 exports.checkUserExists = async (username) => {

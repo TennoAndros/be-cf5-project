@@ -11,7 +11,6 @@ module.exports = [
       "https://www.amazon.com/dp/0385545991?tag=thenewyorktim-20",
     isbn: "0385545991",
     genre: "Mystery",
-    rating: 0.0,
   },
   {
     title: "YOU LIKE IT DARKER",
@@ -25,7 +24,6 @@ module.exports = [
       "https://www.amazon.com/dp/1668037718?tag=thenewyorktim-20",
     isbn: "1668037718",
     genre: "Horror",
-    rating: 0.0,
   },
   {
     title: "THE WOMEN",
@@ -39,7 +37,6 @@ module.exports = [
       "https://www.amazon.com/dp/1250178630?tag=thenewyorktim-20",
     isbn: "1250178630",
     genre: "Historical Fiction",
-    rating: 0.0,
   },
   {
     title: "FUNNY STORY",
@@ -53,7 +50,6 @@ module.exports = [
       "https://www.amazon.com/dp/0593441281?tag=thenewyorktim-20",
     isbn: "0593441281",
     genre: "Romantic Comedy",
-    rating: 0.0,
   },
   {
     title: "FOURTH WING",
@@ -67,7 +63,6 @@ module.exports = [
       "https://www.amazon.com/dp/1649374046?tag=thenewyorktim-20",
     isbn: "1649374046",
     genre: "Fantasy",
-    rating: 0.0,
   },
   {
     title: "IRON FLAME",
@@ -81,7 +76,6 @@ module.exports = [
       "https://www.amazon.com/dp/1649374178?tag=thenewyorktim-20",
     isbn: "1649374178",
     genre: "Fantasy",
-    rating: 0.0,
   },
   {
     title: "SOUTHERN MAN",
@@ -95,7 +89,6 @@ module.exports = [
       "https://www.amazon.com/dp/0062824694?tag=thenewyorktim-20",
     isbn: "0062824694",
     genre: "Crime",
-    rating: 0.0,
   },
   {
     title: "THIS SUMMER WILL BE DIFFERENT",
@@ -109,7 +102,6 @@ module.exports = [
       "https://www.amazon.com/dp/0593638883?tag=thenewyorktim-20",
     isbn: "0593638883",
     genre: "Romance",
-    rating: 0.0,
   },
   {
     title: "A COURT OF MIST AND FURY",
@@ -123,7 +115,6 @@ module.exports = [
       "https://www.amazon.com/dp/1635575583?tag=thenewyorktim-20",
     isbn: "1635575583",
     genre: "Fantasy",
-    rating: 0.0,
   },
   {
     title: "FIRST FROST",
@@ -137,7 +128,6 @@ module.exports = [
       "https://www.amazon.com/dp/0593830679?tag=thenewyorktim-20",
     isbn: "0593830679",
     genre: "Crime",
-    rating: 0.0,
   },
   {
     title: "THE HOUSEMAID",
@@ -151,7 +141,6 @@ module.exports = [
       "https://www.amazon.com/dp/1538742578?tag=thenewyorktim-20",
     isbn: "1538742578",
     genre: "Drama",
-    rating: 0.0,
   },
   {
     title: "IT ENDS WITH US",
@@ -165,7 +154,6 @@ module.exports = [
       "http://www.amazon.com/Ends-Us-Novel-Colleen-Hoover-ebook/dp/B0176M3U10?tag=thenewyorktim-20",
     isbn: "1668055961",
     genre: "Romance",
-    rating: 0.0,
   },
   {
     title: "A COURT OF WINGS AND RUIN",
@@ -179,7 +167,6 @@ module.exports = [
       "https://www.amazon.com/dp/1635575605?tag=thenewyorktim-20",
     isbn: "1635575605",
     genre: "Fantasy",
-    rating: 0.0,
   },
   {
     title: "THE DEMON OF UNREST",
@@ -193,7 +180,6 @@ module.exports = [
       "https://www.amazon.com/dp/0385348746?tag=thenewyorktim-20",
     isbn: "0385348746",
     genre: "History",
-    rating: 0.0,
   },
   {
     title: "THE ANXIOUS GENERATION",
@@ -207,7 +193,6 @@ module.exports = [
       "https://www.amazon.com/dp/0593655036?tag=thenewyorktim-20",
     isbn: "0593655036",
     genre: "Psychology",
-    rating: 0.0,
   },
   {
     title: "WHAT THIS COMEDIAN SAID WILL SHOCK YOU",
@@ -221,7 +206,6 @@ module.exports = [
       "https://www.amazon.com/dp/1668051354?tag=thenewyorktim-20",
     isbn: "1668051354",
     genre: "Non-fiction",
-    rating: 0.0,
   },
   {
     title: "THE END OF EVERYTHING",
@@ -235,7 +219,6 @@ module.exports = [
       "https://www.amazon.com/dp/1541673522?tag=thenewyorktim-20",
     isbn: "1541673522",
     genre: "Political Science",
-    rating: 0.0,
   },
   {
     title: "THE SITUATION ROOM",
@@ -249,7 +232,6 @@ module.exports = [
       "https://www.amazon.com/dp/1538740761?tag=thenewyorktim-20",
     isbn: "1538740761",
     genre: "Political Science",
-    rating: 0.0,
   },
   {
     title: "THE BODY KEEPS THE SCORE",
@@ -263,7 +245,6 @@ module.exports = [
       "http://www.amazon.com/The-Body-Keeps-Score-Healing/dp/0670785938?tag=thenewyorktim-20",
     isbn: "0143127748",
     genre: "Psychology",
-    rating: 0.0,
   },
   {
     title: "AN UNFINISHED LOVE STORY",
@@ -277,7 +258,6 @@ module.exports = [
       "https://www.amazon.com/dp/1982108665?tag=thenewyorktim-20",
     isbn: "1982108665",
     genre: "History",
-    rating: 0.0,
   },
   {
     title: "IN MY TIME OF DYING",
@@ -291,7 +271,6 @@ module.exports = [
       "https://www.amazon.com/dp/1668050838?tag=thenewyorktim-20",
     isbn: "1668050838",
     genre: "Memoir",
-    rating: 0.0,
   },
   {
     title: "BITS AND PIECES",
@@ -305,7 +284,6 @@ module.exports = [
       "https://www.amazon.com/dp/B0CP6DX73L?tag=thenewyorktim-20",
     isbn: "8200920235",
     genre: "Autobiography",
-    rating: 0.0,
   },
   {
     title: "A WALK IN THE PARK",
@@ -319,7 +297,6 @@ module.exports = [
       "https://www.amazon.com/dp/1501183052?tag=thenewyorktim-20",
     isbn: "1501183052",
     genre: "Travel",
-    rating: 0.0,
   },
   {
     title: "LIFE'S TOO SHORT",
@@ -333,7 +310,6 @@ module.exports = [
       "https://www.amazon.com/dp/0063238748?tag=thenewyorktim-20",
     isbn: "0063238748",
     genre: "Memoir",
-    rating: 0.0,
   },
   {
     title: "THE WAGER",
@@ -347,7 +323,6 @@ module.exports = [
       "https://www.amazon.com/dp/0385534264?tag=thenewyorktim-20",
     isbn: "0385534264",
     genre: "Historical Fiction",
-    rating: 0.0,
   },
   {
     title: "YOU NEVER KNOW",
@@ -361,7 +336,6 @@ module.exports = [
       "https://www.amazon.com/dp/0062945769?tag=thenewyorktim-20",
     isbn: "0062945769",
     genre: "Biography",
-    rating: 0.0,
   },
   {
     title: "THE BACKYARD BIRD CHRONICLES",
@@ -375,7 +349,6 @@ module.exports = [
       "https://www.amazon.com/dp/0593536134?tag=thenewyorktim-20",
     isbn: "0593536134",
     genre: "Nature",
-    rating: 0.0,
   },
   {
     title: "COLLEGE GIRL, MISSING",
@@ -388,7 +361,6 @@ module.exports = [
       "https://www.amazon.com/dp/1728272998?tag=thenewyorktim-20",
     isbn: "1728272998",
     genre: "True Crime",
-    rating: 0.0,
   },
   {
     title: "HEAVENBREAKER",
@@ -402,7 +374,6 @@ module.exports = [
       "https://www.amazon.com/dp/1649375700?tag=thenewyorktim-20",
     isbn: "1649375700",
     genre: "Science Fiction",
-    rating: 0.0,
   },
   {
     title: "MIND GAMES",
@@ -416,7 +387,6 @@ module.exports = [
       "https://www.amazon.com/dp/1250289696?tag=thenewyorktim-20",
     isbn: "1250289696",
     genre: "Thriller",
-    rating: 0.0,
   },
   {
     title: "ONE PERFECT COUPLE",
@@ -430,7 +400,6 @@ module.exports = [
       "https://www.amazon.com/dp/1668025590?tag=thenewyorktim-20",
     isbn: "1668025590",
     genre: "Mystery",
-    rating: 0.0,
   },
   {
     title: "THE 24TH HOUR",
@@ -444,7 +413,6 @@ module.exports = [
       "https://www.amazon.com/dp/0316403083?tag=thenewyorktim-20",
     isbn: "0316403083",
     genre: "Mystery",
-    rating: 0.0,
   },
   {
     title: "THINK TWICE",
@@ -458,7 +426,6 @@ module.exports = [
       "https://www.amazon.com/dp/1538756315?tag=thenewyorktim-20",
     isbn: "1538756315",
     genre: "Thriller",
-    rating: 0.0,
   },
   {
     title: "A CALAMITY OF SOULS",
@@ -472,7 +439,6 @@ module.exports = [
       "https://www.amazon.com/dp/1538765020?tag=thenewyorktim-20",
     isbn: "1538765020",
     genre: "Thriller",
-    rating: 0.0,
   },
   {
     title: "REMARKABLY BRIGHT CREATURES",
@@ -486,7 +452,6 @@ module.exports = [
       "https://www.amazon.com/dp/0063204150?tag=thenewyorktim-20",
     isbn: "0063204150",
     genre: "Mystery",
-    rating: 0.0,
   },
   {
     title: "OUTLIVE",
@@ -499,7 +464,6 @@ module.exports = [
       "https://www.amazon.com/dp/0593236599?tag=thenewyorktim-20",
     isbn: "0593236599",
     genre: "Health & Wellness",
-    rating: 0.0,
   },
   {
     title: "REBEL GIRL",
@@ -513,7 +477,6 @@ module.exports = [
       "https://www.amazon.com/dp/0062825232?tag=thenewyorktim-20",
     isbn: "0062825232",
     genre: "Biography",
-    rating: 0.0,
   },
   {
     title: "THE WIDE WIDE SEA",
@@ -527,7 +490,6 @@ module.exports = [
       "https://www.amazon.com/dp/0385544766?tag=thenewyorktim-20",
     isbn: "0385544766",
     genre: "History",
-    rating: 0.0,
   },
   {
     title: "A COURT OF THORNS AND ROSES",
@@ -541,7 +503,6 @@ module.exports = [
       "http://www.amazon.com/Court-Thorns-Roses-Sarah-Maas-ebook/dp/B00OZP5VRS?tag=thenewyorktim-20",
     isbn: "1635575567",
     genre: "Fantasy",
-    rating: 0.0,
   },
   {
     title: "JUST FOR THE SUMMER",
@@ -555,7 +516,6 @@ module.exports = [
       "https://www.amazon.com/dp/1538704439?tag=thenewyorktim-20",
     isbn: "1538704439",
     genre: "Romance",
-    rating: 0.0,
   },
   {
     title: "HAPPY PLACE",
@@ -569,7 +529,6 @@ module.exports = [
       "https://www.amazon.com/dp/0593441273?tag=thenewyorktim-20",
     isbn: "0593441192",
     genre: "Fiction",
-    rating: 0.0,
   },
   {
     title: "TWISTED LOVE",
@@ -583,7 +542,6 @@ module.exports = [
       "https://www.amazon.com/dp/1728274869?tag=thenewyorktim-20",
     isbn: "1728274869",
     genre: "Romance",
-    rating: 0.0,
   },
   {
     title: "ICEBREAKER",
@@ -597,7 +555,6 @@ module.exports = [
       "https://www.amazon.com/dp/1668026031?tag=thenewyorktim-20",
     isbn: "1668026031",
     genre: "Romance",
-    rating: 0.0,
   },
   {
     title: "IT STARTS WITH US",
@@ -611,7 +568,6 @@ module.exports = [
       "https://www.amazon.com/dp/1668001225?tag=thenewyorktim-20",
     isbn: "1668001225",
     genre: "Romance",
-    rating: 0.0,
   },
   {
     title: "VERITY",
@@ -625,7 +581,6 @@ module.exports = [
       "https://www.amazon.com/dp/1791392792?tag=thenewyorktim-20",
     isbn: "1791392792",
     genre: "Thriller",
-    rating: 0.0,
   },
   {
     title: "A COURT OF SILVER FLAMES",
@@ -639,7 +594,6 @@ module.exports = [
       "https://www.amazon.com/dp/168119628X?tag=thenewyorktim-20",
     isbn: "1635577993",
     genre: "Fantasy",
-    rating: 0.0,
   },
   {
     title: "KING OF SLOTH",
@@ -653,7 +607,6 @@ module.exports = [
       "https://www.amazon.com/dp/1728289750?tag=thenewyorktim-20",
     isbn: "1728289750",
     genre: "Romance",
-    rating: 0.0,
   },
   {
     title: "KILLERS OF THE FLOWER MOON",
@@ -667,7 +620,6 @@ module.exports = [
       "https://www.amazon.com/Killers-Flower-Moon-Osage-Murders/dp/0385534248?tag=thenewyorktim-20",
     isbn: "0307742482",
     genre: "True Crime",
-    rating: 0.0,
   },
   {
     title: "THE HUNDRED YEARS' WAR ON PALESTINE",
@@ -681,7 +633,6 @@ module.exports = [
       "https://www.amazon.com/dp/1250787653?tag=thenewyorktim-20",
     isbn: "1250787653",
     genre: "History",
-    rating: 0.0,
   },
   {
     title: "BRAIDING SWEETGRASS",
@@ -695,7 +646,6 @@ module.exports = [
       "https://www.amazon.com/Braiding-Sweetgrass-Indigenous-Scientific-Knowledge/dp/1571313567?tag=thenewyorktim-20",
     isbn: "1571313567",
     genre: "Science",
-    rating: 0.0,
   },
   {
     title: "THINK AGAIN",
@@ -709,7 +659,6 @@ module.exports = [
       "https://www.amazon.com/dp/1984878107?tag=thenewyorktim-20",
     isbn: "1984878123",
     genre: "Psychology",
-    rating: 0.0,
   },
   {
     title: "EVERYTHING I KNOW ABOUT LOVE",
@@ -723,7 +672,6 @@ module.exports = [
       "https://www.amazon.com/dp/0062968793?tag=thenewyorktim-20",
     isbn: "0062968793",
     genre: "Memoir",
-    rating: 0.0,
   },
   {
     title: "THE LIGHT WE CARRY",
@@ -737,7 +685,6 @@ module.exports = [
       "https://www.amazon.com/dp/059323748X?tag=thenewyorktim-20",
     isbn: "059323748X",
     genre: "Biography",
-    rating: 0.0,
   },
   {
     title: "THE BOYS IN THE BOAT",
@@ -751,7 +698,6 @@ module.exports = [
       "http://www.amazon.com/The-Boys-Boat-Americans-Olympics-ebook/dp/B00AEBETU2?tag=thenewyorktim-20",
     isbn: "0143125478",
     genre: "History",
-    rating: 0.0,
   },
   {
     title: "BORN A CRIME",
@@ -765,7 +711,6 @@ module.exports = [
       "https://www.amazon.com/Born-Crime-Stories-African-Childhood-ebook/dp/B01DHWACVY?tag=thenewyorktim-20",
     isbn: "0399588191",
     genre: "Memoir",
-    rating: 0.0,
   },
   {
     title: "EDUCATED",
@@ -779,7 +724,6 @@ module.exports = [
       "https://www.amazon.com/Educated-Memoir-Tara-Westover/dp/0399590501?tag=thenewyorktim-20",
     isbn: "0399590528",
     genre: "Memoir",
-    rating: 0.0,
   },
   {
     title: "THINKING, FAST AND SLOW",
@@ -793,7 +737,6 @@ module.exports = [
       "http://www.amazon.com/Thinking-Fast-Slow-Daniel-Kahneman-ebook/dp/B00555X8OA?tag=thenewyorktim-20",
     isbn: "0374533555",
     genre: "Psychology",
-    rating: 0.0,
   },
   {
     title: "THE UNITED STATES GOVERNED BY SIX HUNDRED THOUSAND DESPOTS",
@@ -807,7 +750,6 @@ module.exports = [
       "https://www.amazon.com/dp/022668430X?tag=thenewyorktim-20",
     isbn: "022668430X",
     genre: "History",
-    rating: 0.0,
   },
   {
     title: "CRYING IN H MART",
@@ -821,7 +763,6 @@ module.exports = [
       "https://www.amazon.com/dp/0525657746?tag=thenewyorktim-20",
     isbn: "1984898957",
     genre: "Memoir",
-    rating: 0.0,
   },
   {
     title: "ATOMIC HABITS",
@@ -834,7 +775,6 @@ module.exports = [
       "https://www.amazon.com/Atomic-Habits-Proven-Build-Break/dp/0735211299?tag=thenewyorktim-20",
     isbn: "0735211299",
     genre: "Self-Help",
-    rating: 0.0,
   },
   {
     title: "GOOD ENERGY",
@@ -847,7 +787,6 @@ module.exports = [
       "https://www.amazon.com/dp/0593712641?tag=thenewyorktim-20",
     isbn: "0593712641",
     genre: "Health",
-    rating: 0.0,
   },
   {
     title: "YOU DESERVE GOOD GELATO",
@@ -860,7 +799,6 @@ module.exports = [
       "https://www.amazon.com/dp/0593840437?tag=thenewyorktim-20",
     isbn: "0593840437",
     genre: "Travel",
-    rating: 0.0,
   },
   {
     title: "THE NEW MENOPAUSE",
@@ -873,7 +811,6 @@ module.exports = [
       "https://www.amazon.com/dp/059379625X?tag=thenewyorktim-20",
     isbn: "059379625X",
     genre: "Health",
-    rating: 0.0,
   },
   {
     title: "MAKE YOUR BED",
@@ -886,7 +823,6 @@ module.exports = [
       "https://www.amazon.com/Make-Your-Bed-Little-Things/dp/1455570249?tag=thenewyorktim-20",
     isbn: "1455570249",
     genre: "Self-Help",
-    rating: 0.0,
   },
   {
     title: "THE OFFICIAL STARDEW VALLEY COOKBOOK",
@@ -899,7 +835,6 @@ module.exports = [
       "https://www.amazon.com/dp/1984862057?tag=thenewyorktim-20",
     isbn: "1984862057",
     genre: "Cooking",
-    rating: 0.0,
   },
   {
     title: "THE CREATIVE ACT",
@@ -912,7 +847,6 @@ module.exports = [
       "https://www.amazon.com/dp/0593652886?tag=thenewyorktim-20",
     isbn: "0593652886",
     genre: "Creativity",
-    rating: 0.0,
   },
   {
     title: "THE BOY, THE MOLE, THE FOX AND THE HORSE",
@@ -925,7 +859,6 @@ module.exports = [
       "https://www.amazon.com/Boy-Mole-Fox-Horse/dp/0062976583?tag=thenewyorktim-20",
     isbn: "0062976583",
     genre: "Children's Books",
-    rating: 0.0,
   },
   {
     title: "CHEAPER, FASTER, BETTER",
@@ -938,7 +871,6 @@ module.exports = [
       "https://www.amazon.com/dp/1954118643?tag=thenewyorktim-20",
     isbn: "1954118643",
     genre: "Business",
-    rating: 0.0,
   },
   {
     title: "MILLIONAIRE MISSION",
@@ -951,7 +883,6 @@ module.exports = [
       "https://www.amazon.com/dp/163774501X?tag=thenewyorktim-20",
     isbn: "163774501X",
     genre: "Finance",
-    rating: 0.0,
   },
   {
     title: "WONDER",
@@ -964,7 +895,6 @@ module.exports = [
       "http://www.amazon.com/Wonder-R-J-Palacio-ebook/dp/B0051ANPZQ?tag=thenewyorktim-20",
     isbn: "0375869026",
     genre: "Children's Books",
-    rating: 0.0,
   },
   {
     title: "REFUGEE",
@@ -978,7 +908,6 @@ module.exports = [
       "https://www.amazon.com/Refugee-Alan-Gratz/dp/0545880831?tag=thenewyorktim-20",
     isbn: "0545880831",
     genre: "Children's Books",
-    rating: 0.0,
   },
   {
     title: "THE MISFITS: A ROYAL CONUNDRUM",
@@ -992,7 +921,6 @@ module.exports = [
       "https://www.amazon.com/dp/1984830295?tag=thenewyorktim-20",
     isbn: "1984830295",
     genre: "Children's Books",
-    rating: 0.0,
   },
   {
     title: "ODDER",
@@ -1006,7 +934,6 @@ module.exports = [
       "https://www.amazon.com/dp/1250147425?tag=thenewyorktim-20",
     isbn: "1250147425",
     genre: "Children's Fiction",
-    rating: 0.0,
   },
   {
     title: "HEROES",
@@ -1020,7 +947,6 @@ module.exports = [
       "https://www.amazon.com/dp/1338736078?tag=thenewyorktim-20",
     isbn: "1338736078",
     genre: "Children's Historical Fiction",
-    rating: 0.0,
   },
   {
     title: "WINGS OF FIRE: A GUIDE TO THE DRAGON WORLD",
@@ -1034,7 +960,6 @@ module.exports = [
       "https://www.amazon.com/dp/1338634828?tag=thenewyorktim-20",
     isbn: "1338634828",
     genre: "Children's Fantasy",
-    rating: 0.0,
   },
   {
     title: "THE SUN AND THE STAR",
@@ -1048,7 +973,6 @@ module.exports = [
       "https://www.amazon.com/dp/1368081150?tag=thenewyorktim-20",
     isbn: "1368081150",
     genre: "Children's Fantasy",
-    rating: 0.0,
   },
   {
     title: "THE COMPLETE COOKBOOK FOR YOUNG CHEFS",
@@ -1062,7 +986,6 @@ module.exports = [
       "https://www.amazon.com/Complete-Cookbook-Young-Chefs/dp/1492670022?tag=thenewyorktim-20",
     isbn: "1492670022",
     genre: "Children's Nonfiction",
-    rating: 0.0,
   },
   {
     title: "GROUND ZERO",
@@ -1076,7 +999,6 @@ module.exports = [
       "https://www.amazon.com/dp/1338245759?tag=thenewyorktim-20",
     isbn: "1338245759",
     genre: "Children's Historical Fiction",
-    rating: 0.0,
   },
   {
     title: "FERRIS",
@@ -1090,7 +1012,6 @@ module.exports = [
       "https://www.amazon.com/dp/1536231053?tag=thenewyorktim-20",
     isbn: "1536231053",
     genre: "Children's Fiction",
-    rating: 0.0,
   },
   {
     title: "WHY A DAUGHTER NEEDS A DAD",
@@ -1103,7 +1024,6 @@ module.exports = [
       "https://www.amazon.com/dp/1492667838?tag=thenewyorktim-20",
     isbn: "1492667838",
     genre: "Children's Nonfiction",
-    rating: 0.0,
   },
   {
     title: "I LOVE DAD WITH THE VERY HUNGRY CATERPILLAR",
@@ -1117,7 +1037,6 @@ module.exports = [
       "https://www.amazon.com/Love-Hungry-Caterpillar-World-Carle/dp/152478589X?tag=thenewyorktim-20",
     isbn: "152478589X",
     genre: "Children's Picture Books",
-    rating: 0.0,
   },
   {
     title: "WHAT DO YOU DO WITH AN IDEA?",
@@ -1130,7 +1049,6 @@ module.exports = [
       "http://www.amazon.com/What-Do-You-Idea/dp/1938298071?tag=thenewyorktim-20",
     isbn: "1957891343",
     genre: "Children's Picture Books",
-    rating: 0.0,
   },
   {
     title: "WHY A SON NEEDS A DAD",
@@ -1143,7 +1061,6 @@ module.exports = [
       "https://www.amazon.com/dp/1728235871?tag=thenewyorktim-20",
     isbn: "1728235871",
     genre: "Children's Nonfiction",
-    rating: 0.0,
   },
   {
     title: "THE WONDERFUL THINGS YOU WILL BE",
@@ -1156,7 +1073,6 @@ module.exports = [
       "http://www.amazon.com/The-Wonderful-Things-You-Will/dp/0385376715?tag=thenewyorktim-20",
     isbn: "0385376715",
     genre: "Children's Picture Books",
-    rating: 0.0,
   },
   {
     title: "BECAUSE I HAD A TEACHER",
@@ -1169,7 +1085,6 @@ module.exports = [
       "https://www.amazon.com/Because-Had-Teacher-teachers-everywhere/dp/1943200084?tag=thenewyorktim-20",
     isbn: "1943200084",
     genre: "Children's Picture Books",
-    rating: 0.0,
   },
   {
     title: "HOW TO CATCH A DADDYSAURUS",
@@ -1183,7 +1098,6 @@ module.exports = [
       "https://www.amazon.com/dp/1728266181?tag=thenewyorktim-20",
     isbn: "1728266181",
     genre: "Children's Picture Books",
-    rating: 0.0,
   },
   {
     title: "I WISH YOU MORE",
@@ -1196,7 +1110,6 @@ module.exports = [
       "http://www.amazon.com/Wish-You-More-Krouse-Rosenthal/dp/1452126992?tag=thenewyorktim-20",
     isbn: "1452126992",
     genre: "Children's Picture Books",
-    rating: 0.0,
   },
   {
     title: "DRAGONS LOVE TACOS",
@@ -1209,7 +1122,6 @@ module.exports = [
       "http://www.amazon.com/Dragons-Love-Tacos-Adam-Rubin/dp/0803736800?tag=thenewyorktim-20",
     isbn: "0803736800",
     genre: "Children's Picture Books",
-    rating: 0.0,
   },
   {
     title: "BLUEY: SLEEPYTIME",
@@ -1223,7 +1135,6 @@ module.exports = [
       "https://www.amazon.com/dp/0593659589?tag=thenewyorktim-20",
     isbn: "0593659589",
     genre: "Children's Picture Books",
-    rating: 0.0,
   },
   {
     title: "DIARY OF A WIMPY KID",
@@ -1236,7 +1147,6 @@ module.exports = [
       "http://www.amazon.com/Diary-Wimpy-Kid-Hard-Luck/dp/1419711326?tag=thenewyorktim-20",
     isbn: "1419711326",
     genre: "Children's Fiction",
-    rating: 0.0,
   },
   {
     title: "A GOOD GIRL'S GUIDE TO MURDER",
@@ -1249,7 +1159,6 @@ module.exports = [
       "https://www.amazon.com/dp/0593379853?tag=thenewyorktim-20",
     isbn: "1984896393",
     genre: "Young Adult Mystery",
-    rating: 0.0,
   },
   {
     title: "PERCY JACKSON & THE OLYMPIANS",
@@ -1262,7 +1171,6 @@ module.exports = [
       "http://www.amazon.com/Titans-Curse-Percy-Jackson-Olympians/dp/1423101480?tag=thenewyorktim-20",
     isbn: "0786838655",
     genre: "Children's Fiction",
-    rating: 0.0,
   },
   {
     title: "THE ONE AND ONLY",
@@ -1275,7 +1183,6 @@ module.exports = [
       "https://www.amazon.com/dp/0063080087?tag=thenewyorktim-20",
     isbn: "0063221128",
     genre: "Children's Fiction",
-    rating: 0.0,
   },
   {
     title: "THE SUMMER I TURNED PRETTY TRILOGY",
@@ -1289,7 +1196,6 @@ module.exports = [
       "http://www.amazon.com/Well-Always-Summer-Turned-Pretty/dp/1416995587?tag=thenewyorktim-20",
     isbn: "1416968296",
     genre: "Young Adult Romance",
-    rating: 0.0,
   },
   {
     title: "HARRY POTTER",
@@ -1303,7 +1209,6 @@ module.exports = [
       "http://www.amazon.com/Harry-Potter-And-Order-Phoenix/dp/0439358078?tag=thenewyorktim-20",
     isbn: "1338878921",
     genre: "Children's Fantasy",
-    rating: 0.0,
   },
   {
     title: "WHO WAS/IS . . . ?",
@@ -1316,7 +1221,6 @@ module.exports = [
       "http://www.amazon.com/Who-Was-Mother-Teresa-Gigliotti/dp/0448482991?tag=thenewyorktim-20",
     isbn: "0593754220",
     genre: "Children's Nonfiction",
-    rating: 0.0,
   },
   {
     title: "THE WILD ROBOT",
@@ -1330,7 +1234,6 @@ module.exports = [
       "https://www.amazon.com/dp/0316669415?tag=thenewyorktim-20",
     isbn: "0316382000",
     genre: "Children's Science Fiction",
-    rating: 0.0,
   },
   {
     title: "THE HUNGER GAMES",
@@ -1344,7 +1247,6 @@ module.exports = [
       "http://www.amazon.com/Mockingjay-Final-Book-Hunger-Games/dp/0545663261?tag=thenewyorktim-20",
     isbn: "0439023521",
     genre: "Young Adult Dystopian Fiction",
-    rating: 0.0,
   },
   {
     title: "FOLK OF THE AIR",
@@ -1358,7 +1260,6 @@ module.exports = [
       "https://www.amazon.com/Queen-Nothing-Folk-Air-Book-ebook/dp/B07PKRXQDH?tag=thenewyorktim-20",
     isbn: "031631031X",
     genre: "Young Adult Fantasy",
-    rating: 0.0,
   },
   {
     title: "POWERLESS",
@@ -1372,7 +1273,6 @@ module.exports = [
       "https://www.amazon.com/dp/1665954884?tag=thenewyorktim-20",
     isbn: "1665954884",
     genre: "Young Adult Romance",
-    rating: 0.0,
   },
   {
     title: "POWERFUL",
@@ -1386,7 +1286,6 @@ module.exports = [
       "https://www.amazon.com/dp/1665966300?tag=thenewyorktim-20",
     isbn: "1665966300",
     genre: "Young Adult Fantasy",
-    rating: 0.0,
   },
   {
     title: "THE REAPPEARANCE OF RACHEL PRICE",
@@ -1400,7 +1299,6 @@ module.exports = [
       "https://www.amazon.com/dp/0593374207?tag=thenewyorktim-20",
     isbn: "0593374207",
     genre: "Young Adult Mystery",
-    rating: 0.0,
   },
   {
     title: "DIVINE RIVALS",
@@ -1414,7 +1312,6 @@ module.exports = [
       "https://www.amazon.com/dp/1250857430?tag=thenewyorktim-20",
     isbn: "1250857430",
     genre: "Young Adult Romance",
-    rating: 0.0,
   },
   {
     title: "SWEET NIGHTMARE",
@@ -1428,7 +1325,6 @@ module.exports = [
       "https://www.amazon.com/dp/1649377010?tag=thenewyorktim-20",
     isbn: "1649377061",
     genre: "Young Adult Paranormal Fiction",
-    rating: 0.0,
   },
   {
     title: "NIGHTBANE",
@@ -1442,7 +1338,6 @@ module.exports = [
       "https://www.amazon.com/dp/1419760904?tag=thenewyorktim-20",
     isbn: "1419760904",
     genre: "Young Adult Fantasy",
-    rating: 0.0,
   },
   {
     title: "TWELFTH KNIGHT",
@@ -1456,7 +1351,6 @@ module.exports = [
       "https://www.amazon.com/dp/1250884896?tag=thenewyorktim-20",
     isbn: "1250884896",
     genre: "Young Adult Fiction",
-    rating: 0.0,
   },
   {
     title: "RUTHLESS VOWS",
@@ -1470,7 +1364,6 @@ module.exports = [
       "https://www.amazon.com/dp/1250857457?tag=thenewyorktim-20",
     isbn: "1250857457",
     genre: "Young Adult Fantasy",
-    rating: 0.0,
   },
   {
     title: "HEARTLESS HUNTER",
@@ -1484,7 +1377,6 @@ module.exports = [
       "https://www.amazon.com/dp/1250866901?tag=thenewyorktim-20",
     isbn: "1250866901",
     genre: "Young Adult Fantasy",
-    rating: 0.0,
   },
   {
     title: "MURTAGH",
@@ -1498,7 +1390,6 @@ module.exports = [
       "https://www.amazon.com/dp/0593650867?tag=thenewyorktim-20",
     isbn: "0593650867",
     genre: "Young Adult Fantasy",
-    rating: 0.0,
   },
   {
     title: "FIRST LIE WINS",
@@ -1512,7 +1403,6 @@ module.exports = [
       "https://www.amazon.com/dp/0593492919?tag=thenewyorktim-20",
     isbn: "0593789687",
     genre: "Mystery",
-    rating: 0.0,
   },
   {
     title: "THRONE OF GLASS",
@@ -1526,7 +1416,6 @@ module.exports = [
       "https://www.amazon.com/dp/1639730958?tag=thenewyorktim-20",
     isbn: "1639730958",
     genre: "Young Adult Fantasy",
-    rating: 0.0,
   },
   {
     title: "THE HEAVEN & EARTH GROCERY STORE",
@@ -1540,7 +1429,6 @@ module.exports = [
       "https://www.amazon.com/dp/0593422945?tag=thenewyorktim-20",
     isbn: "0593684125",
     genre: "Thriller",
-    rating: 0.0,
   },
   {
     title: "TRESS OF THE EMERALD SEA",
@@ -1554,7 +1442,6 @@ module.exports = [
       "https://www.amazon.com/dp/1250899656?tag=thenewyorktim-20",
     isbn: "1938570421",
     genre: "Fantasy",
-    rating: 0.0,
   },
   {
     title: "DUNE",
@@ -1568,7 +1455,6 @@ module.exports = [
       "https://www.amazon.com/dp/0441013597?tag=thenewyorktim-20",
     isbn: "0441013597",
     genre: "Science Fiction",
-    rating: 0.0,
   },
   {
     title: "LISTEN FOR THE LIE",
@@ -1582,7 +1468,6 @@ module.exports = [
       "https://www.amazon.com/dp/1250880319?tag=thenewyorktim-20",
     isbn: "1250880319",
     genre: "Thriller",
-    rating: 0.0,
   },
   {
     title: "THE GIRL WITH THE DRAGON TATTOO",
@@ -1596,7 +1481,6 @@ module.exports = [
       "https://www.amazon.com/dp/0307269752?tag=thenewyorktim-20",
     isbn: "0307269752",
     genre: "Mystery",
-    rating: 0.0,
   },
   {
     title: "THE WOMAN IN THE WINDOW",
@@ -1610,7 +1494,6 @@ module.exports = [
       "https://www.amazon.com/dp/0062905082?tag=thenewyorktim-20",
     isbn: "0062905082",
     genre: "Thriller",
-    rating: 0.0,
   },
   {
     title: "GONE GIRL",
@@ -1624,7 +1507,6 @@ module.exports = [
       "https://www.amazon.com/dp/0307588378?tag=thenewyorktim-20",
     isbn: "0307588378",
     genre: "Mystery",
-    rating: 0.0,
   },
   {
     title: "THE SILENT PATIENT",
@@ -1638,7 +1520,6 @@ module.exports = [
       "https://www.amazon.com/dp/1250301696?tag=thenewyorktim-20",
     isbn: "1250301696",
     genre: "Mystery",
-    rating: 0.0,
   },
   {
     title: "THE GIRL ON THE TRAIN",
@@ -1652,7 +1533,6 @@ module.exports = [
       "https://www.amazon.com/dp/1594634025?tag=thenewyorktim-20",
     isbn: "1594634025",
     genre: "Mystery",
-    rating: 0.0,
   },
   {
     title: "THE DA VINCI CODE",
@@ -1666,7 +1546,6 @@ module.exports = [
       "https://www.amazon.com/dp/0307474275?tag=thenewyorktim-20",
     isbn: "0307474275",
     genre: "Mystery",
-    rating: 0.0,
   },
   {
     title: "Clean Code: A Handbook of Agile Software Craftsmanship",
@@ -1680,7 +1559,6 @@ module.exports = [
     publisher: "Prentice Hall",
     isbn: "0132350882",
     genre: "Programming",
-    rating: 0.0,
   },
   {
     title: "JavaScript: The Good Parts",
@@ -1694,7 +1572,6 @@ module.exports = [
     publisher: "O'Reilly Media",
     isbn: "0596517742",
     genre: "Programming",
-    rating: 0.0,
   },
   {
     title: "Head First Design Patterns",
@@ -1708,7 +1585,6 @@ module.exports = [
     publisher: "O'Reilly Media",
     isbn: "0596007124",
     genre: "Programming",
-    rating: 0.0,
   },
   {
     title: "Python Crash Course",
@@ -1722,7 +1598,6 @@ module.exports = [
     publisher: "No Starch Press",
     isbn: "1593279280",
     genre: "Programming",
-    rating: 0.0,
   },
   {
     title: "Eloquent JavaScript: A Modern Introduction to Programming",
@@ -1736,6 +1611,5 @@ module.exports = [
     publisher: "No Starch Press",
     isbn: "1593272820",
     genre: "Programming",
-    rating: 0.0,
   },
 ];

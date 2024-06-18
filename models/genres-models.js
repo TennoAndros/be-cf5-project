@@ -7,3 +7,13 @@ exports.selectGenres = async () => {
   }
   return rows;
 };
+
+exports.checkGenreExists = async (genre) => {
+  if (!genre) return Promise.resolve;
+  const { rows } = await db.query(`SELECT * FROM genres WHERE genre=$1`, [
+    genre,
+  ]);
+  if (!rows[0]) {
+    return Promise.reject({ code: 404, msg: "Genre Not Found!" });
+  }
+};

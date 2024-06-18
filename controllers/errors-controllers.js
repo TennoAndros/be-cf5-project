@@ -5,8 +5,29 @@ exports.handleInvalidEndpoint = (req, res, next) => {
 };
 
 exports.handleCustomErrors = (err, req, res, next) => {
-  if (err.code === 404 || err.code === 400 || err.code === 409) {
+  if (
+    err.code === 404 ||
+    err.code === 400 ||
+    err.code === 409 ||
+    err.code === 403 ||
+    err.code === 500
+  ) {
     res.status(err.code).send({ msg: err.msg });
+  } else if (
+    err.msg === "Username required!" ||
+    err.msg === "Password required!"
+  ) {
+    res.status(400).json({ msg: err.msg });
+  } else if (
+    err.msg === "Invalid password!" ||
+    err.msg === "UnauthorizedError"
+  ) {
+    res.status(401).json({ msg: "Invalid credentials!" });
+  } else if (
+    err.msg === "No Authorization header provided!" ||
+    err.msg === "Malformed Authorization header!"
+  ) {
+    res.status(401).json({ msg: "Authentication failed!" });
   } else next(err);
 };
 

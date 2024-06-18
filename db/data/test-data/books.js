@@ -11,7 +11,6 @@ module.exports = [
       "https://www.amazon.com/dp/0385545991?tag=thenewyorktim-20",
     isbn: "0385545991",
     genre: "Mystery",
-    rating: 0.0,
   },
   {
     title: "YOU LIKE IT DARKER",
@@ -25,7 +24,6 @@ module.exports = [
       "https://www.amazon.com/dp/1668037718?tag=thenewyorktim-20",
     isbn: "1668037718",
     genre: "Horror",
-    rating: 0.0,
   },
   {
     title: "THE WOMEN",
@@ -39,7 +37,6 @@ module.exports = [
       "https://www.amazon.com/dp/1250178630?tag=thenewyorktim-20",
     isbn: "1250178630",
     genre: "Historical Fiction",
-    rating: 0.0,
   },
   {
     title: "FUNNY STORY",
@@ -53,7 +50,6 @@ module.exports = [
       "https://www.amazon.com/dp/0593441281?tag=thenewyorktim-20",
     isbn: "0593441281",
     genre: "Romantic Comedy",
-    rating: 0.0,
   },
   {
     title: "FOURTH WING",
@@ -67,7 +63,6 @@ module.exports = [
       "https://www.amazon.com/dp/1649374046?tag=thenewyorktim-20",
     isbn: "1649374046",
     genre: "Fantasy",
-    rating: 0.0,
   },
   {
     title: "IRON FLAME",
@@ -81,7 +76,6 @@ module.exports = [
       "https://www.amazon.com/dp/1649374178?tag=thenewyorktim-20",
     isbn: "1649374178",
     genre: "Fantasy",
-    rating: 0.0,
   },
   {
     title: "SOUTHERN MAN",
@@ -95,7 +89,6 @@ module.exports = [
       "https://www.amazon.com/dp/0062824694?tag=thenewyorktim-20",
     isbn: "0062824694",
     genre: "Crime",
-    rating: 0.0,
   },
   {
     title: "THIS SUMMER WILL BE DIFFERENT",
@@ -109,7 +102,6 @@ module.exports = [
       "https://www.amazon.com/dp/0593638883?tag=thenewyorktim-20",
     isbn: "0593638883",
     genre: "Romance",
-    rating: 0.0,
   },
   {
     title: "A COURT OF MIST AND FURY",
@@ -123,7 +115,6 @@ module.exports = [
       "https://www.amazon.com/dp/1635575583?tag=thenewyorktim-20",
     isbn: "1635575583",
     genre: "Fantasy",
-    rating: 0.0,
   },
   {
     title: "FIRST FROST",
@@ -137,7 +128,6 @@ module.exports = [
       "https://www.amazon.com/dp/0593830679?tag=thenewyorktim-20",
     isbn: "0593830679",
     genre: "Mystery",
-    rating: 0.0,
   },
   {
     title: "THE HOUSEMAID",
@@ -151,7 +141,6 @@ module.exports = [
       "https://www.amazon.com/dp/1538742578?tag=thenewyorktim-20",
     isbn: "1538742578",
     genre: "Drama",
-    rating: 0.0,
   },
   {
     title: "IT ENDS WITH US",
@@ -165,6 +154,5 @@ module.exports = [
       "http://www.amazon.com/Ends-Us-Novel-Colleen-Hoover-ebook/dp/B0176M3U10?tag=thenewyorktim-20",
     isbn: "1668055961",
     genre: "Drama",
-    rating: 0.0,
   },
 ];

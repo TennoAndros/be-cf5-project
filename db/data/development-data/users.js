@@ -79,4 +79,12 @@ module.exports = [
     last_name: "Taylor",
     avatar_url: "https://randomuser.me/api/portraits/men/10.jpg",
   },
+  {
+    email: "admin@outlook.com",
+    username: "Admin",
+    password: "adminPassCode",
+    first_name: "Admin",
+    last_name: "Master",
+    avatar_url: "https://randomuser.me/api/portraits/men/10.jpg",
+  },
 ];

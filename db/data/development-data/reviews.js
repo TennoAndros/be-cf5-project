@@ -4,7 +4,7 @@ module.exports = [
     username: "adamsc",
     user_id: 6,
     created_at: 1617040650000,
-    rating: 0.0,
+    rating: 3,
     book_id: 12,
   },
   {
@@ -12,7 +12,7 @@ module.exports = [
     username: "smithrose",
     user_id: 1,
     created_at: 1620990240000,
-    rating: 0.0,
+    rating: 4,
     book_id: 27,
   },
   {
@@ -20,7 +20,7 @@ module.exports = [
     username: "robertso",
     user_id: 7,
     created_at: 1617040660000,
-    rating: 0.0,
+    rating: 2,
     book_id: 15,
   },
   {
@@ -28,7 +28,7 @@ module.exports = [
     username: "smithrose",
     user_id: 1,
     created_at: 1620990300000,
-    rating: 0.0,
+    rating: 1,
     book_id: 27,
   },
   {
@@ -36,7 +36,7 @@ module.exports = [
     username: "jonesjack",
     user_id: 2,
     created_at: 1620990540000,
-    rating: 0.0,
+    rating: 3,
     book_id: 3,
   },
   {
@@ -44,7 +44,7 @@ module.exports = [
     username: "johnsonthomas",
     user_id: 8,
     created_at: 1620991260000,
-    rating: 0.0,
+    rating: 4,
     book_id: 19,
   },
   {
@@ -52,7 +52,7 @@ module.exports = [
     username: "scotts",
     user_id: 5,
     created_at: 1617040640000,
-    rating: 0.0,
+    rating: 2,
     book_id: 7,
   },
   {
@@ -60,7 +60,7 @@ module.exports = [
     username: "liamw",
     user_id: 4,
     created_at: 1617040630000,
-    rating: 0.0,
+    rating: 2,
     book_id: 22,
   },
   {
@@ -68,7 +68,7 @@ module.exports = [
     username: "smithrose",
     user_id: 1,
     created_at: 1620990360000,
-    rating: 0.0,
+    rating: 4,
     book_id: 14,
   },
   {
@@ -76,7 +76,7 @@ module.exports = [
     username: "johnsonthomas",
     user_id: 8,
     created_at: 1620991320000,
-    rating: 0.0,
+    rating: 3,
     book_id: 30,
   },
   {
@@ -84,7 +84,7 @@ module.exports = [
     username: "clarka",
     user_id: 9,
     created_at: 1620991380000,
-    rating: 0.0,
+    rating: 1,
     book_id: 1,
   },
   {
@@ -92,7 +92,7 @@ module.exports = [
     username: "taylorw",
     user_id: 10,
     created_at: 1617040690000,
-    rating: 0.0,
+    rating: 2,
     book_id: 14,
   },
   {
@@ -100,7 +100,7 @@ module.exports = [
     username: "jonesjack",
     user_id: 2,
     created_at: 1620990600000,
-    rating: 0.0,
+    rating: 3,
     book_id: 18,
   },
   {
@@ -108,7 +108,7 @@ module.exports = [
     username: "browne",
     user_id: 3,
     created_at: 1620990660000,
-    rating: 0.0,
+    rating: 4,
     book_id: 5,
   },
   {
@@ -116,7 +116,7 @@ module.exports = [
     username: "browne",
     user_id: 3,
     created_at: 1620990720000,
-    rating: 0.0,
+    rating: 1,
     book_id: 20,
   },
   {
@@ -124,7 +124,7 @@ module.exports = [
     username: "adamsc",
     user_id: 6,
     created_at: 1620991020000,
-    rating: 0.0,
+    rating: 4,
     book_id: 15,
   },
   {
@@ -132,7 +132,7 @@ module.exports = [
     username: "johnsonthomas",
     user_id: 8,
     created_at: 1620991260000,
-    rating: 0.0,
+    rating: 3,
     book_id: 28,
   },
   {
@@ -140,7 +140,7 @@ module.exports = [
     username: "clarka",
     user_id: 9,
     created_at: 1620991380000,
-    rating: 0.0,
+    rating: 2,
     book_id: 1,
   },
   {
@@ -148,7 +148,7 @@ module.exports = [
     username: "liamw",
     user_id: 4,
     created_at: 1620986466000,
-    rating: 0.0,
+    rating: 3,
     book_id: 15,
   },
   {
@@ -156,7 +156,7 @@ module.exports = [
     username: "clarka",
     user_id: 9,
     created_at: 1620986491000,
-    rating: 0.0,
+    rating: 2,
     book_id: 7,
   },
   {
@@ -164,7 +164,7 @@ module.exports = [
     username: "taylorw",
     user_id: 10,
     created_at: 1620986485000,
-    rating: 0.0,
+    rating: 3,
     book_id: 23,
   },
   {
@@ -172,7 +172,7 @@ module.exports = [
     username: "robertso",
     user_id: 7,
     created_at: 1620986488000,
-    rating: 0.0,
+    rating: 4,
     book_id: 15,
   },
   {
@@ -180,7 +180,7 @@ module.exports = [
     username: "johnsonthomas",
     user_id: 8,
     created_at: 1620986482000,
-    rating: 0.0,
+    rating: 2,
     book_id: 10,
   },
   {
@@ -188,7 +188,7 @@ module.exports = [
     username: "adamsc",
     user_id: 6,
     created_at: 1620986478000,
-    rating: 0.0,
+    rating: 1,
     book_id: 25,
   },
   {
@@ -196,7 +196,7 @@ module.exports = [
     username: "scotts",
     user_id: 5,
     created_at: 1620986473000,
-    rating: 0.0,
+    rating: 4,
     book_id: 18,
   },
   {
@@ -204,7 +204,7 @@ module.exports = [
     username: "clarka",
     user_id: 9,
     created_at: 1620986476000,
-    rating: 0.0,
+    rating: 3,
     book_id: 3,
   },
   {
@@ -212,7 +212,7 @@ module.exports = [
     username: "smithrose",
     user_id: 1,
     created_at: 1620986484000,
-    rating: 0.0,
+    rating: 1,
     book_id: 29,
   },
   {
@@ -220,7 +220,7 @@ module.exports = [
     username: "adamsc",
     user_id: 6,
     created_at: 1620986474000,
-    rating: 0.0,
+    rating: 4,
     book_id: 7,
   },
   {
@@ -228,7 +228,7 @@ module.exports = [
     username: "adamsc",
     user_id: 6,
     created_at: 1620986474000,
-    rating: 0.0,
+    rating: 2,
     book_id: 7,
   },
   {
@@ -236,7 +236,7 @@ module.exports = [
     username: "smithrose",
     user_id: 1,
     created_at: 1620986528000,
-    rating: 0.0,
+    rating: 3,
     book_id: 16,
   },
   {
@@ -244,7 +244,7 @@ module.exports = [
     username: "adamsc",
     user_id: 6,
     created_at: 1620986526000,
-    rating: 0.0,
+    rating: 4,
     book_id: 21,
   },
   {
@@ -252,7 +252,7 @@ module.exports = [
     username: "clarka",
     user_id: 9,
     created_at: 1620986518000,
-    rating: 0.0,
+    rating: 3,
     book_id: 2,
   },
   {
@@ -260,7 +260,7 @@ module.exports = [
     username: "johnsonthomas",
     user_id: 8,
     created_at: 1620986516000,
-    rating: 0.0,
+    rating: 3,
     book_id: 14,
   },
   {
@@ -268,7 +268,7 @@ module.exports = [
     username: "robertso",
     user_id: 7,
     created_at: 1620986514000,
-    rating: 0.0,
+    rating: 2,
     book_id: 6,
   },
   {
@@ -276,7 +276,7 @@ module.exports = [
     username: "smithrose",
     user_id: 1,
     created_at: 1620986512000,
-    rating: 0.0,
+    rating: 4,
     book_id: 17,
   },
   {
@@ -284,7 +284,7 @@ module.exports = [
     username: "clarka",
     user_id: 9,
     created_at: 1620986510000,
-    rating: 0.0,
+    rating: 1,
     book_id: 24,
   },
   {
@@ -292,7 +292,7 @@ module.exports = [
     username: "johnsonthomas",
     user_id: 8,
     created_at: 1620986508000,
-    rating: 0.0,
+    rating: 4,
     book_id: 11,
   },
   {
@@ -300,7 +300,7 @@ module.exports = [
     username: "robertso",
     user_id: 7,
     created_at: 1620986506000,
-    rating: 0.0,
+    rating: 3,
     book_id: 29,
   },
   {
@@ -308,7 +308,7 @@ module.exports = [
     username: "adamsc",
     user_id: 6,
     created_at: 1620986504000,
-    rating: 0.0,
+    rating: 2,
     book_id: 5,
   },
   {
@@ -316,7 +316,7 @@ module.exports = [
     username: "scotts",
     user_id: 5,
     created_at: 1620986502000,
-    rating: 0.0,
+    rating: 4,
     book_id: 20,
   },
   {
@@ -324,7 +324,7 @@ module.exports = [
     username: "taylorw",
     user_id: 10,
     created_at: 1620986500000,
-    rating: 0.0,
+    rating: 3,
     book_id: 8,
   },
   {
@@ -332,7 +332,7 @@ module.exports = [
     username: "clarka",
     user_id: 9,
     created_at: 1620986498000,
-    rating: 0.0,
+    rating: 1,
     book_id: 13,
   },
   {
@@ -340,7 +340,7 @@ module.exports = [
     username: "johnsonthomas",
     user_id: 8,
     created_at: 1620986496000,
-    rating: 0.0,
+    rating: 3,
     book_id: 26,
   },
   {
@@ -348,7 +348,7 @@ module.exports = [
     username: "adamsc",
     user_id: 6,
     created_at: 1620986494000,
-    rating: 0.0,
+    rating: 4,
     book_id: 5,
   },
   {
@@ -356,23 +356,16 @@ module.exports = [
     username: "smithrose",
     user_id: 1,
     created_at: 1620986492000,
-    rating: 0.0,
+    rating: 2,
     book_id: 2,
   },
-  {
-    body: "Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.",
-    username: "clarka",
-    user_id: 9,
-    created_at: 1620986486000,
-    rating: 0.0,
-    book_id: 12,
-  },
+
   {
     body: "Sed posuere consectetur est at lobortis. Nullam id dolor id nibh ultricies vehicula ut id elit. Nulla vitae elit libero, a pharetra augue.",
     username: "johnsonthomas",
     user_id: 8,
     created_at: 1620986484000,
-    rating: 0.0,
+    rating: 3,
     book_id: 18,
   },
   {
@@ -380,7 +373,7 @@ module.exports = [
     username: "robertso",
     user_id: 7,
     created_at: 1620986482000,
-    rating: 0.0,
+    rating: 2,
     book_id: 23,
   },
   {
@@ -388,7 +381,7 @@ module.exports = [
     username: "smithrose",
     user_id: 1,
     created_at: 1620986480000,
-    rating: 0.0,
+    rating: 4,
     book_id: 5,
   },
   {
@@ -396,7 +389,7 @@ module.exports = [
     username: "clarka",
     user_id: 9,
     created_at: 1620986478000,
-    rating: 0.0,
+    rating: 1,
     book_id: 5,
   },
   {
@@ -404,7 +397,7 @@ module.exports = [
     username: "johnsonthomas",
     user_id: 8,
     created_at: 1620986476000,
-    rating: 0.0,
+    rating: 3,
     book_id: 15,
   },
   {
@@ -412,7 +405,7 @@ module.exports = [
     username: "robertso",
     user_id: 7,
     created_at: 1620986474000,
-    rating: 0.0,
+    rating: 4,
     book_id: 27,
   },
   {
@@ -420,7 +413,7 @@ module.exports = [
     username: "adamsc",
     user_id: 6,
     created_at: 1620986472000,
-    rating: 0.0,
+    rating: 2,
     book_id: 8,
   },
   {
@@ -428,7 +421,7 @@ module.exports = [
     username: "scotts",
     user_id: 5,
     created_at: 1620986470000,
-    rating: 0.0,
+    rating: 4,
     book_id: 19,
   },
   {
@@ -436,7 +429,7 @@ module.exports = [
     username: "taylorw",
     user_id: 10,
     created_at: 1620986468000,
-    rating: 0.0,
+    rating: 3,
     book_id: 26,
   },
   {
@@ -444,7 +437,7 @@ module.exports = [
     username: "clarka",
     user_id: 9,
     created_at: 1620986466000,
-    rating: 0.0,
+    rating: 1,
     book_id: 12,
   },
   {
@@ -452,7 +445,7 @@ module.exports = [
     username: "johnsonthomas",
     user_id: 8,
     created_at: 1620986464000,
-    rating: 0.0,
+    rating: 3,
     book_id: 18,
   },
   {
@@ -460,7 +453,7 @@ module.exports = [
     username: "adamsc",
     user_id: 6,
     created_at: 1620986462000,
-    rating: 0.0,
+    rating: 4,
     book_id: 23,
   },
   {
@@ -468,7 +461,7 @@ module.exports = [
     username: "smithrose",
     user_id: 1,
     created_at: 1620986460000,
-    rating: 0.0,
+    rating: 3,
     book_id: 5,
   },
   {
@@ -476,7 +469,7 @@ module.exports = [
     username: "adamsc",
     user_id: 6,
     created_at: 1620986458000,
-    rating: 0.0,
+    rating: 4,
     book_id: 5,
   },
   {
@@ -484,7 +477,7 @@ module.exports = [
     username: "clarka",
     user_id: 9,
     created_at: 1620986456000,
-    rating: 0.0,
+    rating: 3,
     book_id: 15,
   },
   {
@@ -492,7 +485,7 @@ module.exports = [
     username: "johnsonthomas",
     user_id: 8,
     created_at: 1620986454000,
-    rating: 0.0,
+    rating: 2,
     book_id: 27,
   },
   {
@@ -500,7 +493,7 @@ module.exports = [
     username: "robertso",
     user_id: 7,
     created_at: 1620986452000,
-    rating: 0.0,
+    rating: 3,
     book_id: 8,
   },
   {
@@ -508,7 +501,7 @@ module.exports = [
     username: "smithrose",
     user_id: 1,
     created_at: 1620986450000,
-    rating: 0.0,
+    rating: 4,
     book_id: 19,
   },
   {
@@ -516,7 +509,7 @@ module.exports = [
     username: "clarka",
     user_id: 9,
     created_at: 1620986448000,
-    rating: 0.0,
+    rating: 3,
     book_id: 26,
   },
   {
@@ -524,7 +517,7 @@ module.exports = [
     username: "johnsonthomas",
     user_id: 8,
     created_at: 1620986446000,
-    rating: 0.0,
+    rating: 2,
     book_id: 14,
   },
   {
@@ -532,7 +525,7 @@ module.exports = [
     username: "robertso",
     user_id: 7,
     created_at: 1620986444000,
-    rating: 0.0,
+    rating: 4,
     book_id: 23,
   },
   {
@@ -540,7 +533,7 @@ module.exports = [
     username: "adamsc",
     user_id: 6,
     created_at: 1620986442000,
-    rating: 0.0,
+    rating: 1,
     book_id: 19,
   },
   {
@@ -548,7 +541,7 @@ module.exports = [
     username: "scotts",
     user_id: 5,
     created_at: 1620986440000,
-    rating: 0.0,
+    rating: 3,
     book_id: 27,
   },
   {
@@ -556,7 +549,7 @@ module.exports = [
     username: "taylorw",
     user_id: 10,
     created_at: 1620986438000,
-    rating: 0.0,
+    rating: 4,
     book_id: 5,
   },
   {
@@ -564,7 +557,7 @@ module.exports = [
     username: "clarka",
     user_id: 9,
     created_at: 1620986436000,
-    rating: 0.0,
+    rating: 1,
     book_id: 12,
   },
   {
@@ -572,7 +565,7 @@ module.exports = [
     username: "johnsonthomas",
     user_id: 8,
     created_at: 1620986434000,
-    rating: 0.0,
+    rating: 4,
     book_id: 14,
   },
   {
@@ -580,7 +573,7 @@ module.exports = [
     username: "adamsc",
     user_id: 6,
     created_at: 1620986432000,
-    rating: 0.0,
+    rating: 2,
     book_id: 8,
   },
   {
@@ -588,7 +581,7 @@ module.exports = [
     username: "smithrose",
     user_id: 1,
     created_at: 1620986430000,
-    rating: 0.0,
+    rating: 3,
     book_id: 5,
   },
   {
@@ -596,7 +589,7 @@ module.exports = [
     username: "clarka",
     user_id: 9,
     created_at: 1620991440000,
-    rating: 0.0,
+    rating: 3,
     book_id: 15,
   },
   {
@@ -604,7 +597,7 @@ module.exports = [
     username: "taylorw",
     user_id: 10,
     created_at: 1620991500000,
-    rating: 0.0,
+    rating: 4,
     book_id: 11,
   },
   {
@@ -612,7 +605,7 @@ module.exports = [
     username: "jonesjack",
     user_id: 2,
     created_at: 1620991560000,
-    rating: 0.0,
+    rating: 1,
     book_id: 6,
   },
   {
@@ -620,7 +613,7 @@ module.exports = [
     username: "browne",
     user_id: 3,
     created_at: 1620991620000,
-    rating: 0.0,
+    rating: 3,
     book_id: 25,
   },
   {
@@ -628,7 +621,7 @@ module.exports = [
     username: "adamsc",
     user_id: 6,
     created_at: 1620991680000,
-    rating: 0.0,
+    rating: 1,
     book_id: 27,
   },
   {
@@ -636,7 +629,7 @@ module.exports = [
     username: "robertso",
     user_id: 7,
     created_at: 1620991740000,
-    rating: 0.0,
+    rating: 4,
     book_id: 19,
   },
   {
@@ -644,7 +637,7 @@ module.exports = [
     username: "smithrose",
     user_id: 1,
     created_at: 1620991800000,
-    rating: 0.0,
+    rating: 2,
     book_id: 14,
   },
   {
@@ -652,7 +645,7 @@ module.exports = [
     username: "johnsonthomas",
     user_id: 8,
     created_at: 1620991860000,
-    rating: 0.0,
+    rating: 4,
     book_id: 9,
   },
   {
@@ -660,7 +653,7 @@ module.exports = [
     username: "scotts",
     user_id: 5,
     created_at: 1620991920000,
-    rating: 0.0,
+    rating: 3,
     book_id: 28,
   },
   {
@@ -668,7 +661,7 @@ module.exports = [
     username: "clarka",
     user_id: 9,
     created_at: 1620991980000,
-    rating: 0.0,
+    rating: 4,
     book_id: 30,
   },
   {
@@ -676,7 +669,7 @@ module.exports = [
     username: "taylorw",
     user_id: 10,
     created_at: 1620992040000,
-    rating: 0.0,
+    rating: 2,
     book_id: 11,
   },
   {
@@ -684,7 +677,7 @@ module.exports = [
     username: "jonesjack",
     user_id: 2,
     created_at: 1620992100000,
-    rating: 0.0,
+    rating: 4,
     book_id: 5,
   },
   {
@@ -692,7 +685,7 @@ module.exports = [
     username: "browne",
     user_id: 3,
     created_at: 1620992160000,
-    rating: 0.0,
+    rating: 2,
     book_id: 2,
   },
   {
@@ -700,7 +693,7 @@ module.exports = [
     username: "browne",
     user_id: 3,
     created_at: 1620992220000,
-    rating: 0.0,
+    rating: 3,
     book_id: 22,
   },
 ];

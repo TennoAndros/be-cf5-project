@@ -4,7 +4,7 @@ module.exports = [
     username: "adamsc",
     user_id: 6,
     created_at: 1617040650000,
-    rating: 0.0,
+    rating: 3,
     book_id: 1,
   },
   {
@@ -12,15 +12,15 @@ module.exports = [
     username: "smithrose",
     user_id: 1,
     created_at: 1620990240000,
-    rating: 0.0,
-    book_id: 3,
+    rating: 2,
+    book_id: 1,
   },
   {
     body: "Nullam quis risus eget urna mollis ornare vel eu leo. Maecenas faucibus mollis interdum. Cras justo odio, dapibus ac facilisis in, egestas eget quam.",
     username: "robertso",
     user_id: 7,
     created_at: 1617040660000,
-    rating: 0.0,
+    rating: 3,
     book_id: 4,
   },
   {
@@ -28,7 +28,7 @@ module.exports = [
     username: "smithrose",
     user_id: 1,
     created_at: 1620990300000,
-    rating: 0.0,
+    rating: 2,
     book_id: 5,
   },
   {
@@ -36,7 +36,7 @@ module.exports = [
     username: "jonesjack",
     user_id: 2,
     created_at: 1620990540000,
-    rating: 0.0,
+    rating: 4,
     book_id: 6,
   },
   {
@@ -44,7 +44,7 @@ module.exports = [
     username: "johnsonthomas",
     user_id: 8,
     created_at: 1620991260000,
-    rating: 0.0,
+    rating: 3,
     book_id: 3,
   },
   {
@@ -52,7 +52,7 @@ module.exports = [
     username: "scotts",
     user_id: 5,
     created_at: 1617040640000,
-    rating: 0.0,
+    rating: 5,
     book_id: 3,
   },
   {
@@ -60,7 +60,7 @@ module.exports = [
     username: "johnsonthomas",
     user_id: 8,
     created_at: 1620991260000,
-    rating: 0.0,
+    rating: 4,
     book_id: 3,
   },
   {
@@ -68,7 +68,7 @@ module.exports = [
     username: "johnsonthomas",
     user_id: 8,
     created_at: 1620991260000,
-    rating: 0.0,
+    rating: 5,
     book_id: 3,
   },
   {
@@ -76,7 +76,7 @@ module.exports = [
     username: "johnsonthomas",
     user_id: 8,
     created_at: 1620991260000,
-    rating: 0.0,
+    rating: 3,
     book_id: 3,
   },
   {
@@ -84,7 +84,7 @@ module.exports = [
     username: "johnsonthomas",
     user_id: 8,
     created_at: 1620991260000,
-    rating: 0.0,
+    rating: 4,
     book_id: 3,
   },
   {
@@ -92,7 +92,7 @@ module.exports = [
     username: "johnsonthomas",
     user_id: 8,
     created_at: 1620991260000,
-    rating: 0.0,
+    rating: 2,
     book_id: 3,
   },
   {
@@ -100,7 +100,7 @@ module.exports = [
     username: "johnsonthomas",
     user_id: 8,
     created_at: 1620991260000,
-    rating: 0.0,
+    rating: 1,
     book_id: 3,
   },
   {
@@ -108,7 +108,7 @@ module.exports = [
     username: "johnsonthomas",
     user_id: 8,
     created_at: 1620991260000,
-    rating: 0.0,
+    rating: 1,
     book_id: 3,
   },
   {
@@ -116,7 +116,7 @@ module.exports = [
     username: "johnsonthomas",
     user_id: 8,
     created_at: 1620991260000,
-    rating: 0.0,
+    rating: 3,
     book_id: 3,
   },
 ];

@@ -19,7 +19,7 @@ exports.getUserByUsername = async (req, res, next) => {
   try {
     const username = req.params.username;
     const user = await selectUserByUsername(username);
-    res.status(200).send({ user });
+    res.status(200).json({ user });
   } catch (err) {
     next(err);
   }
@@ -38,8 +38,13 @@ exports.postUser = async (req, res, next) => {
 
 exports.deleteUserByUsername = async (req, res, next) => {
   try {
+    const loggedInUserId = req.user.userId;
     const deleteUsername = req.params.username;
-    const deleteUser = await deleteUserByUsername(deleteUsername);
+    const deletedUser = await deleteUserByUsername(
+      loggedInUserId,
+      deleteUsername
+    );
+
     res.sendStatus(204);
   } catch (err) {
     next(err);

@@ -9,9 +9,16 @@
       "genres": [{ "genre": "Mystery" }]
     }
   },
+
   "GET /api/books": {
     "description": "serves an array of all books",
-    "queries": ["author", "genre", "sort_by", "order", "rating"],
+    "queries": [
+      "genre",
+      "sort_by[title or author or genre or avg_rating or review_count]",
+      "order[ASC or DESC]",
+      "limit",
+      "p"
+    ],
     "exampleResponse": {
       "books": [
         {
@@ -23,11 +30,41 @@
           "amazon_book_url": "https://www.amazon.com/dp/0385545991?tag=thenewyorktim-20",
           "isbn": "0385545991",
           "genre": "Mystery/Thriller",
-          "rating": 0.0,
           "review_count": 0
         }
       ],
       "total_count": 1
+    }
+  },
+
+  "POST /api/books": {
+    "description": "Post a new books and responds with an object containing the posted book",
+    "queries": [],
+    "exampleRequest": {
+      "title": "CAMINO GHOSTS",
+      "image_url": "https://storage.googleapis.com/du-prd/books/images/9780385545990.jpg",
+      "description": "The third book in the Camino series. The last living inhabitant of a deserted island gets in the way of a resort developer.",
+      "author": "John Grisham",
+      "publisher": "Doubleday",
+      "amazon_book_url": "https://www.amazon.com/dp/0385545991?tag=thenewyorktim-20",
+      "isbn": "0385545991",
+      "genre": "Mystery"
+    },
+    "exampleResponse": {
+      "books": [
+        {
+          "title": "CAMINO GHOSTS",
+          "image_url": "https://storage.googleapis.com/du-prd/books/images/9780385545990.jpg",
+          "description": "The third book in the Camino series. The last living inhabitant of a deserted island gets in the way of a resort developer.",
+          "author": "John Grisham",
+          "publisher": "Doubleday",
+          "amazon_book_url": "https://www.amazon.com/dp/0385545991?tag=thenewyorktim-20",
+          "isbn": "0385545991",
+          "genre": "Mystery",
+          "book_id": 13,
+          "review_count": 0
+        }
+      ]
     }
   },
 
@@ -45,11 +82,16 @@
           "amazon_book_url": "https://www.amazon.com/dp/0385545991?tag=thenewyorktim-20",
           "isbn": "0385545991",
           "genre": "Mystery/Thriller",
-          "rating": 0.0,
           "review_count": 1
         }
       ]
     }
+  },
+
+  "DELETE /api/books/:book_id": {
+    "description": "Deletes the book from the database and all of its reviews base on book id",
+    "queries": [],
+    "exampleResponse": "does not send a response"
   },
 
   "GET /api/books/:book_id/reviews": {
@@ -62,7 +104,7 @@
             "body": "Maecenas faucibus mollis interdum. Donec id elit non mi porta gravida at eget metus. Cras justo odio, dapibus ac facilisis in, egestas eget quam.",
             "username": "smithrose",
             "created_at": "2021-05-14T08:04:00.000Z",
-            "rating": 0.0,
+            "rating": 0,
             "book_id": 3
           }
         ],
@@ -77,14 +119,12 @@
     "exampleResponse": {
       "users": [
         {
-          "username": "andros",
-          "name": "andy",
-          "avatar_url": "link to an image"
-        },
-        {
-          "username": "wolfric",
-          "name": "albus",
-          "avatar_url": "link to an image"
+          "email": "something1@outlook.com",
+          "username": "smithrose",
+          "password": "your_password_here123",
+          "first_name": "Rose",
+          "last_name": "Smith",
+          "avatar_url": "https://randomuser.me/api/portraits/women/1.jpg"
         }
       ]
     }
@@ -95,9 +135,12 @@
     "queries": [],
     "exampleResponse": {
       "user": {
-        "username": "luffy",
-        "name": "monkey D",
-        "avatar_url": "link to an image"
+        "email": "something1@outlook.com",
+        "username": "andros",
+        "password": "your_password_here123",
+        "first_name": "Andy",
+        "last_name": "Guess",
+        "avatar_url": "https://randomuser.me/api/portraits/women/1.jpg"
       }
     }
   },
@@ -108,11 +151,30 @@
     "exampleResponse": {
       "user": [
         {
-          "username": "aUserName",
-          "name": "name",
-          "avatar_url": "link to an avatar"
+          "email": "something1@outlook.com",
+          "username": "andros",
+          "password": "your_password_here123",
+          "first_name": "Andy",
+          "last_name": "Guess",
+          "avatar_url": "https://randomuser.me/api/portraits/women/1.jpg"
         }
       ]
+    }
+  },
+
+  "POST /api/users/login": {
+    "description": "Logs in a user and responds with a JWT token if successful",
+    "queries": [],
+    "exampleRequest": {
+      "username": "someone",
+      "password": "your_password_here123"
+    },
+    "exampleResponse": {
+      "token": "<JWT token>",
+      "user": {
+        "user_id": 14,
+        "username": "someone"
+      }
     }
   }
 }

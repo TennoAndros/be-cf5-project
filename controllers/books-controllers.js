@@ -1,9 +1,22 @@
-const { selectBooks, selectBookById } = require("../models/books-models");
+const {
+  selectBooks,
+  selectBookById,
+  updateBookById,
+  checkBookExists,
+  insertBook,
+  deleteBookById,
+} = require("../models/books-models");
+
+const { checkGenreExists } = require("../models/genres-models");
 
 exports.getBooks = async (req, res, next) => {
   try {
-    const books = await selectBooks();
-    res.status(200).send({ books });
+    const { genre, sort_by, order, limit, p } = req.query;
+    const [, { books, total_count }] = await Promise.all([
+      checkGenreExists(genre),
+      selectBooks(genre, sort_by, order, limit, p),
+    ]);
+    res.status(200).send({ books, total_count });
   } catch (err) {
     next(err);
   }
@@ -14,6 +27,46 @@ exports.getBookById = async (req, res, next) => {
     const bookId = req.params.book_id;
     const book = await selectBookById(bookId);
     res.status(200).send({ book });
+  } catch (err) {
+    next(err);
+  }
+};
+
+exports.patchBookById = async (req, res, next) => {
+  try {
+    const bookId = req.params.book_id;
+    const [, updateBook] = await Promise.all([
+      checkBookExists(bookId),
+      updateBookById(req.body, bookId),
+    ]);
+    res.status(200).send({ updateBook });
+  } catch (err) {
+    next(err);
+  }
+};
+
+exports.postBook = async (req, res, next) => {
+  try {
+    const book = req.body;
+    const newBook = await insertBook(book);
+    res.status(201).send({ newBook });
+  } catch (err) {
+    next(err);
+  }
+};
+
+exports.deleteBookById = async (req, res, next) => {
+  try {
+    const deleteId = req.params.book_id;
+    const loggedInUsername = req.user.username;
+
+    const deletedBook = await deleteBookById(loggedInUsername, deleteId);
+
+    if (!deletedBook) {
+      return res.status(404).json({ msg: "Book not found!" });
+    }
+
+    res.sendStatus(204);
   } catch (err) {
     next(err);
   }

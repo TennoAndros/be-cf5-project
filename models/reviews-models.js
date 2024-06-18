@@ -22,8 +22,8 @@ exports.selectReviewsByBookId = async (id, limit = 10, p = 1) => {
 
   const queryArr = [id, limit, offset];
 
-  let query = `SELECT * , CAST(reviews.rating AS FLOAT) FROM reviews WHERE book_id=%L ORDER BY created_at DESC LIMIT %s OFFSET %L`;
-  let limitlessQuery = `SELECT * , CAST(reviews.rating AS FLOAT) FROM reviews WHERE book_id=$1`;
+  let query = `SELECT * , CAST(reviews.rating AS INT) FROM reviews WHERE book_id=%L ORDER BY created_at DESC LIMIT %s OFFSET %L`;
+  let limitlessQuery = `SELECT * , CAST(reviews.rating AS INT) FROM reviews WHERE book_id=$1`;
 
   const formattedQuery = format(query, ...queryArr);
 

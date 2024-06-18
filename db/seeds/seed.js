@@ -7,7 +7,6 @@ const seed = async ({ reviewData, genreData, bookData, userData }) => {
   await db.query(`DROP TABLE IF EXISTS books;`);
   await db.query(`DROP TABLE IF EXISTS genres;`);
   await db.query(`DROP TABLE IF EXISTS users;`);
- 
 
   await Promise.all([
     db.query(`
@@ -36,8 +35,7 @@ const seed = async ({ reviewData, genreData, bookData, userData }) => {
       amazon_book_url VARCHAR(255) NOT NULL UNIQUE,
       publisher VARCHAR(255),
       isbn VARCHAR(20) NOT NULL UNIQUE,
-      genre VARCHAR(50) NOT NULL REFERENCES genres(genre) ON DELETE CASCADE,
-      rating DECIMAL(3, 2) DEFAULT 0.0
+      genre VARCHAR(50) NOT NULL REFERENCES genres(genre) ON DELETE CASCADE
     );`);
 
   await db.query(`
@@ -46,7 +44,7 @@ const seed = async ({ reviewData, genreData, bookData, userData }) => {
       body TEXT NOT NULL,
       username VARCHAR(50) REFERENCES users(username) ON DELETE CASCADE NOT NULL,
       created_at TIMESTAMP DEFAULT NOW(),
-      rating DECIMAL(3, 2) DEFAULT 0.0 NOT NULL,
+      rating INT CHECK (rating BETWEEN 1 AND 5) NOT NULL,
       book_id INT REFERENCES books(book_id) ON DELETE CASCADE NOT NULL
     );`);
 
@@ -78,7 +76,7 @@ const seed = async ({ reviewData, genreData, bookData, userData }) => {
   await db.query(insertUsersQueryStr);
 
   const insertBooksQueryStr = format(
-    "INSERT INTO books (title, author, description, image_url, amazon_book_url, publisher, isbn, genre, rating) VALUES %L RETURNING *;",
+    "INSERT INTO books (title, author, description, image_url, amazon_book_url, publisher, isbn, genre) VALUES %L RETURNING *;",
     bookData.map(
       ({
         title,
@@ -89,7 +87,6 @@ const seed = async ({ reviewData, genreData, bookData, userData }) => {
         publisher,
         isbn,
         genre,
-        rating,
       }) => [
         title,
         author,
@@ -99,7 +96,6 @@ const seed = async ({ reviewData, genreData, bookData, userData }) => {
         publisher,
         isbn,
         genre,
-        rating,
       ]
     )
   );

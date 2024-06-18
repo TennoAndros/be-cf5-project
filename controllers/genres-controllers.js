@@ -13,7 +13,6 @@ exports.getGenres = async (req, res, next) => {
 exports.postGenre = async (req, res, next) => {
   try {
     const genre = req.body;
-    console.log("newGenre1", genre);
     const newGenre = await insertGenre(genre);
     res.status(201).send({ newGenre });
   } catch (err) {

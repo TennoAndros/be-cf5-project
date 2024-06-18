@@ -21,6 +21,7 @@ describe("/api", () => {
           expect.objectContaining({
             "GET /api": expect.any(Object),
             "GET /api/genres": expect.any(Object),
+            "POST /api/genres": expect.any(Object),
             "GET /api/books": expect.any(Object),
             "GET /api/books/:book_id": expect.any(Object),
             "GET /api/books/:book_id/reviews": expect.any(Object),
@@ -76,7 +77,7 @@ describe("/api/genres", () => {
         const { newGenre } = response.body;
 
         expect(newGenre).toEqual({
-          ...genreToPost
+          ...genreToPost,
         });
       });
     });

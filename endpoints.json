@@ -2,11 +2,22 @@
   "GET /api": {
     "description": "serves up a json representation of all the available endpoints of the api"
   },
+
   "GET /api/genres": {
     "description": "serves an array of all genres",
     "queries": [],
     "exampleResponse": {
       "genres": [{ "genre": "Mystery" }]
+    }
+  },
+
+  "POST /api/genres": {
+    "description": "Adds a new genre to the database and responds with an object with the newly added created genre",
+    "queries": [],
+    "exampleResponse": {
+      "genres": [
+        { "genre": "newGenre" }
+      ]
     }
   },
 

@@ -62,6 +62,25 @@ describe("/api/genres", () => {
       expect(msg).toEqual("Please enter a valid link. Go back and try again.");
     });
   });
+
+  describe("POST", () => {
+    describe("STATUS 200", () => {
+      test("should return an object with a new genre", async () => {
+        const genreToPost = {
+          genre: "Satire",
+        };
+        const response = await request(app)
+          .post("/api/genres")
+          .send(genreToPost)
+          .expect(201);
+        const { newGenre } = response.body;
+
+        expect(newGenre).toEqual({
+          ...genreToPost
+        });
+      });
+    });
+  });
 });
 
 describe("/api/books", () => {

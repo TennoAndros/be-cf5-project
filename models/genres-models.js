@@ -17,3 +17,16 @@ exports.checkGenreExists = async (genre) => {
     return Promise.reject({ code: 404, msg: "Genre Not Found!" });
   }
 };
+
+
+exports.insertGenre = async ({ genre }) => {
+  if (!genre) {
+    return Promise.reject({ code: 400, msg: "Missing Required Fields!" });
+  }
+  const { rows } = await db.query(
+    `INSERT INTO genres (genre) VALUES ($1) RETURNING *`,
+    [genre]
+  );
+  console.log('Inserted genre result:', rows)
+  return rows[0];
+};

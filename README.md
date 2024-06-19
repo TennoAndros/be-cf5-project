@@ -4,7 +4,9 @@
 
 ## 🔗 link to Hosted version
 
-Live version can be found hosted [here]() using [Render]()
+To host the database i used [Supabase](https://supabase.com/) and the live version of the API was hosted on [Render](https://dashboard.render.com/).
+
+Live version can be found hosted [here](https://be-cf5-project.onrender.com/).
 
 **_It might take some time for the server to "wake-up"._**
 
@@ -84,12 +86,13 @@ This repo was created using:
 
 **-Development dependencies-**
 
-| Package                  | Version   | Usage                                          |
-| :----------------------- | :-------- | :--------------------------------------------- |
-| <sub>jest</sub>          | `^29.7.0` | _Provides framework for testing functionality_ |
-| <sub>jest-extended</sub> | `^4.0.2`  | _Adds additional jest testing identifiers_     |
-| <sub>jest-sorted</sub>   | `^1.0.15` | _Adds sort testing for jest_                   |
-| <sub>supertest</sub>     | `^7.0.0`  | _Adds simplified web request testing_          |
+| Package                  | Version   | Usage                                                  |
+| :----------------------- | :-------- | :----------------------------------------------------- |
+| <sub>jest</sub>          | `^29.7.0` | _Provides framework for testing functionality_         |
+| <sub>jest-extended</sub> | `^4.0.2`  | _Adds additional jest testing identifiers_             |
+| <sub>jest-sorted</sub>   | `^1.0.15` | _Adds sort testing for jest_                           |
+| <sub>supertest</sub>     | `^7.0.0`  | _Adds simplified web request testing_                  |
+| <sub>cross-env</sub>     | `^7.0.3`  | _Sets and uses environment variables across platforms_ |
 
 ### 3. Seed local databases
 

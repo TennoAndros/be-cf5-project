@@ -15,9 +15,7 @@
     "description": "Adds a new genre to the database and responds with an object with the newly added created genre",
     "queries": [],
     "exampleResponse": {
-      "genres": [
-        { "genre": "newGenre" }
-      ]
+      "genres": [{ "genre": "newGenre" }]
     }
   },
 
@@ -122,6 +120,27 @@
         { "review_count": 2 }
       ]
     }
+  },
+
+  "POST /api/books/:book_id/reviews": {
+    "description": "Posts a new review to the specified book and serves an object with the new created review",
+    "queries": [],
+    "exampleResponse": {
+      "review": {
+        "review_id": 45,
+        "body": "Good Book!",
+        "book_id": 2,
+        "username": "Andros",
+        "rating": 0,
+        "created_at": "2023-05-15T05:00:00.000Z"
+      }
+    }
+  },
+
+  "DELETE /api/reviews/:review_id": {
+    "description": "Deletes the review based on review id if you are the owner",
+    "queries": [],
+    "exampleResponse": "does not send a response"
   },
 
   "GET /api/users": {

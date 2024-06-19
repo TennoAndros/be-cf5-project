@@ -3,6 +3,7 @@ const request = require("supertest");
 const app = require("../app");
 const data = require("../db/data/test-data");
 const seed = require("../db/seeds/seed");
+const { generateToken } = require("../db/seeds/utils");
 
 beforeEach(() => {
   return seed(data);
@@ -23,13 +24,17 @@ describe("/api", () => {
             "GET /api/genres": expect.any(Object),
             "POST /api/genres": expect.any(Object),
             "GET /api/books": expect.any(Object),
+            "POST /api/books": expect.any(Object),
             "GET /api/books/:book_id": expect.any(Object),
+            "DELETE /api/books/:book_id": expect.any(Object),
             "GET /api/books/:book_id/reviews": expect.any(Object),
+            "POST /api/books/:book_id/reviews": expect.any(Object),
+            "DELETE /api/reviews/:review_id": expect.any(Object),
             "GET /api/users": expect.any(Object),
             "POST /api/users": expect.any(Object),
             "GET /api/users/:username": expect.any(Object),
             "POST /api/users/login": expect.any(Object),
-            "POST /api/users/login": expect.any(Object),
+            "POST /api/users/logout": expect.any(Object),
           })
         );
       });
@@ -53,25 +58,31 @@ describe("/api/genres", () => {
         });
       });
     });
-  });
 
-  describe("STATUS ERROR 404 ", () => {
-    test("should respond with error 404 when invalid endpoint is given", async () => {
-      const genreData = await request(app).get("/api/grenes").expect(404);
-      const { msg } = genreData.body;
+    describe("STATUS ERROR 404 ", () => {
+      test("should respond with error 404 when invalid endpoint is given", async () => {
+        const genreData = await request(app).get("/api/grenes").expect(404);
+        const { msg } = genreData.body;
 
-      expect(msg).toEqual("Please enter a valid link. Go back and try again.");
+        expect(msg).toEqual(
+          "Please enter a valid link. Go back and try again."
+        );
+      });
     });
   });
 
   describe("POST", () => {
     describe("STATUS 200", () => {
       test("should return an object with a new genre", async () => {
+        const user = { username: "smithrose" };
+        const token = generateToken(user);
+
         const genreToPost = {
           genre: "Satire",
         };
         const response = await request(app)
           .post("/api/genres")
+          .set("Authorization", `Bearer ${token}`)
           .send(genreToPost)
           .expect(201);
         const { newGenre } = response.body;
@@ -80,6 +91,52 @@ describe("/api/genres", () => {
           ...genreToPost,
         });
       });
+    });
+
+    describe("STATUS ERROR 400", () => {
+      test("should respond with an error 401 if the user isn't logged in", async () => {
+        const genreToPost = {
+          genre: "fadsfasdf",
+        };
+        const response = await request(app)
+          .post("/api/genres")
+          .send(genreToPost)
+          .expect(401);
+        const { msg } = response.body;
+
+        expect(msg).toEqual(
+          "No Authorization header or No Authentication Token provided!"
+        );
+      });
+    });
+
+    test("should respond with error 400 when empty object is given", async () => {
+      const user = { username: "smithrose" };
+      const token = generateToken(user);
+      const response = await request(app)
+        .post("/api/genres")
+        .set("Authorization", `Bearer ${token}`)
+        .send({})
+        .expect(400);
+      const { msg } = response.body;
+
+      expect(msg).toEqual("Missing Required Fields!");
+    });
+
+    test("should respond with error 400 when genre already exist in database", async () => {
+      const user = { username: "smithrose" };
+      const token = generateToken(user);
+      const genreToPost = {
+        genre: "Drama",
+      };
+      const response = await request(app)
+        .post("/api/genres")
+        .set("Authorization", `Bearer ${token}`)
+        .send(genreToPost)
+        .expect(400);
+      const { msg } = response.body;
+
+      expect(msg).toEqual("Genre Already Exists!");
     });
   });
 });
@@ -259,6 +316,39 @@ describe("/api/books", () => {
   describe("POST", () => {
     describe("STATUS 201", () => {
       test("should return an object with a new book", async () => {
+        const user = { username: "smithrose" };
+        const token = generateToken(user);
+
+        const bookToPost = {
+          title: "CAMINO GHOSTS 2",
+          image_url:
+            "https://storage.googleapis.com/du-prd/books/images/9780385545990.jpg",
+          description:
+            "The fourth book in the Camino series. The last living inhabitant of a deserted island gets in the way of a resort developer.",
+          author: "John Grisham",
+          publisher: "Doubleday",
+          amazon_book_url:
+            "https://www.amazon.com/dp/0365545991?tag=thenewyorktim-20",
+          isbn: "0365545991",
+          genre: "Romance",
+        };
+        const response = await request(app)
+          .post("/api/books")
+          .set("Authorization", `Bearer ${token}`)
+          .send(bookToPost)
+          .expect(201);
+        const { newBook } = response.body;
+
+        expect(newBook).toEqual({
+          ...bookToPost,
+          book_id: 13,
+          review_count: 0,
+        });
+      });
+    });
+
+    describe("STATUS ERROR 400", () => {
+      test("should respond with an error 401 if the user isn't logged in", async () => {
         const bookToPost = {
           title: "CAMINO GHOSTS 2",
           image_url:
@@ -275,21 +365,20 @@ describe("/api/books", () => {
         const response = await request(app)
           .post("/api/books")
           .send(bookToPost)
-          .expect(201);
-        const { newBook } = response.body;
+          .expect(401);
+        const { msg } = response.body;
 
-        expect(newBook).toEqual({
-          ...bookToPost,
-          book_id: 13,
-          review_count: 0,
-        });
+        expect(msg).toEqual(
+          "No Authorization header or No Authentication Token provided!"
+        );
       });
-    });
 
-    describe("STATUS ERROR 400", () => {
       test("should respond with error 400 when empty object is given", async () => {
+        const user = { username: "smithrose" };
+        const token = generateToken(user);
         const response = await request(app)
           .post("/api/books")
+          .set("Authorization", `Bearer ${token}`)
           .send({})
           .expect(400);
         const { msg } = response.body;
@@ -298,17 +387,24 @@ describe("/api/books", () => {
       });
 
       test("should respond with error 400 when not all required properties are given", async () => {
-        const response = await request(app).post("/api/books").send({
-          author: "J.K Rowling",
-          title: "Fantastic Beasts",
-          description: "An awesome book",
-        });
+        const user = { username: "smithrose" };
+        const token = generateToken(user);
+        const response = await request(app)
+          .post("/api/books")
+          .set("Authorization", `Bearer ${token}`)
+          .send({
+            author: "J.K Rowling",
+            title: "Fantastic Beasts",
+            description: "An awesome book",
+          });
         const { msg } = response.body;
 
         expect(msg).toEqual("No Book Submitted!");
       });
 
       test("should respond with error 400 when genre doesn't exist in genres tables", async () => {
+        const user = { username: "smithrose" };
+        const token = generateToken(user);
         const bookToPost = {
           title: "CAMINO GHOSTS 2",
           image_url:
@@ -324,6 +420,7 @@ describe("/api/books", () => {
         };
         const response = await request(app)
           .post("/api/books")
+          .set("Authorization", `Bearer ${token}`)
           .send(bookToPost)
           .expect(400);
         const { msg } = response.body;
@@ -380,10 +477,8 @@ describe("/api/books/:book_id", () => {
   describe("DELETE", () => {
     describe("STATUS 204", () => {
       test("should delete book when authenticated user is admin", async () => {
-        const loginResponse = await request(app)
-          .post("/api/users/login")
-          .send({ username: "Admin", password: "adminPassCode" });
-        const token = loginResponse.body.token;
+        const user = { username: "Admin" };
+        const token = generateToken(user);
         const initialBooksResponse = await request(app)
           .get("/api/books")
           .set("Authorization", `Bearer ${token}`);
@@ -404,26 +499,22 @@ describe("/api/books/:book_id", () => {
     });
 
     describe("STATUS ERROR 400", () => {
-      test("should not allow users whose username isn't 'Admin' to delete books.", async () => {
-        const loginResponse = await request(app)
-          .post("/api/users/login")
-          .send({ username: "notAdmin", password: "aPassCode" });
-        const token = loginResponse.body.token;
+      test("should respond with error 403 not allow users whose username isn't 'Admin' to delete books.", async () => {
+        const user = { username: "Mat" };
+        const token = generateToken(user);
 
         const response = await request(app)
           .delete("/api/books/1")
           .set("Authorization", `Bearer ${token}`)
-          .expect(401);
+          .expect(403);
         const { msg } = response.body;
 
-        expect(msg).toEqual("Invalid token! Authentication Failed");
+        expect(msg).toEqual("Unauthorized - Only admin can delete books!");
       });
 
       test("should respond with error 404 when valid book id is given but book doesn't exist in database", async () => {
-        const loginResponse = await request(app)
-          .post("/api/users/login")
-          .send({ username: "Admin", password: "adminPassCode" });
-        const token = loginResponse.body.token;
+        const user = { username: "Admin" };
+        const token = generateToken(user);
 
         const response = await request(app)
           .delete("/api/books/500")
@@ -435,10 +526,8 @@ describe("/api/books/:book_id", () => {
       });
 
       test("should respond with error 404 when invalid book id is given 'not a number", async () => {
-        const loginResponse = await request(app)
-          .post("/api/users/login")
-          .send({ username: "Admin", password: "adminPassCode" });
-        const token = loginResponse.body.token;
+        const user = { username: "Admin" };
+        const token = generateToken(user);
 
         const response = await request(app)
           .delete("/api/books/notNumber")
@@ -520,74 +609,232 @@ describe("/api/books/:book_id/reviews", () => {
         expect(total_count).toBe(10);
       });
     });
+    describe("STATUS ERROR 400", () => {
+      test("should respond with error 400 when invalid book_id 'not a number' is given", async () => {
+        const response = await request(app)
+          .get("/api/books/das/reviews")
+          .expect(400);
+        const { msg } = response.body;
+
+        expect(msg).toEqual("Bad Request!");
+      });
+
+      test("should respond with error 404 when invalid endpoint is given", async () => {
+        const response = await request(app)
+          .get("/api/books/3/notvalidendpoint")
+          .expect(404);
+        const { msg } = response.body;
+
+        expect(msg).toEqual(
+          "Please enter a valid link. Go back and try again."
+        );
+      });
+
+      test("should respond with error 400 if limit query isn't a number", async () => {
+        const response = await request(app)
+          .get("/api/books/3/reviews?limit=notNumber")
+          .expect(400);
+        const { msg } = response.body;
+
+        expect(msg).toEqual(
+          "Please enter a valid limit. Limit should be a number!"
+        );
+      });
+
+      test("should respond with error 400 if p query isn't a number", async () => {
+        const response = await request(app)
+          .get("/api/books/3/reviews?p=notNumber")
+          .expect(400);
+        const { msg } = response.body;
+
+        expect(msg).toEqual("Please enter a valid p. P should be a number!");
+      });
+
+      test("should respond with error 400 limit and p queries must be positive integers if given negative integers", async () => {
+        const response = await request(app)
+          .get("/api/books/3/reviews?limit=-5")
+          .expect(400);
+        const { msg } = response.body;
+
+        expect(msg).toEqual("Limit and p must be positive numbers!");
+      });
+
+      test("should respond with error 404 when valid book_id is given but book doesn't exist in database", async () => {
+        const response = await request(app)
+          .get("/api/books/500/reviews")
+          .expect(404);
+        const { msg } = response.body;
+
+        expect(msg).toEqual("Book Not Found!");
+      });
+
+      test("should respond with error 404 if limit or p query number exceeds the total number of reviews in our database for the specified book", async () => {
+        const response = await request(app)
+          .get("/api/books/3/reviews?p=45")
+          .expect(404);
+        const { msg } = response.body;
+
+        expect(msg).toEqual(
+          "Please provide valid values.Limit or p cannot be greater than the total number of reviews for specified book!"
+        );
+      });
+    });
   });
 
-  describe("STATUS ERROR 400", () => {
-    test("should respond with error 400 when invalid book_id 'not a number' is given", async () => {
-      const response = await request(app)
-        .get("/api/books/das/reviews")
-        .expect(400);
-      const { msg } = response.body;
+  describe("POST", () => {
+    describe("STATUS 201", () => {
+      test("should add a review to a book if you are logged in", async () => {
+        const user = { username: "smithrose" };
+        const token = generateToken(user);
 
-      expect(msg).toEqual("Bad Request!");
+        const reviewToPost = {
+          body: "Maecenas faucibus mollis interdum. Donec id elit non mi porta gravida at eget metus. Cras justo odio, dapibus ac facilisis in, egestas eget quam.",
+          rating: 1,
+        };
+
+        const response = await request(app)
+          .post("/api/books/1/reviews")
+          .set("Authorization", `Bearer ${token}`)
+          .send(reviewToPost)
+          .expect(201);
+
+        const { newReview } = response.body;
+        expect(newReview).toEqual({
+          ...reviewToPost,
+          review_id: expect.any(Number),
+          created_at: expect.any(String),
+          book_id: 1,
+          username: "smithrose",
+        });
+      });
     });
 
-    test("should respond with error 404 when invalid endpoint is given", async () => {
-      const response = await request(app)
-        .get("/api/books/3/notvalidendpoint")
-        .expect(404);
-      const { msg } = response.body;
+    describe("STATUS ERROR 400", () => {
+      test("should respond with error 401 if the user isn't logged in", async () => {
+        const reviewToPost = {
+          body: "lorem ipsum",
+          rating: 3,
+        };
+        const response = await request(app)
+          .post("/api/books/1/reviews")
+          .send(reviewToPost)
+          .expect(401);
+        const { msg } = response.body;
 
-      expect(msg).toEqual("Please enter a valid link. Go back and try again.");
+        expect(msg).toEqual(
+          "No Authorization header or No Authentication Token provided!"
+        );
+      });
+
+      test("should respond with error 404 when valid book id is given but book doesn't exist in database", async () => {
+        const user = { userId: 1, username: "smithrose" };
+        const token = generateToken(user);
+
+        const reviewToPost = {
+          body: "Maecenas faucibus mollis interdum. Donec id elit non mi porta gravida at eget metus. Cras justo odio, dapibus ac facilisis in, egestas eget quam.",
+          rating: 1,
+        };
+
+        const response = await request(app)
+          .post("/api/books/500/reviews")
+          .set("Authorization", `Bearer ${token}`)
+          .send(reviewToPost)
+          .expect(404);
+        const { msg } = response.body;
+
+        expect(msg).toEqual("Book Not Found!");
+      });
+
+      test("should respond with error 404 when invalid 'not a number' book id is given", async () => {
+        const user = { userId: 1, username: "smithrose" };
+        const token = generateToken(user);
+
+        const reviewToPost = {
+          body: "Maecenas faucibus mollis interdum. Donec id elit non mi porta gravida at eget metus. Cras justo odio, dapibus ac facilisis in, egestas eget quam.",
+          rating: 1,
+        };
+
+        const response = await request(app)
+          .post("/api/books/ads/reviews")
+          .set("Authorization", `Bearer ${token}`)
+          .send(reviewToPost)
+          .expect(400);
+        const { msg } = response.body;
+
+        expect(msg).toEqual("Bad Request!");
+      });
+    });
+  });
+});
+
+describe("/api/reviews/:review_id", () => {
+  describe("DELETE", () => {
+    describe("STATUS 204", () => {
+      test("should delete a review if you are owner of review", async () => {
+        const user = { username: "smithrose" };
+        const token = generateToken(user);
+
+        return request(app)
+          .delete("/api/reviews/2")
+          .set("Authorization", `Bearer ${token}`)
+          .expect(204);
+      });
     });
 
-    test("should respond with error 400 if limit query isn't a number", async () => {
-      const response = await request(app)
-        .get("/api/books/3/reviews?limit=notNumber")
-        .expect(400);
-      const { msg } = response.body;
+    describe("STATUS ERROR 400", () => {
+      test("should respond with error 403 if logged in user is not the review owner", async () => {
+        const user = { username: "notOwner" };
+        const token = generateToken(user);
 
-      expect(msg).toEqual(
-        "Please enter a valid limit. Limit should be a number!"
-      );
-    });
+        const response = await request(app)
+          .delete("/api/reviews/2")
+          .set("Authorization", `Bearer ${token}`)
+          .expect(403);
 
-    test("should respond with error 400 if p query isn't a number", async () => {
-      const response = await request(app)
-        .get("/api/books/3/reviews?p=notNumber")
-        .expect(400);
-      const { msg } = response.body;
+        const { msg } = response.body;
 
-      expect(msg).toEqual("Please enter a valid p. P should be a number!");
-    });
+        expect(msg).toEqual("Forbidden - You can only delete your own reviews");
+      });
 
-    test("should respond with limit and p queries must be positive integers if given negative integers", async () => {
-      const response = await request(app)
-        .get("/api/books/3/reviews?limit=-5")
-        .expect(400);
-      const { msg } = response.body;
+      test("should respond with error 401 if user is not logged in", async () => {
+        const response = await request(app)
+          .delete("/api/reviews/2")
+          .expect(401);
 
-      expect(msg).toEqual("Limit and p must be positive numbers!");
-    });
+        const { msg } = response.body;
 
-    test("should respond with error 404 when valid book_id is given but book doesn't exist in database", async () => {
-      const response = await request(app)
-        .get("/api/books/500/reviews")
-        .expect(404);
-      const { msg } = response.body;
+        expect(msg).toEqual(
+          "No Authorization header or No Authentication Token provided!"
+        );
+      });
 
-      expect(msg).toEqual("Book Not Found!");
-    });
+      test("should respond with error 400 if invalid 'not a number' review id is given", async () => {
+        const user = { username: "notOwner" };
+        const token = generateToken(user);
 
-    test("should respond with error 404 if limit or p query number exceeds the total number of reviews in our database for the specified book", async () => {
-      const response = await request(app)
-        .get("/api/books/3/reviews?p=45")
-        .expect(404);
-      const { msg } = response.body;
+        const response = await request(app)
+          .delete("/api/reviews/adad")
+          .set("Authorization", `Bearer ${token}`)
+          .expect(400);
 
-      expect(msg).toEqual(
-        "Please provide valid values.Limit or p cannot be greater than the total number of reviews for specified book!"
-      );
+        const { msg } = response.body;
+
+        expect(msg).toEqual("Bad Request!");
+      });
+
+      test("should respond with error 400 if valid review id is given but review doesn't exist in database", async () => {
+        const user = { username: "notOwner" };
+        const token = generateToken(user);
+
+        const response = await request(app)
+          .delete("/api/reviews/300")
+          .set("Authorization", `Bearer ${token}`)
+          .expect(404);
+
+        const { msg } = response.body;
+
+        expect(msg).toEqual("Review Not Found!");
+      });
     });
   });
 });
@@ -773,9 +1020,7 @@ describe("/api/users/:username", () => {
           .expect(403);
         const { msg } = response.body;
 
-        expect(msg).toEqual(
-          "Unauthorized - You can only delete your own account!"
-        );
+        expect(msg).toEqual("You can only delete your own account!");
       });
     });
   });

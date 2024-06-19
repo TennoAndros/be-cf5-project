@@ -1,4 +1,10 @@
 const bcrypt = require("bcrypt");
+const jwt = require('jsonwebtoken');
+const SECRET_KEY = process.env.JWT_SECRET; 
+
+exports.generateToken = (user) => {
+  return jwt.sign(user, SECRET_KEY, { expiresIn: '1h' });
+};
 
 exports.hashPassword = async (password) => {
   try {

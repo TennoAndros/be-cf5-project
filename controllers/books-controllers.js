@@ -6,7 +6,6 @@ const {
   insertBook,
   deleteBookById,
 } = require("../models/books-models");
-
 const { checkGenreExists } = require("../models/genres-models");
 
 exports.getBooks = async (req, res, next) => {
@@ -34,6 +33,12 @@ exports.getBookById = async (req, res, next) => {
 
 exports.patchBookById = async (req, res, next) => {
   try {
+    const loggedInUser = req.user;
+
+    if (!loggedInUser) {
+      return res.status(401);
+    }
+
     const bookId = req.params.book_id;
     const [, updateBook] = await Promise.all([
       checkBookExists(bookId),
@@ -47,6 +52,12 @@ exports.patchBookById = async (req, res, next) => {
 
 exports.postBook = async (req, res, next) => {
   try {
+    const loggedInUser = req.user;
+
+    if (!loggedInUser) {
+      return res.status(401);
+    }
+
     const book = req.body;
     const newBook = await insertBook(book);
     res.status(201).send({ newBook });
@@ -63,7 +74,8 @@ exports.deleteBookById = async (req, res, next) => {
     const deletedBook = await deleteBookById(loggedInUsername, deleteId);
 
     if (!deletedBook) {
-      return res.status(404).json({ msg: "Book not found!" });
+      return res.status(404);
+
     }
 
     res.sendStatus(204);

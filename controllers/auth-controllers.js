@@ -22,9 +22,13 @@ exports.login = async (req, res, next) => {
       throw { msg: "Invalid password!", code: 401 };
     }
 
-    const token = jwt.sign({ userId: user.user_id, username: user.username }, process.env.JWT_SECRET, {
-      expiresIn: "1h",
-    });
+    const token = jwt.sign(
+      { userId: user.user_id, username: user.username },
+      process.env.JWT_SECRET,
+      {
+        expiresIn: "1h",
+      }
+    );
 
     res.json({
       token,
@@ -67,7 +71,7 @@ exports.logout = async (req, res, next) => {
         }
       }
 
-      res.json({ msg: "Logged out successfully" });
+      res.send({ msg: "Logged out successfully" });
     });
   } catch (err) {
     next(err);

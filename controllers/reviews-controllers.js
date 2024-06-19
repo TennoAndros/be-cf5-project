@@ -72,12 +72,10 @@ exports.deleteReviewById = async (req, res, next) => {
       return res.status(403).send({ msg: "Forbidden - You can only delete your own reviews" });
     }
 
-    // Perform deletion if conditions are met
     await deleteReviewById(deleteId);
 
-    // Send success response
     res.sendStatus(204);
   } catch (err) {
-    next(err); // Pass error to error handler middleware
+    next(err); 
   }
 };

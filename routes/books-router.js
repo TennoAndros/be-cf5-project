@@ -14,7 +14,7 @@ const {
   postReviewByBookId,
 } = require("../controllers/reviews-controllers");
 
-booksRouter.route("/").get(getBooks).post(postBook);
+booksRouter.route("/").get(getBooks).post(authenticateToken, postBook);
 
 booksRouter
   .route("/:book_id")

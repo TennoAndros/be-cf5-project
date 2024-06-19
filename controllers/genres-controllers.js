@@ -12,6 +12,12 @@ exports.getGenres = async (req, res, next) => {
 
 exports.postGenre = async (req, res, next) => {
   try {
+    const loggedInUser = req.user;
+
+    if (!loggedInUser) {
+      return res.status(401);
+    }
+
     const genre = req.body;
     const newGenre = await insertGenre(genre);
     res.status(201).send({ newGenre });

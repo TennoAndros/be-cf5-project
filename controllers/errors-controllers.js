@@ -38,5 +38,7 @@ exports.handlePsqlErrors = (err, req, res, next) => {
     res.status(400).send({ msg: "Limit and p must be positive numbers!" });
   } else if (err.code === "23502") {
     res.status(400).send({ msg: "Missing Required Fields!" });
+  } else if (err.code === "23505") {
+    res.status(400).send({ msg: "Genre Already Exists!" });
   } else next(err);
 };

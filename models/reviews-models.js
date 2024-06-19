@@ -48,3 +48,59 @@ exports.selectReviewsByBookId = async (id, limit = 10, p = 1) => {
 
   return { reviews, total_count };
 };
+
+exports.insertReview = async ({ body, username, rating }, bookId) => {
+  if (!body || !username || !rating) {
+    return Promise.reject({ code: 400, msg: "No review submitted" });
+  }
+
+  const { rows } = await db.query(
+    `INSERT INTO reviews (book_id, body, username, rating) VALUES ($1, $2, $3, $4) RETURNING *`,
+    [bookId, body, username, rating]
+  );
+
+  return rows[0];
+};
+
+exports.updateReviewById = async (updates, id) => {
+  const { rows } = await db.query(
+    `UPDATE reviews SET rating=rating + $1 WHERE review_id=$2 RETURNING *`,
+    [updates, id]
+  );
+  console.log("rows[0]", rows[0]);
+  if (rows.length === 0)
+    return Promise.reject({
+      code: 404,
+      msg: "Review Not Found!",
+    });
+
+  return rows[0];
+};
+
+exports.deleteReviewById = async (id) => {
+  const { rows } = await db.query(
+    `DELETE FROM reviews WHERE review_id=$1 RETURNING *`,
+    [id]
+  );
+  if (rows.length === 0)
+    return Promise.reject({
+      code: 404,
+      msg: "Review doesn't exist!",
+    });
+};
+
+exports.selectReviewById = async (reviewId) => {
+  const { rows } = await db.query(
+    `SELECT * FROM reviews WHERE review_id = $1`,
+    [reviewId]
+  );
+
+  if (rows.length === 0) {
+    return Promise.reject({
+      code: 404,
+      msg: "Review Not Found!",
+    });
+  }
+
+  return rows[0];
+};

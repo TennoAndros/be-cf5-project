@@ -63,7 +63,8 @@ exports.deleteBookById = async (req, res, next) => {
     const deletedBook = await deleteBookById(loggedInUsername, deleteId);
 
     if (!deletedBook) {
-      return res.status(404).json({ msg: "Book not found!" });
+      return res.status(404)
+      // .send({ msg: "Book not found!" });
     }
 
     res.sendStatus(204);

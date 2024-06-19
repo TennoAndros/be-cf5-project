@@ -55,7 +55,7 @@ exports.deleteUserByUsername = async (loggedInUserId, deleteUsername) => {
   if (rows[0].user_id !== loggedInUserId) {
     return Promise.reject({
       code: 403,
-      msg: "Unauthorized - You can only delete your own account!",
+      msg: "You can only delete your own account!",
     });
   }
 

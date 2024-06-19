@@ -9,7 +9,10 @@ const {
   deleteBookById,
 } = require("../controllers/books-controllers");
 
-const { getReviewsByBookId } = require("../controllers/reviews-controllers");
+const {
+  getReviewsByBookId,
+  postReviewByBookId,
+} = require("../controllers/reviews-controllers");
 
 booksRouter.route("/").get(getBooks).post(postBook);
 
@@ -19,6 +22,9 @@ booksRouter
   .patch(patchBookById)
   .delete(authenticateToken, deleteBookById);
 
-booksRouter.route("/:book_id/reviews").get(getReviewsByBookId);
+booksRouter
+  .route("/:book_id/reviews")
+  .get(getReviewsByBookId)
+  .post(authenticateToken, postReviewByBookId);
 
 module.exports = booksRouter;

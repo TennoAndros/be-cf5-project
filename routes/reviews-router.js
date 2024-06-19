@@ -1,5 +1,14 @@
 const reviewsRouter = require("express").Router();
+const authenticateToken = require("../middleware/auth-middleware");
 
-reviewsRouter.route("/:review_id");
+const {
+  patchReviewById,
+  deleteReviewById,
+} = require("../controllers/reviews-controllers");
+
+reviewsRouter
+  .route("/:review_id")
+  .patch(authenticateToken, patchReviewById)
+  .delete(authenticateToken, deleteReviewById);
 
 module.exports = reviewsRouter;

@@ -17,17 +17,17 @@ exports.handleCustomErrors = (err, req, res, next) => {
     err.msg === "Username required!" ||
     err.msg === "Password required!"
   ) {
-    res.status(400).json({ msg: err.msg });
+    res.status(400).send({ msg: err.msg });
   } else if (
     err.msg === "Invalid password!" ||
     err.msg === "UnauthorizedError"
   ) {
-    res.status(401).json({ msg: "Invalid credentials!" });
+    res.status(401).send({ msg: "Invalid credentials!" });
   } else if (
     err.msg === "No Authorization header provided!" ||
     err.msg === "Malformed Authorization header!"
   ) {
-    res.status(401).json({ msg: "Authentication failed!" });
+    res.status(401).send({ msg: "Authentication failed!" });
   } else next(err);
 };
 

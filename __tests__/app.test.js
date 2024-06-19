@@ -29,6 +29,7 @@ describe("/api", () => {
             "DELETE /api/books/:book_id": expect.any(Object),
             "GET /api/books/:book_id/reviews": expect.any(Object),
             "POST /api/books/:book_id/reviews": expect.any(Object),
+            "PATCH /api/reviews/:review_id": expect.any(Object),
             "DELETE /api/reviews/:review_id": expect.any(Object),
             "GET /api/users": expect.any(Object),
             "POST /api/users": expect.any(Object),
@@ -768,6 +769,106 @@ describe("/api/books/:book_id/reviews", () => {
 });
 
 describe("/api/reviews/:review_id", () => {
+  describe("PATCH", () => {
+    describe("STATUS 200", () => {
+      test("should update rating and body of review if you are the owner", async () => {
+        const user = { username: "smithrose" };
+        const token = generateToken(user);
+
+        const reviewUpdate = {
+          body: "Test",
+          rating: 3,
+        };
+
+        const response = await request(app)
+          .patch("/api/reviews/2")
+          .set("Authorization", `Bearer ${token}`)
+          .send(reviewUpdate)
+          .expect(200);
+
+        const { updatedReview } = response.body;
+        expect(updatedReview).toEqual({
+          ...reviewUpdate,
+          review_id: 2,
+          username: "smithrose",
+          created_at: expect.any(String),
+          book_id: 1,
+        });
+      });
+    });
+    describe("STATUS ERROR 400", () => {
+      test("should respond with error 403 if you are not the owner of the review", async () => {
+        const user = { username: "notOwner" };
+        const token = generateToken(user);
+
+        const reviewUpdate = {
+          body: "Test",
+          rating: 3,
+        };
+
+        const response = await request(app)
+          .patch("/api/reviews/2")
+          .set("Authorization", `Bearer ${token}`)
+          .send(reviewUpdate)
+          .expect(403);
+
+        const { msg } = response.body;
+        expect(msg).toEqual("Forbidden - You can only edit your own reviews");
+      });
+
+      test("should respond with error 400 if an empty object is given ", async () => {
+        const user = { username: "smithrose" };
+        const token = generateToken(user);
+        const response = await request(app)
+          .patch("/api/reviews/2")
+          .set("Authorization", `Bearer ${token}`)
+          .send({})
+          .expect(400);
+
+        const { msg } = response.body;
+        expect(msg).toEqual("Missing required fields!");
+      });
+
+      test("should respond with error 400 if rating is negative number", async () => {
+        const user = { username: "smithrose" };
+        const token = generateToken(user);
+
+        const reviewUpdate = {
+          body: "Test",
+          rating: -3,
+        };
+
+        const response = await request(app)
+          .patch("/api/reviews/2")
+          .set("Authorization", `Bearer ${token}`)
+          .send(reviewUpdate)
+          .expect(400);
+
+        const { msg } = response.body;
+        expect(msg).toEqual("Rating cannot be negative number!");
+      });
+
+      test("should respond with error 400 if rating is not a number", async () => {
+        const user = { username: "smithrose" };
+        const token = generateToken(user);
+
+        const reviewUpdate = {
+          body: "Test",
+          rating: "sdfs",
+        };
+
+        const response = await request(app)
+          .patch("/api/reviews/2")
+          .set("Authorization", `Bearer ${token}`)
+          .send(reviewUpdate)
+          .expect(400);
+
+        const { msg } = response.body;
+        expect(msg).toEqual("Bad Request!");
+      });
+    });
+  });
+
   describe("DELETE", () => {
     describe("STATUS 204", () => {
       test("should delete a review if you are owner of review", async () => {

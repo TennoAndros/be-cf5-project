@@ -44,10 +44,26 @@ exports.postReviewByBookId = async (req, res, next) => {
 
 exports.patchReviewById = async (req, res, next) => {
   try {
+    const loggedInUser = req.user;
+
+    if (!loggedInUser) {
+      return res.status(401).send({ msg: "Unauthorized" });
+    }
+
     const reviewId = req.params.review_id;
-    const update = req.body.rating;
-    const updateReview = await updateReviewById(update, reviewId);
-    res.status(200).send({ updateReview });
+
+    const review = await selectReviewById(reviewId);
+
+    if (review.username !== loggedInUser.username) {
+      return res
+        .status(403)
+        .send({ msg: "Forbidden - You can only edit your own reviews" });
+    }
+
+    const updates = req.body;
+    const updatedReview = await updateReviewById(updates, reviewId);
+
+    res.status(200).send({ updatedReview });
   } catch (err) {
     next(err);
   }
@@ -59,23 +75,28 @@ exports.deleteReviewById = async (req, res, next) => {
     const loggedInUser = req.user;
 
     if (!loggedInUser) {
-      return res.status(401)
+      return res.status(401);
     }
 
     const review = await selectReviewById(deleteId);
 
     if (!review) {
-      return res.status(404)
+      return res.status(404);
     }
 
-    if (review.username !== loggedInUser.username) {
-      return res.status(403).send({ msg: "Forbidden - You can only delete your own reviews" });
+    if (
+      review.username !== loggedInUser.username &&
+      loggedInUser.username !== "Admin"
+    ) {
+      return res
+        .status(403)
+        .send({ msg: "Forbidden - You can only delete your own reviews" });
     }
 
     await deleteReviewById(deleteId);
 
     res.sendStatus(204);
   } catch (err) {
-    next(err); 
+    next(err);
   }
 };

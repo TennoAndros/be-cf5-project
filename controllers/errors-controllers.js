@@ -40,5 +40,7 @@ exports.handlePsqlErrors = (err, req, res, next) => {
     res.status(400).send({ msg: "Missing Required Fields!" });
   } else if (err.code === "23505") {
     res.status(400).send({ msg: "Genre Already Exists!" });
+  } else if (err.code === "23514") {
+    res.status(400).send({ msg: "Rating cannot be negative number!" });
   } else next(err);
 };

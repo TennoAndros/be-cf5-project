@@ -63,16 +63,41 @@ exports.insertReview = async ({ body, username, rating }, bookId) => {
 };
 
 exports.updateReviewById = async (updates, id) => {
-  const { rows } = await db.query(
-    `UPDATE reviews SET rating=rating + $1 WHERE review_id=$2 RETURNING *`,
-    [updates, id]
-  );
-  console.log("rows[0]", rows[0]);
-  if (rows.length === 0)
+  const { rating, body } = updates;
+
+  let queryStr = `UPDATE reviews SET `;
+  const queryParams = [];
+  let setClauses = [];
+
+  if (rating !== undefined) {
+    queryParams.push(rating);
+    setClauses.push(`rating = $${queryParams.length}`);
+  }
+
+  if (body !== undefined) {
+    queryParams.push(body);
+    setClauses.push(`body = $${queryParams.length}`);
+  }
+
+  if (setClauses.length === 0) {
+    return Promise.reject({
+      code: 400,
+      msg: "Missing required fields!",
+    });
+  }
+
+  queryStr += setClauses.join(", ");
+  queryParams.push(id);
+  queryStr += ` WHERE review_id = $${queryParams.length} RETURNING *;`;
+
+  const { rows } = await db.query(queryStr, queryParams);
+
+  if (rows.length === 0) {
     return Promise.reject({
       code: 404,
       msg: "Review Not Found!",
     });
+  }
 
   return rows[0];
 };

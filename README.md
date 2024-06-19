@@ -6,7 +6,7 @@
 
 To host the database i used [Supabase](https://supabase.com/) and the live version of the API was hosted on [Render](https://dashboard.render.com/).
 
-Live version can be found hosted [here](https://be-cf5-project.onrender.com/).
+Live version can be found hosted [here](https://be-cf5-project.onrender.com/api).
 
 **_It might take some time for the server to "wake-up"._**
 

@@ -53,19 +53,12 @@ exports.logout = async (req, res, next) => {
   try {
     const authHeader = req.headers["authorization"];
 
-    if (!authHeader) {
-      throw { msg: "No Authorization header provided!", code: 401 };
-    }
-
     const parts = authHeader.split(" ");
     if (parts.length !== 2 || parts[0] !== "Bearer") {
       throw { msg: "Malformed Authorization header!", code: 401 };
     }
 
     const token = parts[1];
-    if (!token) {
-      throw { msg: "No token provided!", code: 401 };
-    }
 
     jwt.verify(token, SECRET_KEY, (err, user) => {
       if (err) {

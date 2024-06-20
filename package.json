@@ -4,6 +4,7 @@
   "description": "The back end of a bookstore for CF5 final project",
   "main": "listen.js",
   "scripts": {
+    "clear_jest": "jest --clearCache",
     "setup-dbs": "psql -f ./db/setup.sql",
     "seed": "node ./db/seeds/run-seed.js",
     "test": "jest",

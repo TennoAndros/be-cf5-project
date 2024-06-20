@@ -8,11 +8,10 @@ require("dotenv").config({
 });
 const SECRET_KEY = process.env.JWT_SECRET;
 
-if (!SECRET_KEY) {
-  throw new Error("JWT_SECRET is not defined");
-}
-
 exports.generateToken = (user) => {
+  if (!SECRET_KEY) {
+    throw new Error("SECRET_KEY is not defined");
+  }
   return jwt.sign(user, SECRET_KEY, { expiresIn: "1h" });
 };
 
@@ -48,4 +47,3 @@ exports.formatReviews = (reviews, idLookup) => {
     };
   });
 };
-

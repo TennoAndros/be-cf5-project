@@ -31,25 +31,6 @@ exports.getBookById = async (req, res, next) => {
   }
 };
 
-exports.patchBookById = async (req, res, next) => {
-  try {
-    const loggedInUser = req.user;
-
-    if (!loggedInUser) {
-      return res.status(401);
-    }
-
-    const bookId = req.params.book_id;
-    const [, updateBook] = await Promise.all([
-      checkBookExists(bookId),
-      updateBookById(req.body, bookId),
-    ]);
-    res.status(200).send({ updateBook });
-  } catch (err) {
-    next(err);
-  }
-};
-
 exports.postBook = async (req, res, next) => {
   try {
     const loggedInUser = req.user;
@@ -75,7 +56,6 @@ exports.deleteBookById = async (req, res, next) => {
 
     if (!deletedBook) {
       return res.status(404);
-
     }
 
     res.sendStatus(204);

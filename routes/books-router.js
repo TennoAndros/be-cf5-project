@@ -4,7 +4,6 @@ const authenticateToken = require("../middleware/auth-middleware");
 const {
   getBooks,
   getBookById,
-  patchBookById,
   postBook,
   deleteBookById,
 } = require("../controllers/books-controllers");
@@ -19,7 +18,6 @@ booksRouter.route("/").get(getBooks).post(authenticateToken, postBook);
 booksRouter
   .route("/:book_id")
   .get(getBookById)
-  .patch(patchBookById)
   .delete(authenticateToken, deleteBookById);
 
 booksRouter

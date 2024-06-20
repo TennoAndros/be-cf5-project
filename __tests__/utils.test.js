@@ -190,16 +190,4 @@ describe("generateToken", () => {
     const decoded = jwt.verify(token, SECRET_KEY);
     expect(decoded.exp).toBeLessThanOrEqual(oneHourPlusOneSecond);
   });
-  test("should throw an error if SECRET_KEY is not defined", () => {
-    if (!SECRET_KEY) {
-      throw new Error("JWT_SECRET is not defined");
-    }
-
-    const user = { userId: 1, username: "testuser" };
-    const token = generateToken(user);
-
-    const oneHourPlusOneSecond = Math.floor(Date.now() / 1000) + 3601;
-    const decoded = jwt.verify(token, SECRET_KEY);
-    expect(decoded.exp).toBeLessThanOrEqual(oneHourPlusOneSecond);
-  });
 });

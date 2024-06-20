@@ -4,7 +4,7 @@ const {
   createRef,
   formatReviews,
   hashPassword,
-} = require("../db/seeds/utils");
+} = require("../../utils/utils");
 
 describe("convertTimestampToDate", () => {
   test("returns a new object", () => {

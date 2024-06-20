@@ -3,7 +3,7 @@ const request = require("supertest");
 const app = require("../app");
 const data = require("../db/data/test-data");
 const seed = require("../db/seeds/seed");
-const { generateToken } = require("../db/seeds/utils");
+const { generateToken } = require("../utils/utils");
 
 beforeEach(() => {
   return seed(data);

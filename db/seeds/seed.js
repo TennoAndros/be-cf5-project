@@ -1,6 +1,6 @@
 const format = require("pg-format");
 const db = require("../connection");
-const { hashPassword, createRef, formatReviews } = require("./utils");
+const { hashPassword, createRef, formatReviews } = require("../../utils/utils");
 
 const seed = async ({ reviewData, genreData, bookData, userData }) => {
   await db.query(`DROP TABLE IF EXISTS reviews;`);

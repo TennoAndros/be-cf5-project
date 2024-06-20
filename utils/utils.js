@@ -1,9 +1,19 @@
 const bcrypt = require("bcrypt");
-const jwt = require('jsonwebtoken');
-const SECRET_KEY = process.env.JWT_SECRET; 
+const jwt = require("jsonwebtoken");
+
+const ENV = process.env.NODE_ENV;
+
+require("dotenv").config({
+  path: `${__dirname}/../.env.${ENV}`,
+});
+const SECRET_KEY = process.env.JWT_SECRET;
+
+if (!SECRET_KEY) {
+  throw new Error("JWT_SECRET is not defined");
+}
 
 exports.generateToken = (user) => {
-  return jwt.sign(user, SECRET_KEY, { expiresIn: '1h' });
+  return jwt.sign(user, SECRET_KEY, { expiresIn: "1h" });
 };
 
 exports.hashPassword = async (password) => {
@@ -38,3 +48,4 @@ exports.formatReviews = (reviews, idLookup) => {
     };
   });
 };
+

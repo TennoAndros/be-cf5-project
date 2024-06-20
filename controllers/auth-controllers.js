@@ -1,6 +1,13 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const User = require("../models/users-models");
+const SECRET_KEY = process.env.JWT_SECRET;
+
+
+
+if (!SECRET_KEY) {
+  throw new Error("JWT_SECRET is not defined");
+}
 
 exports.login = async (req, res, next) => {
   const { username, password } = req.body;
@@ -24,7 +31,7 @@ exports.login = async (req, res, next) => {
 
     const token = jwt.sign(
       { userId: user.user_id, username: user.username },
-      process.env.JWT_SECRET,
+      SECRET_KEY,
       {
         expiresIn: "1h",
       }
@@ -60,7 +67,7 @@ exports.logout = async (req, res, next) => {
       throw { msg: "No token provided!", code: 401 };
     }
 
-    jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
+    jwt.verify(token, SECRET_KEY, (err, user) => {
       if (err) {
         if (err.name === "JsonWebTokenError") {
           throw { msg: "Invalid token! Authentication Failed", code: 401 };

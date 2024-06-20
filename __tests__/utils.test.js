@@ -1,10 +1,13 @@
-const bcrypt = require("bcrypt");
 const {
   convertTimestampToDate,
   createRef,
   formatReviews,
   hashPassword,
-} = require("../../utils/utils");
+  generateToken,
+} = require("../utils/utils");
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const SECRET_KEY = process.env.JWT_SECRET;
 
 describe("convertTimestampToDate", () => {
   test("returns a new object", () => {
@@ -149,5 +152,54 @@ describe("hashPassword", () => {
       "Error hashing password"
     );
     bcrypt.hash = originalBcryptHash;
+  });
+});
+
+describe("generateToken", () => {
+  test("should generate a token as a string", () => {
+    const user = { userId: 1, username: "testuser" };
+    const token = generateToken(user);
+
+    expect(typeof token).toBe("string");
+    expect(token.length).toBeGreaterThan(0);
+  });
+  test("should generate different tokens for different inputs", () => {
+    const user1 = { userId: 1, username: "user1" };
+    const user2 = { userId: 2, username: "user2" };
+
+    const token1 = generateToken(user1);
+    const token2 = generateToken(user2);
+
+    expect(token1).not.toEqual(token2);
+  });
+  test("should decode and verify token", () => {
+    const user = { userId: 1, username: "testuser" };
+    const token = generateToken(user);
+
+    const decoded = jwt.verify(token, SECRET_KEY);
+
+    expect(decoded.userId).toBe(user.userId);
+    expect(decoded.username).toBe(user.username);
+  });
+  test("should expire token after 1 hour", () => {
+    const user = { userId: 1, username: "testuser" };
+    const token = generateToken(user);
+
+    const oneHourPlusOneSecond = Math.floor(Date.now() / 1000) + 3601;
+
+    const decoded = jwt.verify(token, SECRET_KEY);
+    expect(decoded.exp).toBeLessThanOrEqual(oneHourPlusOneSecond);
+  });
+  test("should throw an error if SECRET_KEY is not defined", () => {
+    if (!SECRET_KEY) {
+      throw new Error("JWT_SECRET is not defined");
+    }
+
+    const user = { userId: 1, username: "testuser" };
+    const token = generateToken(user);
+
+    const oneHourPlusOneSecond = Math.floor(Date.now() / 1000) + 3601;
+    const decoded = jwt.verify(token, SECRET_KEY);
+    expect(decoded.exp).toBeLessThanOrEqual(oneHourPlusOneSecond);
   });
 });

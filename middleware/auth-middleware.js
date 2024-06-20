@@ -1,4 +1,9 @@
 const jwt = require("jsonwebtoken");
+const SECRET_KEY = process.env.JWT_SECRET;
+
+if (!SECRET_KEY) {
+  throw new Error("JWT_SECRET is not defined");
+}
 
 const authenticateToken = (req, res, next) => {
   const authHeader = req.headers["authorization"];
@@ -19,10 +24,12 @@ const authenticateToken = (req, res, next) => {
     return res.status(401).send({ msg: "No token provided!" });
   }
 
-  jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
+  jwt.verify(token, SECRET_KEY, (err, user) => {
     if (err) {
       if (err.name === "JsonWebTokenError") {
-        return res.status(401).send({ msg: "Invalid token! Authentication Failed" });
+        return res
+          .status(401)
+          .send({ msg: "Invalid token! Authentication Failed" });
       } else if (err.name === "TokenExpiredError") {
         return res.status(401).send({ msg: "Token expired!" });
       } else {

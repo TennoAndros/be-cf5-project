@@ -16,7 +16,7 @@ Live version can be found hosted [here](https://be-cf5-project.onrender.com/api)
 
 This project is a Node.js and Express application using a RESTful API and MVC architecture, written in JavaScript to serve data from a PostgreSQL (PSQL) database. The API is designed to manage a collection of books, users, genres, and reviews. This project can be adapted to other projects such as blogs, forums, and social media platforms. Its functionality covers managing books, users, genres, and reviews. Users can post, update, and delete books and reviews. The user authentication ensures that only authorized users can perform certain actions.
 
-### Available endpoints:
+### Available endpoints
 
 - `GET /api` ➡️ GET a list of all of the available endpoints.
 

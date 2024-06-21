@@ -139,6 +139,22 @@ describe("/api/genres", () => {
 
       expect(msg).toEqual("Genre Already Exists!");
     });
+
+    test("should respond with error 400 when given number as a genre", async () => {
+      const user = { username: "smithrose" };
+      const token = generateToken(user);
+      const genreToPost = {
+        genre: 1,
+      };
+      const response = await request(app)
+        .post("/api/genres")
+        .set("Authorization", `Bearer ${token}`)
+        .send(genreToPost)
+        .expect(400);
+      const { msg } = response.body;
+
+      expect(msg).toEqual("Genre must not contain numbers!");
+    });
   });
 });
 
@@ -397,7 +413,8 @@ describe("/api/books", () => {
             author: "J.K Rowling",
             title: "Fantastic Beasts",
             description: "An awesome book",
-          });
+          })
+          .expect(400);
         const { msg } = response.body;
 
         expect(msg).toEqual("No Book Submitted!");
@@ -1146,6 +1163,8 @@ describe("/api/users/login", () => {
           id: expect.any(Number),
           username: "scotts",
         });
+
+        global.authToken = token;
       });
     });
 
@@ -1211,23 +1230,14 @@ describe("/api/users/logout", () => {
   describe("POST", () => {
     describe("STATUS 200", () => {
       test("should log out user successfully", async () => {
-        const loginData = {
-          username: "scotts",
-          password: "your_password_here102",
-        };
-        const loginResponse = await request(app)
-          .post("/api/users/login")
-          .send(loginData)
-          .expect(200);
-        const { token } = loginResponse.body;
-
         const response = await request(app)
           .post("/api/users/logout")
-          .set("Authorization", `Bearer ${token}`)
+          .set("Authorization", `Bearer ${global.authToken}`)
           .expect(200);
         const { msg } = response.body;
 
         expect(msg).toEqual("Logged out successfully");
+        global.authToken = null;
       });
     });
 

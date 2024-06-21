@@ -19,6 +19,12 @@ exports.checkGenreExists = async (genre) => {
 };
 
 exports.insertGenre = async ({ genre }) => {
+  if (/\d/.test(genre)) {
+    return Promise.reject({
+      code: 400,
+      msg: "Genre must not contain numbers!",
+    });
+  }
   const { rows } = await db.query(
     `INSERT INTO genres (genre) VALUES ($1) RETURNING *`,
     [genre]

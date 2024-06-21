@@ -93,6 +93,9 @@ This repo was created using:
 | <sub>jest-sorted</sub>   | `^1.0.15` | _Adds sort testing for jest_                           |
 | <sub>supertest</sub>     | `^7.0.0`  | _Adds simplified web request testing_                  |
 | <sub>cross-env</sub>     | `^7.0.3`  | _Sets and uses environment variables across platforms_ |
+| swagger-jsdoc            | `^6.2.8`  | _Generates Swagger/OpenAPI specification from JSDoc_   |
+| swagger-themes           | `^1.4.3`  | _Themes for Swagger UI_                                |
+| swagger-ui-express       | `^5.0.1`  | _Middleware to serve Swagger UI with Express_          |
 
 ### 3. Seed local databases
 
@@ -129,3 +132,11 @@ The project was created using the listed versions of Node, PostgreSQL and npm:
 - [npm](https://www.npmjs.com/) (version 10.7.0)
 
 It might work with other versions but they haven't been tested.
+
+--
+
+## 📘 Swagger Documentation
+
+Swagger documentation is automatically generated and available to view with the API. You can access the Swagger UI for interactive documentation by visiting:
+
+[Swagger UI](https://swagger.io/)

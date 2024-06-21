@@ -501,7 +501,7 @@ describe("/api/books/:book_id", () => {
           .get("/api/books")
           .set("Authorization", `Bearer ${token}`);
         const initialBookCount = initialBooksResponse.body.total_count;
-        const deleteResponse = await request(app)
+        await request(app)
           .delete("/api/books/1")
           .set("Authorization", `Bearer ${token}`)
           .expect(204);
@@ -958,41 +958,6 @@ describe("/api/reviews/:review_id", () => {
 });
 
 describe("/api/users", () => {
-  describe("GET", () => {
-    describe("STATUS 200", () => {
-      test("should respond with array of users", async () => {
-        const userData = await request(app).get("/api/users").expect(200);
-        const { users } = userData.body;
-
-        users.forEach((user) => {
-          expect(user).toEqual(
-            expect.objectContaining({
-              email: expect.any(String),
-              username: expect.any(String),
-              password: expect.any(String),
-              first_name: expect.any(String),
-              last_name: expect.any(String),
-              avatar_url: expect.any(String),
-            })
-          );
-        });
-      });
-    });
-
-    describe("STATUS ERROR 400", () => {
-      test("should respond with error 404 when invalid endpoint is given", async () => {
-        const response = await request(app)
-          .get("/api/invalidEndpoint")
-          .expect(404);
-        const { msg } = response.body;
-
-        expect(msg).toEqual(
-          "Please enter a valid link. Go back and try again."
-        );
-      });
-    });
-  });
-
   describe("POST", () => {
     describe("STATUS 201", () => {
       test("should return an object with a new user", async () => {

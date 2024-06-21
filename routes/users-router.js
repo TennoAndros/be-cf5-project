@@ -2,7 +2,6 @@ const usersRouter = require("express").Router();
 const authenticateToken = require("../middleware/auth-middleware");
 
 const {
-  getUsers,
   getUserByUsername,
   postUser,
   deleteUserByUsername,
@@ -10,7 +9,7 @@ const {
 
 const { login, logout } = require("../controllers/auth-controllers");
 
-usersRouter.route("/").get(getUsers).post(postUser);
+usersRouter.route("/").post(postUser);
 usersRouter
   .route("/:username")
   .get(getUserByUsername)

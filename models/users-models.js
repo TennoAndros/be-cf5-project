@@ -1,10 +1,5 @@
 const db = require("../db/connection");
 
-exports.selectUsers = async () => {
-  const { rows } = await db.query(`SELECT * FROM users`);
-  return rows;
-};
-
 exports.selectUserByUsername = async (username) => {
   if (!username) {
     return Promise.reject({ code: 400, msg: "Username required!" });

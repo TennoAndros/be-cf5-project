@@ -8,6 +8,12 @@ To host the database i used [Supabase](https://supabase.com/) and the live versi
 
 Live version can be found hosted [here](https://be-cf5-project.onrender.com/api).
 
+### 📘 Swagger Documentation
+
+Swagger documentation is automatically generated and available to view with the API. You can access the Swagger UI for interactive documentation by visiting:
+
+[Swagger UI](https://be-cf5-project.onrender.com/api-docs/)
+
 **_It might take some time for the server to "wake-up"._**
 
 ---
@@ -132,11 +138,3 @@ The project was created using the listed versions of Node, PostgreSQL and npm:
 - [npm](https://www.npmjs.com/) (version 10.7.0)
 
 It might work with other versions but they haven't been tested.
-
---
-
-## 📘 Swagger Documentation
-
-Swagger documentation is automatically generated and available to view with the API. You can access the Swagger UI for interactive documentation by visiting:
-
-[Swagger UI](https://swagger.io/)

@@ -46,8 +46,6 @@ This project is a Node.js and Express application using a RESTful API and MVC ar
 
 - `DELETE /api/reviews/:review_id` ➡️ DELETE a specific review using its review_id as parameter.
 
-- `GET /api/users` ➡️ GET a list of the registered users.
-
 - `POST /api/users` ➡️ POST a new user.
 
 - `GET /api/users/:username` ➡️ GET a specific user using a username parameter.

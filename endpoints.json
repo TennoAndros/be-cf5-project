@@ -161,23 +161,6 @@
     "exampleResponse": "does not send a response"
   },
 
-  "GET /api/users": {
-    "description": "Serves an array of the users as objects.",
-    "queries": [],
-    "exampleResponse": {
-      "users": [
-        {
-          "email": "something1@outlook.com",
-          "username": "smithrose",
-          "password": "your_password_here123",
-          "first_name": "Rose",
-          "last_name": "Smith",
-          "avatar_url": "https://randomuser.me/api/portraits/women/1.jpg"
-        }
-      ]
-    }
-  },
-
   "POST /api/users": {
     "description": "Posts a new user and serves an object with the new created user",
     "queries": [],

@@ -699,52 +699,6 @@ paths:
                   type: string
                   example: Review Not Found!
 /api/users:
-  get:
-    summary: Get all users
-    tags:
-      - Users
-    responses:
-      "200":
-        description: Array of users
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                users:
-                  type: array
-                  items:
-                    type: object
-                    properties:
-                      email:
-                        type: string
-                        example: user@example.com
-                      username:
-                        type: string
-                        example: username123
-                      password:
-                        type: string
-                        example: encrypted_password
-                      first_name:
-                        type: string
-                        example: John
-                      last_name:
-                        type: string
-                        example: Doe
-                      avatar_url:
-                        type: string
-                        example: https://randomuser.me/api/portraits/men/1.jpg
-      "404":
-        description: Invalid endpoint
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                msg:
-                  type: string
-                  example: Please enter a valid link. Go back and try again.
-
   post:
     summary: Create a new user
     tags:

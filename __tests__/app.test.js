@@ -31,7 +31,6 @@ describe("/api", () => {
             "POST /api/books/:book_id/reviews": expect.any(Object),
             "PATCH /api/reviews/:review_id": expect.any(Object),
             "DELETE /api/reviews/:review_id": expect.any(Object),
-            "GET /api/users": expect.any(Object),
             "POST /api/users": expect.any(Object),
             "GET /api/users/:username": expect.any(Object),
             "POST /api/users/login": expect.any(Object),

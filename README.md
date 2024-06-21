@@ -89,6 +89,7 @@ This repo was created using:
 | <sub>pg</sub>           | `^8.12.0` | _Queries PostgreSQL database_                 |
 | <sub>jsonwebtoken</sub> | `^9.0.2`  | _Creates and verifies JSON Web Tokens_        |
 | <sub>bcrypt</sub>       | `^5.1.1`  | _Hashes passwords for secure storage_         |
+| <sub>cors</sub>         | `^2.8.5`  | _Cross-origin resource sharing_               |
 
 **-Development dependencies-**
 

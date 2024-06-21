@@ -2,6 +2,7 @@ const express = require("express");
 const apiRouter = require("./routes/api-router");
 const { specs, swaggerUi } = require("./utils/swagger");
 const { SwaggerTheme, SwaggerThemeNameEnum } = require("swagger-themes");
+const cors = require("cors");
 
 const {
   handleInvalidEndpoint,
@@ -10,6 +11,7 @@ const {
 } = require("./controllers/errors-controllers");
 
 const app = express();
+app.use(cors());
 
 app.use(express.json());
 app.use("/api", apiRouter);

@@ -3,8 +3,6 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/users-models");
 const SECRET_KEY = process.env.JWT_SECRET;
 
-
-
 if (!SECRET_KEY) {
   throw new Error("JWT_SECRET is not defined");
 }
@@ -41,7 +39,12 @@ exports.login = async (req, res, next) => {
       token,
       user: {
         id: user.user_id,
+        email: user.email,
         username: user.username,
+        password: user.password,
+        first_name: user.first_name,
+        last_name: user.last_name,
+        avatar_url: user.avatar_url,
       },
     });
   } catch (err) {

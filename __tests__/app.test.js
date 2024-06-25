@@ -4,6 +4,7 @@ const app = require("../app");
 const data = require("../db/data/test-data");
 const seed = require("../db/seeds/seed");
 const { generateToken } = require("../utils/utils");
+const bcrypt = require("bcrypt");
 
 beforeEach(() => {
   return seed(data);
@@ -959,7 +960,7 @@ describe("/api/reviews/:review_id", () => {
 describe("/api/users", () => {
   describe("POST", () => {
     describe("STATUS 201", () => {
-      test("should return an object with a new user", async () => {
+      test("should return an object with a new user with hashed password", async () => {
         const userToPost = {
           email: "somethinggg1@outlook.com",
           username: "mariakalas",
@@ -976,7 +977,22 @@ describe("/api/users", () => {
         expect(newUser).toEqual({
           ...userToPost,
           user_id: expect.any(Number),
+          password: expect.any(String),
         });
+
+        const { rows } = await db.query(
+          "SELECT * FROM users WHERE username=$1",
+          [userToPost.username]
+        );
+        const dbUser = rows[0];
+
+        expect(dbUser.password).not.toBe(userToPost.password);
+
+        const isPasswordHashed = await bcrypt.compare(
+          userToPost.password,
+          dbUser.password
+        );
+        expect(isPasswordHashed).toBe(true);
       });
     });
 
@@ -984,26 +1000,23 @@ describe("/api/users", () => {
       test("should respond with error 400 when empty object is given", async () => {
         const response = await request(app).post("/api/users").expect(400);
         const { msg } = response.body;
-
         expect(msg).toEqual("Missing Required Fields!");
       });
 
-      test("should first", async () => {
+      test("should respond with error 400 when required fields are missing", async () => {
         const postUser = {
-          email: expect.any(String),
-          username: expect.any(String),
-          password: expect.any(String),
+          email: "somethinggg1@outlook.com",
+          username: "mariakalas",
         };
         const response = await request(app)
           .post("/api/users")
           .send(postUser)
           .expect(400);
         const { msg } = response.body;
-
         expect(msg).toEqual("Missing Required Fields!");
       });
 
-      test("should respond with error 400 if user already exists", async () => {
+      test("should respond with error 409 if user already exists", async () => {
         const postUser = {
           email: "something8@outlook.com",
           username: "johnsonthomas",
@@ -1017,7 +1030,6 @@ describe("/api/users", () => {
           .send(postUser)
           .expect(409);
         const { msg } = response.body;
-
         expect(msg).toBe("User Already Exists!");
       });
     });
@@ -1044,16 +1056,104 @@ describe("/api/users/:username", () => {
         });
       });
     });
+    describe("STATUS ERROR 400", () => {
+      test("should respond with error 404 when username is valid but doesn't exist in database", async () => {
+        const response = await request(app)
+          .get("/api/users/validUsername")
+          .expect(404);
+        const { msg } = response.body;
+
+        expect(msg).toEqual("User Not Found!");
+      });
+    });
   });
 
-  describe("STATUS ERROR 400", () => {
-    test("should respond with error 404 when username is valid but doesn't exist in database", async () => {
-      const response = await request(app)
-        .get("/api/users/validUsername")
-        .expect(404);
-      const { msg } = response.body;
+  describe("PATCH", () => {
+    describe("STATUS 200", () => {
+      test("should update user information and return updated user object", async () => {
+        const loginResponse = await request(app)
+          .post("/api/users/login")
+          .send({ username: "scotts", password: "your_password_here102" });
+        const token = loginResponse.body.token;
+        const updates = {
+          email: "newemail@domain.com",
+          first_name: "Updated",
+          last_name: "User",
+        };
 
-      expect(msg).toEqual("User Not Found!");
+        const response = await request(app)
+          .patch("/api/users/scotts")
+          .set("Authorization", `Bearer ${token}`)
+          .send(updates)
+          .expect(200);
+
+        const { user } = response.body;
+
+        expect(user).toEqual({
+          user_id: expect.any(Number),
+          email: "newemail@domain.com",
+          username: "scotts",
+          password: expect.any(String),
+          first_name: "Updated",
+          last_name: "User",
+          avatar_url: "https://randomuser.me/api/portraits/women/5.jpg",
+        });
+      });
+    });
+
+    describe("STATUS ERROR 400", () => {
+      test("should respond with error 400 if no valid fields are provided", async () => {
+        const loginResponse = await request(app)
+          .post("/api/users/login")
+          .send({ username: "scotts", password: "your_password_here102" });
+        const token = loginResponse.body.token;
+        const response = await request(app)
+          .patch("/api/users/scotts")
+          .set("Authorization", `Bearer ${token}`)
+          .send({})
+          .expect(400);
+
+        const { msg } = response.body;
+        expect(msg).toEqual("No valid fields to update!");
+      });
+
+      test("should respond with error 404 if user is not found", async () => {
+        const loginResponse = await request(app)
+          .post("/api/users/login")
+          .send({ username: "scotts", password: "your_password_here102" });
+        const token = loginResponse.body.token;
+        const updates = {
+          email: "newemail@domain.com",
+        };
+
+        const response = await request(app)
+          .patch("/api/users/nonexistentuser")
+          .set("Authorization", `Bearer ${token}`)
+          .send(updates)
+          .expect(404);
+
+        const { msg } = response.body;
+        expect(msg).toEqual("User Not Found!");
+      });
+
+      test("should respond with error 403 if user tries to update another user's account", async () => {
+        const loginResponse = await request(app)
+          .post("/api/users/login")
+          .send({ username: "scotts", password: "your_password_here102" });
+        const token = loginResponse.body.token;
+        const updates = {
+          email: "newemail@domain.com",
+        };
+
+        const response = await request(app)
+          .patch("/api/users/smithrose")
+          .set("Authorization", `Bearer ${token}`)
+          .send(updates)
+          .expect(403);
+
+        const { msg } = response.body;
+        expect(msg).toEqual("Forbidden - You can only edit your own account");
+      });
     });
   });
 
@@ -1125,7 +1225,12 @@ describe("/api/users/login", () => {
         expect(token).toBeTruthy();
         expect(user).toEqual({
           id: expect.any(Number),
+          email: "something5@outlook.com",
           username: "scotts",
+          password: expect.any(String),
+          first_name: "Sophia",
+          last_name: "Scott",
+          avatar_url: "https://randomuser.me/api/portraits/women/5.jpg",
         });
 
         global.authToken = token;

@@ -831,7 +831,97 @@ paths:
                 msg:
                   type: string
                   example: User Not Found!
-
+  patch:
+    summary: Update user information by username
+    tags:
+      - Users
+    parameters:
+      - in: path
+        name: username
+        required: true
+        schema:
+          type: string
+        description: Username of the user to update
+    security:
+      - bearerAuth: []
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              email:
+                type: string
+                example: newemail@domain.com
+              first_name:
+                type: string
+                example: Updated
+              last_name:
+                type: string
+                example: User
+    responses:
+      "200":
+        description: User updated successfully
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: object
+                  properties:
+                    user_id:
+                      type: integer
+                      example: 1
+                    email:
+                      type: string
+                      example: newemail@domain.com
+                    username:
+                      type: string
+                      example: smithrose
+                    password:
+                      type: string
+                      example: encrypted_password
+                    first_name:
+                      type: string
+                      example: Updated
+                    last_name:
+                      type: string
+                      example: User
+                    avatar_url:
+                      type: string
+                      example: https://randomuser.me/api/portraits/women/1.jpg
+      "400":
+        description: Bad Request
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                msg:
+                  type: string
+                  example: No valid fields to update!
+      "403":
+        description: Forbidden - You can only edit your own account
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                msg:
+                  type: string
+                  example: Forbidden - You can only edit your own account
+      "404":
+        description: Not Found
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                msg:
+                  type: string
+                  example: User Not Found
   delete:
     summary: Delete user by username
     tags:

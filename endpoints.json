@@ -192,6 +192,34 @@
       ]
     }
   },
+  "PATCH /api/users/:username": {
+    "description": "Updates user information matching the given username",
+    "queries": [],
+    "exampleRequest": {
+      "email": "newemail@domain.com",
+      "first_name": "Updated",
+      "last_name": "User"
+    },
+    "exampleResponse": {
+      "user": {
+        "user_id": 1,
+        "email": "newemail@domain.com",
+        "username": "scotts",
+        "password": "encrypted_password",
+        "first_name": "Updated",
+        "last_name": "User",
+        "avatar_url": "https://randomuser.me/api/portraits/women/5.jpg"
+      }
+    }
+  },
+
+  "DELETE /api/users/:username": {
+    "description": "Deletes user matching the given username when authenticated and authorized",
+    "queries": [],
+    "exampleResponse": {
+      "msg": "User deleted successfully"
+    }
+  },
 
   "POST /api/users/login": {
     "description": "Logs in a user and responds with a JWT token if successful",

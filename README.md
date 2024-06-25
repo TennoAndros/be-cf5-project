@@ -50,7 +50,9 @@ This project is a Node.js and Express application using a RESTful API and MVC ar
 
 - `GET /api/users/:username` ➡️ GET a specific user using a username parameter.
 
-- `DELETE /api/reviews/:username` ➡️ DELETE a user if you are the owen .
+- `PATCH /api/users/:username` ➡️ PATCH a user if you are the owner, changing the info.
+
+- `DELETE /api/reviews/:username` ➡️ DELETE a user if you are the owner.
 
 - `POST /api/users/login` ➡️ POST Logs in a user and responds with a JWT token if successful.
 

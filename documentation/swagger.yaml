@@ -1065,9 +1065,6 @@ paths:
                     avatar_url:
                       type: string
                       example: https://randomuser.me/api/portraits/women/5.jpg
-                token:
-                  type: string
-                  example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
             headers:
               Set-Cookie:
                 schema:

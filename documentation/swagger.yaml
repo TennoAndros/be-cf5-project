@@ -684,52 +684,52 @@ paths:
                 msg:
                   type: string
                   example: "Forbidden - You can only edit your own reviews"
-    delete:
-      summary: Delete a review
-      description: Delete a review if you are the owner.
-      tags:
-        - Reviews
-      parameters:
-        - in: path
-          name: review_id
-          required: true
-          schema:
-            type: integer
-            example: 2
-          description: ID of the review to delete
-      responses:
-        "204":
-          description: Review deleted successfully
-        "400":
-          description: Bad request
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  msg:
-                    type: string
-                    example: "Forbidden - You can only delete your own reviews"
-        "401":
-          description: Unauthorized
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  msg:
-                    type: string
-                    example: "No Authentication Token provided!"
-        "404":
-          description: Not found
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  msg:
-                    type: string
-                    example: "Review Not Found!"
+  delete:
+    summary: Delete a review
+    description: Delete a review if you are the owner.
+    tags:
+      - Reviews
+    parameters:
+      - in: path
+        name: review_id
+        required: true
+        schema:
+          type: integer
+          example: 2
+        description: ID of the review to delete
+    responses:
+      "204":
+        description: Review deleted successfully
+      "400":
+        description: Bad request
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                msg:
+                  type: string
+                  example: "Forbidden - You can only delete your own reviews"
+      "401":
+        description: Unauthorized
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                msg:
+                  type: string
+                  example: "No Authentication Token provided!"
+      "404":
+        description: Not found
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                msg:
+                  type: string
+                  example: "Review Not Found!"
 /api/users:
   post:
     summary: Create a new user

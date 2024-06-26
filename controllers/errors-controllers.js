@@ -25,7 +25,7 @@ exports.handleCustomErrors = (err, req, res, next) => {
     res.status(401).send({ msg: "Invalid credentials!" });
   } else if (
     err.msg === "No Authorization header provided!" ||
-    err.msg === "Malformed Authorization header!"
+    err.msg === "No Authentication Token provided!"
   ) {
     res.status(401).send({ msg: "Authentication failed!" });
   } else next(err);

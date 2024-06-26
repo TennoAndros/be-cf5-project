@@ -15,12 +15,13 @@ tags:
 paths:
   /api/genres:
     get:
-      summary: Get all genres
+      summary: Get a list of genres
+      description: Retrieve a list of all book genres.
       tags:
         - Genres
       responses:
         "200":
-          description: An array of genre objects
+          description: Successfully retrieved list of genres
           content:
             application/json:
               schema:
@@ -33,8 +34,9 @@ paths:
                       properties:
                         genre:
                           type: string
+                          example: "Mystery"
         "404":
-          description: Invalid endpoint
+          description: Not Found
           content:
             application/json:
               schema:
@@ -44,11 +46,12 @@ paths:
                     type: string
                     example: "Please enter a valid link. Go back and try again."
     post:
-      summary: Add a new genre
+      summary: Create a new genre
+      description: Create a new genre entry.
       tags:
         - Genres
       security:
-        - bearerAuth: []
+        - cookieAuth: []
       requestBody:
         required: true
         content:
@@ -58,9 +61,10 @@ paths:
               properties:
                 genre:
                   type: string
+                  example: "Satire"
       responses:
         "201":
-          description: A new genre object
+          description: Genre created successfully
           content:
             application/json:
               schema:
@@ -71,8 +75,9 @@ paths:
                     properties:
                       genre:
                         type: string
+                        example: "Satire"
         "400":
-          description: Bad request
+          description: Bad Request
           content:
             application/json:
               schema:
@@ -85,6 +90,8 @@ paths:
                         value: "Missing Required Fields!"
                       genre_exists:
                         value: "Genre Already Exists!"
+                      invalid_genre:
+                        value: "Genre must not contain numbers!"
         "401":
           description: Unauthorized
           content:
@@ -94,43 +101,48 @@ paths:
                 properties:
                   msg:
                     type: string
-                    example: "No Authorization header or No Authentication Token provided!"
+                    example: "No Authentication Token provided!"
 /api/books:
   get:
-    summary: Get all books
+    summary: Get a list of books
+    description: Retrieve a list of books with optional filtering and sorting.
     tags:
       - Books
     parameters:
-      - name: genre
-        in: query
+      - in: query
+        name: genre
+        schema:
+          type: string
         description: Filter books by genre
+      - in: query
+        name: sort_by
         schema:
           type: string
-      - name: sort_by
-        in: query
-        description: Sort books by field
+        enum: [avg_rating, review_count]
+        description: Sort books by average rating or review count
+      - in: query
+        name: order
         schema:
           type: string
-          enum: [avg_rating, review_count, title]
-      - name: order
-        in: query
-        description: Order of sorting
-        schema:
-          type: string
-          enum: [asc, desc]
-      - name: limit
-        in: query
-        description: Limit the number of books returned
+        enum: [asc, desc]
+        description: Sorting order (ascending or descending)
+      - in: query
+        name: limit
         schema:
           type: integer
-      - name: p
-        in: query
-        description: Page number for pagination
+          minimum: 0
+          example: 10
+        description: Maximum number of books to return (default 10, 0 for all)
+      - in: query
+        name: p
         schema:
           type: integer
+          minimum: 1
+          example: 1
+        description: Page number for pagination (default 1)
     responses:
       "200":
-        description: An array of book objects
+        description: Successfully retrieved list of books
         content:
           application/json:
             schema:
@@ -141,30 +153,41 @@ paths:
                   items:
                     type: object
                     properties:
-                      amazon_book_url:
-                        type: string
-                      author:
-                        type: string
-                      book_id:
-                        type: number
-                      description:
-                        type: string
-                      genre:
-                        type: string
-                      image_url:
-                        type: string
-                      isbn:
-                        type: string
-                      publisher:
-                        type: string
-                      avg_rating:
-                        type: number
                       title:
                         type: string
-                      review_count:
+                        example: "CAMINO GHOSTS"
+                      image_url:
+                        type: string
+                        example: "https://storage.googleapis.com/du-prd/books/images/9780385545990.jpg"
+                      description:
+                        type: string
+                        example: "The third book in the Camino series. The last living inhabitant of a deserted island gets in the way of a resort developer."
+                      author:
+                        type: string
+                        example: "John Grisham"
+                      book_id:
                         type: number
+                        example: 1
+                      publisher:
+                        type: string
+                        example: "Doubleday"
+                      amazon_book_url:
+                        type: string
+                        example: "https://www.amazon.com/dp/0385545991?tag=thenewyorktim-20"
+                      isbn:
+                        type: string
+                        example: "0385545991"
+                      genre:
+                        type: string
+                        example: "Mystery"
+                      review_count:
+                        type: integer
+                        example: 2
+                      avg_rating:
+                        type: number
+                        example: 4.5
                 total_count:
-                  type: number
+                  type: integer
                   example: 12
       "400":
         description: Bad request
@@ -175,17 +198,7 @@ paths:
               properties:
                 msg:
                   type: string
-                  examples:
-                    invalid_order:
-                      value: "Please enter a valid order. Order should be ASC(ascending) or DESC(descending)"
-                    invalid_sort_by:
-                      value: "Please enter a valid sort order!"
-                    invalid_limit:
-                      value: "Please enter a valid limit. Limit should be a number!"
-                    invalid_p:
-                      value: "Please enter a valid p. P should be a number!"
-                    negative_limit_or_p:
-                      value: "Limit and p must be positive numbers!"
+                  example: "Please enter a valid order. Order should be ASC(ascending) or DESC(descending)"
       "404":
         description: Not found
         content:
@@ -195,17 +208,14 @@ paths:
               properties:
                 msg:
                   type: string
-                  examples:
-                    genre_not_found:
-                      value: "Genre Not Found!"
-                    page_exceeds_total:
-                      value: "Please provide valid values. Page(p) cannot be greater than the total number of books!"
+                  example: "Genre Not Found!"
   post:
-    summary: Add a new book
+    summary: Create a new book
+    description: Create a new book entry.
     tags:
       - Books
     security:
-      - bearerAuth: []
+      - cookieAuth: []
     requestBody:
       required: true
       content:
@@ -215,23 +225,31 @@ paths:
             properties:
               title:
                 type: string
+                example: "CAMINO GHOSTS 2"
               image_url:
                 type: string
+                example: "https://storage.googleapis.com/du-prd/books/images/9780385545990.jpg"
               description:
                 type: string
+                example: "The fourth book in the Camino series. The last living inhabitant of a deserted island gets in the way of a resort developer."
               author:
                 type: string
+                example: "John Grisham"
               publisher:
                 type: string
+                example: "Doubleday"
               amazon_book_url:
                 type: string
+                example: "https://www.amazon.com/dp/0365545991?tag=thenewyorktim-20"
               isbn:
                 type: string
+                example: "0365545991"
               genre:
                 type: string
+                example: "Romance"
     responses:
       "201":
-        description: A new book object
+        description: Book created successfully
         content:
           application/json:
             schema:
@@ -242,25 +260,33 @@ paths:
                   properties:
                     title:
                       type: string
+                      example: "CAMINO GHOSTS 2"
                     image_url:
                       type: string
+                      example: "https://storage.googleapis.com/du-prd/books/images/9780385545990.jpg"
                     description:
                       type: string
+                      example: "The fourth book in the Camino series. The last living inhabitant of a deserted island gets in the way of a resort developer."
                     author:
                       type: string
+                      example: "John Grisham"
                     publisher:
                       type: string
+                      example: "Doubleday"
                     amazon_book_url:
                       type: string
+                      example: "https://www.amazon.com/dp/0365545991?tag=thenewyorktim-20"
                     isbn:
                       type: string
+                      example: "0365545991"
                     genre:
                       type: string
+                      example: "Romance"
                     book_id:
                       type: number
                       example: 13
                     review_count:
-                      type: number
+                      type: integer
                       example: 0
       "400":
         description: Bad request
@@ -271,11 +297,10 @@ paths:
               properties:
                 msg:
                   type: string
-                  examples:
-                    no_book_submitted:
-                      value: "No Book Submitted!"
-                    genre_not_exist:
-                      value: "Bad Request!"
+                  example: "No Book Submitted!"
+                msg2:
+                  type: string
+                  example: "Bad Request!"
       "401":
         description: Unauthorized
         content:
@@ -285,23 +310,24 @@ paths:
               properties:
                 msg:
                   type: string
-                  example: "No Authorization header or No Authentication Token provided!"
+                  example: "No Authentication Token provided!"
 /api/books/{book_id}:
   get:
     summary: Get a book by ID
+    description: Retrieve a book based on its ID.
     tags:
       - Books
     parameters:
-      - name: book_id
-        in: path
+      - in: path
+        name: book_id
         required: true
-        description: ID of the book to retrieve
         schema:
           type: integer
           example: 1
+        description: ID of the book to retrieve
     responses:
       "200":
-        description: A book object
+        description: Successfully retrieved book
         content:
           application/json:
             schema:
@@ -312,23 +338,31 @@ paths:
                   properties:
                     title:
                       type: string
+                      example: "CAMINO GHOSTS"
                     image_url:
                       type: string
+                      example: "https://storage.googleapis.com/du-prd/books/images/9780385545990.jpg"
                     description:
                       type: string
+                      example: "The third book in the Camino series. The last living inhabitant of a deserted island gets in the way of a resort developer."
                     author:
                       type: string
+                      example: "John Grisham"
                     book_id:
-                      type: integer
+                      type: number
                       example: 1
                     publisher:
                       type: string
+                      example: "Doubleday"
                     amazon_book_url:
                       type: string
+                      example: "https://www.amazon.com/dp/0385545991?tag=thenewyorktim-20"
                     isbn:
                       type: string
+                      example: "0385545991"
                     genre:
                       type: string
+                      example: "Mystery"
                     review_count:
                       type: integer
                       example: 2
@@ -346,7 +380,7 @@ paths:
                   type: string
                   example: "Bad Request!"
       "404":
-        description: Book not found
+        description: Not found
         content:
           application/json:
             schema:
@@ -357,21 +391,22 @@ paths:
                   example: "Book Not Found!"
   delete:
     summary: Delete a book by ID
+    description: Delete a book specified by its ID. Requires admin privileges.
     tags:
       - Books
-    security:
-      - bearerAuth: []
     parameters:
-      - name: book_id
-        in: path
+      - in: path
+        name: book_id
         required: true
-        description: ID of the book to delete
         schema:
           type: integer
           example: 1
+        description: ID of the book to delete
+    security:
+      - cookieAuth: []
     responses:
       "204":
-        description: Book successfully deleted
+        description: Book deleted successfully
       "400":
         description: Bad request
         content:
@@ -393,7 +428,7 @@ paths:
                   type: string
                   example: "Unauthorized - Only admin can delete books!"
       "404":
-        description: Book not found
+        description: Not found
         content:
           application/json:
             schema:
@@ -404,34 +439,33 @@ paths:
                   example: "Book doesn't exist!"
 /api/books/{book_id}/reviews:
   get:
-    summary: Get reviews for a book by ID
+    summary: Get reviews for a specific book
+    description: Retrieve reviews associated with a specific book based on book_id.
     tags:
       - Reviews
     parameters:
-      - name: book_id
-        in: path
+      - in: path
+        name: book_id
         required: true
+        schema:
+          type: integer
+          example: 3
         description: ID of the book to retrieve reviews for
+      - in: query
+        name: limit
         schema:
           type: integer
-          example: 3
-      - name: limit
-        in: query
-        required: false
-        description: Maximum number of reviews to return (default is 10)
-        schema:
-          type: integer
-          example: 3
-      - name: p
-        in: query
-        required: false
-        description: Page number for pagination (default is 1)
+          example: 10
+        description: Maximum number of reviews to retrieve (default is 10)
+      - in: query
+        name: p
         schema:
           type: integer
           example: 1
+        description: Page number for pagination
     responses:
       "200":
-        description: Array of reviews for the specified book
+        description: Successfully retrieved reviews
         content:
           application/json:
             schema:
@@ -443,25 +477,25 @@ paths:
                     type: object
                     properties:
                       review_id:
-                        type: integer
+                        type: number
                         example: 1
-                      body:
-                        type: string
-                        example: "Great book, loved it!"
                       username:
                         type: string
-                        example: "user123"
+                        example: smithrose
                       created_at:
                         type: string
-                        example: "2024-06-20T12:34:56.000Z"
+                        example: "2024-06-26T12:00:00Z"
                       rating:
                         type: number
-                        example: 4
+                        example: 5
+                      body:
+                        type: string
+                        example: "Great book!"
                       book_id:
-                        type: integer
+                        type: number
                         example: 3
                 total_count:
-                  type: integer
+                  type: number
                   example: 10
       "400":
         description: Bad request
@@ -484,19 +518,18 @@ paths:
                   type: string
                   example: "Book Not Found!"
   post:
-    summary: Add a review for a book
+    summary: Add a new review to a book
+    description: Add a review to a book specified by book_id.
     tags:
       - Reviews
-    security:
-      - bearerAuth: []
     parameters:
-      - name: book_id
-        in: path
+      - in: path
+        name: book_id
         required: true
-        description: ID of the book to add the review to
         schema:
           type: integer
           example: 1
+        description: ID of the book to add a review to
     requestBody:
       required: true
       content:
@@ -506,13 +539,16 @@ paths:
             properties:
               body:
                 type: string
-                example: "Great book, loved it!"
+                example: "Great book!"
               rating:
                 type: integer
-                example: 4
+                example: 5
+            required:
+              - body
+              - rating
     responses:
       "201":
-        description: Review successfully added
+        description: Review added successfully
         content:
           application/json:
             schema:
@@ -522,22 +558,22 @@ paths:
                   type: object
                   properties:
                     review_id:
-                      type: integer
+                      type: number
                       example: 1
-                    body:
-                      type: string
-                      example: "Great book, loved it!"
                     username:
                       type: string
-                      example: "user123"
+                      example: smithrose
                     created_at:
                       type: string
-                      example: "2024-06-20T12:34:56.000Z"
+                      example: "2024-06-26T12:00:00Z"
                     rating:
-                      type: integer
-                      example: 4
+                      type: number
+                      example: 5
+                    body:
+                      type: string
+                      example: "Great book!"
                     book_id:
-                      type: integer
+                      type: number
                       example: 1
       "400":
         description: Bad request
@@ -558,7 +594,7 @@ paths:
               properties:
                 msg:
                   type: string
-                  example: "No Authorization header or No Authentication Token provided!"
+                  example: "No Authentication Token provided!"
       "404":
         description: Not found
         content:
@@ -571,17 +607,17 @@ paths:
                   example: "Book Not Found!"
 /api/reviews/{review_id}:
   patch:
-    summary: Update a review by review_id
+    summary: Update a review
+    description: Update the rating and body of a review if you are the owner.
     tags:
       - Reviews
-    security:
-      - bearerAuth: []
     parameters:
-      - name: review_id
-        in: path
+      - in: path
+        name: review_id
         required: true
         schema:
           type: integer
+          example: 2
         description: ID of the review to update
     requestBody:
       required: true
@@ -592,8 +628,10 @@ paths:
             properties:
               body:
                 type: string
+                example: Test
               rating:
                 type: integer
+                example: 3
             required:
               - body
               - rating
@@ -609,20 +647,25 @@ paths:
                   type: object
                   properties:
                     review_id:
-                      type: integer
+                      type: number
+                      example: 2
                     username:
                       type: string
+                      example: smithrose
                     created_at:
                       type: string
-                      format: date-time
+                      example: "2024-06-26T12:00:00Z"
                     book_id:
-                      type: integer
+                      type: number
+                      example: 1
                     body:
                       type: string
+                      example: Test
                     rating:
                       type: integer
+                      example: 3
       "400":
-        description: Bad Request
+        description: Bad request
         content:
           application/json:
             schema:
@@ -630,7 +673,7 @@ paths:
               properties:
                 msg:
                   type: string
-                  example: Bad Request!
+                  example: "Missing required fields!"
       "403":
         description: Forbidden
         content:
@@ -640,67 +683,57 @@ paths:
               properties:
                 msg:
                   type: string
-                  example: Forbidden - You can only edit your own reviews
-
-  delete:
-    summary: Delete a review by review_id
-    tags:
-      - Reviews
-    security:
-      - bearerAuth: []
-    parameters:
-      - name: review_id
-        in: path
-        required: true
-        schema:
-          type: integer
-        description: ID of the review to delete
-    responses:
-      "204":
-        description: Review successfully deleted
-      "400":
-        description: Bad Request
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                msg:
-                  type: string
-                  example: Bad Request!
-      "401":
-        description: Unauthorized
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                msg:
-                  type: string
-                  example: No Authorization header or No Authentication Token provided!
-      "403":
-        description: Forbidden
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                msg:
-                  type: string
-                  example: Forbidden - You can only delete your own reviews
-      "404":
-        description: Review Not Found
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                msg:
-                  type: string
-                  example: Review Not Found!
+                  example: "Forbidden - You can only edit your own reviews"
+    delete:
+      summary: Delete a review
+      description: Delete a review if you are the owner.
+      tags:
+        - Reviews
+      parameters:
+        - in: path
+          name: review_id
+          required: true
+          schema:
+            type: integer
+            example: 2
+          description: ID of the review to delete
+      responses:
+        "204":
+          description: Review deleted successfully
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  msg:
+                    type: string
+                    example: "Forbidden - You can only delete your own reviews"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  msg:
+                    type: string
+                    example: "No Authentication Token provided!"
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  msg:
+                    type: string
+                    example: "Review Not Found!"
 /api/users:
   post:
     summary: Create a new user
+    description: Endpoint to register a new user.
     tags:
       - Users
     requestBody:
@@ -712,29 +745,29 @@ paths:
             properties:
               email:
                 type: string
-                example: user@example.com
+                example: somethinggg1@outlook.com
               username:
                 type: string
-                example: username123
+                example: mariakalas
               password:
                 type: string
                 example: your_password_here123
               first_name:
                 type: string
-                example: John
+                example: Maria
               last_name:
                 type: string
-                example: Doe
+                example: Kalas
               avatar_url:
                 type: string
-                example: https://randomuser.me/api/portraits/men/1.jpg
+                example: https://randomuser.me/api/portraits/women/14.jpg
             required:
               - email
               - username
               - password
     responses:
       "201":
-        description: New user created
+        description: User successfully created
         content:
           application/json:
             schema:
@@ -743,22 +776,29 @@ paths:
                 newUser:
                   type: object
                   properties:
+                    user_id:
+                      type: number
+                      example: 1
                     email:
                       type: string
+                      example: somethinggg1@outlook.com
                     username:
                       type: string
+                      example: mariakalas
                     password:
                       type: string
+                      example: "$2b$10$CywE6p7gYq2H67ZdQ9K/KOs..5ZzJyQSEiG5Ls3h2ZL9W18mUwv9m"
                     first_name:
                       type: string
+                      example: Maria
                     last_name:
                       type: string
+                      example: Kalas
                     avatar_url:
                       type: string
-                    user_id:
-                      type: integer
+                      example: https://randomuser.me/api/portraits/women/14.jpg
       "400":
-        description: Bad Request
+        description: Bad request
         content:
           application/json:
             schema:
@@ -768,7 +808,7 @@ paths:
                   type: string
                   example: Missing Required Fields!
       "409":
-        description: User already exists
+        description: Conflict
         content:
           application/json:
             schema:
@@ -780,6 +820,7 @@ paths:
 /api/users/{username}:
   get:
     summary: Get user by username
+    description: Retrieve user information based on username.
     tags:
       - Users
     parameters:
@@ -788,10 +829,10 @@ paths:
         required: true
         schema:
           type: string
-        description: Username of the user to retrieve
+        description: Username of the user to retrieve.
     responses:
       "200":
-        description: User object based on username
+        description: Successfully retrieved user
         content:
           application/json:
             schema:
@@ -801,17 +842,17 @@ paths:
                   type: object
                   properties:
                     user_id:
-                      type: integer
+                      type: number
                       example: 1
                     email:
                       type: string
-                      example: user@example.com
+                      example: something1@outlook.com
                     username:
                       type: string
                       example: smithrose
                     password:
                       type: string
-                      example: encrypted_password
+                      example: "$2b$10$CywE6p7gYq2H67ZdQ9K/KOs..5ZzJyQSEiG5Ls3h2ZL9W18mUwv9m"
                     first_name:
                       type: string
                       example: Rose
@@ -820,7 +861,7 @@ paths:
                       example: Smith
                     avatar_url:
                       type: string
-                      example: https://randomuser.me/api/portraits/women/1.jpg
+                      example: "https://randomuser.me/api/portraits/women/1.jpg"
       "404":
         description: User Not Found
         content:
@@ -831,8 +872,10 @@ paths:
                 msg:
                   type: string
                   example: User Not Found!
+
   patch:
-    summary: Update user information by username
+    summary: Update user by username
+    description: Update user information based on username.
     tags:
       - Users
     parameters:
@@ -841,9 +884,7 @@ paths:
         required: true
         schema:
           type: string
-        description: Username of the user to update
-    security:
-      - bearerAuth: []
+        description: Username of the user to update.
     requestBody:
       required: true
       content:
@@ -860,9 +901,10 @@ paths:
               last_name:
                 type: string
                 example: User
+            minProperties: 1
     responses:
       "200":
-        description: User updated successfully
+        description: Successfully updated user
         content:
           application/json:
             schema:
@@ -872,17 +914,17 @@ paths:
                   type: object
                   properties:
                     user_id:
-                      type: integer
+                      type: number
                       example: 1
                     email:
                       type: string
                       example: newemail@domain.com
                     username:
                       type: string
-                      example: smithrose
+                      example: scotts
                     password:
                       type: string
-                      example: encrypted_password
+                      example: "$2b$10$CywE6p7gYq2H67ZdQ9K/KOs..5ZzJyQSEiG5Ls3h2ZL9W18mUwv9m"
                     first_name:
                       type: string
                       example: Updated
@@ -891,9 +933,9 @@ paths:
                       example: User
                     avatar_url:
                       type: string
-                      example: https://randomuser.me/api/portraits/women/1.jpg
+                      example: "https://randomuser.me/api/portraits/women/5.jpg"
       "400":
-        description: Bad Request
+        description: Bad request
         content:
           application/json:
             schema:
@@ -902,8 +944,18 @@ paths:
                 msg:
                   type: string
                   example: No valid fields to update!
+      "404":
+        description: User Not Found
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                msg:
+                  type: string
+                  example: User Not Found!
       "403":
-        description: Forbidden - You can only edit your own account
+        description: Forbidden
         content:
           application/json:
             schema:
@@ -912,18 +964,10 @@ paths:
                 msg:
                   type: string
                   example: Forbidden - You can only edit your own account
-      "404":
-        description: Not Found
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                msg:
-                  type: string
-                  example: User Not Found
+
   delete:
     summary: Delete user by username
+    description: Delete user account based on username.
     tags:
       - Users
     parameters:
@@ -932,14 +976,12 @@ paths:
         required: true
         schema:
           type: string
-        description: Username of the user to delete
-    security:
-      - bearerAuth: []
+        description: Username of the user to delete.
     responses:
       "204":
-        description: User deleted successfully
+        description: User successfully deleted
       "400":
-        description: Bad Request
+        description: Bad request
         content:
           application/json:
             schema:
@@ -947,7 +989,7 @@ paths:
               properties:
                 msg:
                   type: string
-                  example: No Authorization header or No Authentication Token provided!
+                  example: No Authentication Token provided!
       "401":
         description: Unauthorized
         content:
@@ -957,7 +999,7 @@ paths:
               properties:
                 msg:
                   type: string
-                  example: Malformed Authorization header!
+                  example: No Authentication Token provided!
       "403":
         description: Forbidden
         content:
@@ -973,6 +1015,11 @@ paths:
     summary: Login user
     tags:
       - Login
+    description: Endpoint to authenticate a user.
+      Upon successful login, a 'Set-Cookie' header will be returned
+      containing the 'access_token' JWT cookie. This cookie is marked
+      as 'HttpOnly' and 'Secure', meaning it is not accessible via
+      JavaScript (including local storage) for security reasons.
     requestBody:
       required: true
       content:
@@ -986,31 +1033,48 @@ paths:
               password:
                 type: string
                 example: your_password_here102
-          required:
-            - username
-            - password
+            required:
+              - username
+              - password
     responses:
       "200":
-        description: Successful login
+        description: Successfully logged in
         content:
           application/json:
             schema:
               type: object
               properties:
-                token:
-                  type: string
-                  example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoyLCJpYXQiOjE2MjM0OTk4NjJ9.n1gWh1b56wA5iJhbDh9InKf-3kzA8FhZv7iXvXn8Zyw"
                 user:
                   type: object
                   properties:
                     id:
                       type: number
-                      example: 2
+                      example: 1
+                    email:
+                      type: string
+                      example: something5@outlook.com
                     username:
                       type: string
                       example: scotts
+                    first_name:
+                      type: string
+                      example: Sophia
+                    last_name:
+                      type: string
+                      example: Scott
+                    avatar_url:
+                      type: string
+                      example: https://randomuser.me/api/portraits/women/5.jpg
+                token:
+                  type: string
+                  example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+            headers:
+              Set-Cookie:
+                schema:
+                  type: string
+                  example: access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...; HttpOnly; Secure
       "400":
-        description: Bad Request
+        description: Bad request
         content:
           application/json:
             schema:
@@ -1018,7 +1082,7 @@ paths:
               properties:
                 msg:
                   type: string
-                  example: Username required! | Password required!
+                  example: Username required!
       "401":
         description: Unauthorized
         content:
@@ -1041,22 +1105,12 @@ paths:
                   example: User Not Found!
 /api/users/logout:
   post:
-    summary: Log out user
+    summary: Logout user
+    description: Endpoint to log out a user, invalidating the authentication token.
     tags:
       - Logout
-    description: Logs out the authenticated user by invalidating the provided JWT token.
     requestBody:
       required: false
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              token:
-                type: string
-                description: JWT token obtained during login.
-            required:
-              - token
     responses:
       "200":
         description: Successfully logged out
@@ -1077,7 +1131,14 @@ paths:
               properties:
                 msg:
                   type: string
-                  example: >
-                    No Authorization header or No Authentication Token provided!
-                    or
-                    Invalid token! Authentication Failed
+                  example: No Authentication Token provided!
+      "403":
+        description: Forbidden
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                msg:
+                  type: string
+                  example: Invalid token! Authentication Failed

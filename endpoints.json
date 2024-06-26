@@ -205,7 +205,6 @@
         "user_id": 1,
         "email": "newemail@domain.com",
         "username": "scotts",
-        "password": "encrypted_password",
         "first_name": "Updated",
         "last_name": "User",
         "avatar_url": "https://randomuser.me/api/portraits/women/5.jpg"

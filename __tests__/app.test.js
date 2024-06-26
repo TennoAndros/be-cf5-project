@@ -85,7 +85,7 @@ describe("/api/genres", () => {
         };
         const response = await request(app)
           .post("/api/genres")
-          .set("Authorization", `Bearer ${token}`)
+          .set("Cookie", `access_token=${token}`)
           .send(genreToPost)
           .expect(201);
         const { newGenre } = response.body;
@@ -107,9 +107,7 @@ describe("/api/genres", () => {
           .expect(401);
         const { msg } = response.body;
 
-        expect(msg).toEqual(
-          "No Authorization header or No Authentication Token provided!"
-        );
+        expect(msg).toEqual("No Authentication Token provided!");
       });
     });
 
@@ -118,7 +116,7 @@ describe("/api/genres", () => {
       const token = generateToken(user);
       const response = await request(app)
         .post("/api/genres")
-        .set("Authorization", `Bearer ${token}`)
+        .set("Cookie", `access_token=${token}`)
         .send({})
         .expect(400);
       const { msg } = response.body;
@@ -134,7 +132,7 @@ describe("/api/genres", () => {
       };
       const response = await request(app)
         .post("/api/genres")
-        .set("Authorization", `Bearer ${token}`)
+        .set("Cookie", `access_token=${token}`)
         .send(genreToPost)
         .expect(400);
       const { msg } = response.body;
@@ -150,7 +148,7 @@ describe("/api/genres", () => {
       };
       const response = await request(app)
         .post("/api/genres")
-        .set("Authorization", `Bearer ${token}`)
+        .set("Cookie", `access_token=${token}`)
         .send(genreToPost)
         .expect(400);
       const { msg } = response.body;
@@ -353,7 +351,7 @@ describe("/api/books", () => {
         };
         const response = await request(app)
           .post("/api/books")
-          .set("Authorization", `Bearer ${token}`)
+          .set("Cookie", `access_token=${token}`)
           .send(bookToPost)
           .expect(201);
         const { newBook } = response.body;
@@ -387,9 +385,7 @@ describe("/api/books", () => {
           .expect(401);
         const { msg } = response.body;
 
-        expect(msg).toEqual(
-          "No Authorization header or No Authentication Token provided!"
-        );
+        expect(msg).toEqual("No Authentication Token provided!");
       });
 
       test("should respond with error 400 when empty object is given", async () => {
@@ -397,7 +393,7 @@ describe("/api/books", () => {
         const token = generateToken(user);
         const response = await request(app)
           .post("/api/books")
-          .set("Authorization", `Bearer ${token}`)
+          .set("Cookie", `access_token=${token}`)
           .send({})
           .expect(400);
         const { msg } = response.body;
@@ -410,7 +406,7 @@ describe("/api/books", () => {
         const token = generateToken(user);
         const response = await request(app)
           .post("/api/books")
-          .set("Authorization", `Bearer ${token}`)
+          .set("Cookie", `access_token=${token}`)
           .send({
             author: "J.K Rowling",
             title: "Fantastic Beasts",
@@ -440,7 +436,7 @@ describe("/api/books", () => {
         };
         const response = await request(app)
           .post("/api/books")
-          .set("Authorization", `Bearer ${token}`)
+          .set("Cookie", `access_token=${token}`)
           .send(bookToPost)
           .expect(400);
         const { msg } = response.body;
@@ -501,16 +497,16 @@ describe("/api/books/:book_id", () => {
         const token = generateToken(user);
         const initialBooksResponse = await request(app)
           .get("/api/books")
-          .set("Authorization", `Bearer ${token}`);
+          .set("Cookie", `access_token=${token}`);
         const initialBookCount = initialBooksResponse.body.total_count;
         await request(app)
           .delete("/api/books/1")
-          .set("Authorization", `Bearer ${token}`)
+          .set("Cookie", `access_token=${token}`)
           .expect(204);
 
         const booksAfterDeletionResponse = await request(app)
           .get("/api/books")
-          .set("Authorization", `Bearer ${token}`);
+          .set("Cookie", `access_token=${token}`);
         const booksAfterDeletionCount =
           booksAfterDeletionResponse.body.total_count;
 
@@ -525,7 +521,7 @@ describe("/api/books/:book_id", () => {
 
         const response = await request(app)
           .delete("/api/books/1")
-          .set("Authorization", `Bearer ${token}`)
+          .set("Cookie", `access_token=${token}`)
           .expect(403);
         const { msg } = response.body;
 
@@ -538,7 +534,7 @@ describe("/api/books/:book_id", () => {
 
         const response = await request(app)
           .delete("/api/books/500")
-          .set("Authorization", `Bearer ${token}`)
+          .set("Cookie", `access_token=${token}`)
           .expect(404);
         const { msg } = response.body;
 
@@ -551,7 +547,7 @@ describe("/api/books/:book_id", () => {
 
         const response = await request(app)
           .delete("/api/books/notNumber")
-          .set("Authorization", `Bearer ${token}`)
+          .set("Cookie", `access_token=${token}`)
           .expect(400);
         const { msg } = response.body;
 
@@ -714,7 +710,7 @@ describe("/api/books/:book_id/reviews", () => {
 
         const response = await request(app)
           .post("/api/books/1/reviews")
-          .set("Authorization", `Bearer ${token}`)
+          .set("Cookie", `access_token=${token}`)
           .send(reviewToPost)
           .expect(201);
 
@@ -741,9 +737,7 @@ describe("/api/books/:book_id/reviews", () => {
           .expect(401);
         const { msg } = response.body;
 
-        expect(msg).toEqual(
-          "No Authorization header or No Authentication Token provided!"
-        );
+        expect(msg).toEqual("No Authentication Token provided!");
       });
 
       test("should respond with error 404 when valid book id is given but book doesn't exist in database", async () => {
@@ -757,7 +751,7 @@ describe("/api/books/:book_id/reviews", () => {
 
         const response = await request(app)
           .post("/api/books/500/reviews")
-          .set("Authorization", `Bearer ${token}`)
+          .set("Cookie", `access_token=${token}`)
           .send(reviewToPost)
           .expect(404);
         const { msg } = response.body;
@@ -776,7 +770,7 @@ describe("/api/books/:book_id/reviews", () => {
 
         const response = await request(app)
           .post("/api/books/ads/reviews")
-          .set("Authorization", `Bearer ${token}`)
+          .set("Cookie", `access_token=${token}`)
           .send(reviewToPost)
           .expect(400);
         const { msg } = response.body;
@@ -801,7 +795,7 @@ describe("/api/reviews/:review_id", () => {
 
         const response = await request(app)
           .patch("/api/reviews/2")
-          .set("Authorization", `Bearer ${token}`)
+          .set("Cookie", `access_token=${token}`)
           .send(reviewUpdate)
           .expect(200);
 
@@ -827,7 +821,7 @@ describe("/api/reviews/:review_id", () => {
 
         const response = await request(app)
           .patch("/api/reviews/2")
-          .set("Authorization", `Bearer ${token}`)
+          .set("Cookie", `access_token=${token}`)
           .send(reviewUpdate)
           .expect(403);
 
@@ -840,7 +834,7 @@ describe("/api/reviews/:review_id", () => {
         const token = generateToken(user);
         const response = await request(app)
           .patch("/api/reviews/2")
-          .set("Authorization", `Bearer ${token}`)
+          .set("Cookie", `access_token=${token}`)
           .send({})
           .expect(400);
 
@@ -859,7 +853,7 @@ describe("/api/reviews/:review_id", () => {
 
         const response = await request(app)
           .patch("/api/reviews/2")
-          .set("Authorization", `Bearer ${token}`)
+          .set("Cookie", `access_token=${token}`)
           .send(reviewUpdate)
           .expect(400);
 
@@ -878,7 +872,7 @@ describe("/api/reviews/:review_id", () => {
 
         const response = await request(app)
           .patch("/api/reviews/2")
-          .set("Authorization", `Bearer ${token}`)
+          .set("Cookie", `access_token=${token}`)
           .send(reviewUpdate)
           .expect(400);
 
@@ -896,7 +890,7 @@ describe("/api/reviews/:review_id", () => {
 
         return request(app)
           .delete("/api/reviews/2")
-          .set("Authorization", `Bearer ${token}`)
+          .set("Cookie", `access_token=${token}`)
           .expect(204);
       });
     });
@@ -908,7 +902,7 @@ describe("/api/reviews/:review_id", () => {
 
         const response = await request(app)
           .delete("/api/reviews/2")
-          .set("Authorization", `Bearer ${token}`)
+          .set("Cookie", `access_token=${token}`)
           .expect(403);
 
         const { msg } = response.body;
@@ -923,9 +917,7 @@ describe("/api/reviews/:review_id", () => {
 
         const { msg } = response.body;
 
-        expect(msg).toEqual(
-          "No Authorization header or No Authentication Token provided!"
-        );
+        expect(msg).toEqual("No Authentication Token provided!");
       });
 
       test("should respond with error 400 if invalid 'not a number' review id is given", async () => {
@@ -934,7 +926,7 @@ describe("/api/reviews/:review_id", () => {
 
         const response = await request(app)
           .delete("/api/reviews/adad")
-          .set("Authorization", `Bearer ${token}`)
+          .set("Cookie", `access_token=${token}`)
           .expect(400);
 
         const { msg } = response.body;
@@ -948,7 +940,7 @@ describe("/api/reviews/:review_id", () => {
 
         const response = await request(app)
           .delete("/api/reviews/300")
-          .set("Authorization", `Bearer ${token}`)
+          .set("Cookie", `access_token=${token}`)
           .expect(404);
 
         const { msg } = response.body;
@@ -1076,7 +1068,6 @@ describe("/api/users/:username", () => {
         const loginResponse = await request(app)
           .post("/api/users/login")
           .send({ username: "scotts", password: "your_password_here102" });
-        const token = loginResponse.body.token;
         const updates = {
           email: "newemail@domain.com",
           first_name: "Updated",
@@ -1085,7 +1076,7 @@ describe("/api/users/:username", () => {
 
         const response = await request(app)
           .patch("/api/users/scotts")
-          .set("Authorization", `Bearer ${token}`)
+          .set("Cookie", loginResponse.headers["set-cookie"])
           .send(updates)
           .expect(200);
 
@@ -1111,10 +1102,9 @@ describe("/api/users/:username", () => {
         const token = loginResponse.body.token;
         const response = await request(app)
           .patch("/api/users/scotts")
-          .set("Authorization", `Bearer ${token}`)
+          .set("Cookie", loginResponse.headers["set-cookie"])
           .send({})
           .expect(400);
-
         const { msg } = response.body;
         expect(msg).toEqual("No valid fields to update!");
       });
@@ -1123,14 +1113,13 @@ describe("/api/users/:username", () => {
         const loginResponse = await request(app)
           .post("/api/users/login")
           .send({ username: "scotts", password: "your_password_here102" });
-        const token = loginResponse.body.token;
         const updates = {
           email: "newemail@domain.com",
         };
 
         const response = await request(app)
           .patch("/api/users/nonexistentuser")
-          .set("Authorization", `Bearer ${token}`)
+          .set("Cookie", loginResponse.headers["set-cookie"])
           .send(updates)
           .expect(404);
 
@@ -1142,14 +1131,13 @@ describe("/api/users/:username", () => {
         const loginResponse = await request(app)
           .post("/api/users/login")
           .send({ username: "scotts", password: "your_password_here102" });
-        const token = loginResponse.body.token;
         const updates = {
           email: "newemail@domain.com",
         };
 
         const response = await request(app)
           .patch("/api/users/smithrose")
-          .set("Authorization", `Bearer ${token}`)
+          .set("Cookie", loginResponse.headers["set-cookie"])
           .send(updates)
           .expect(403);
 
@@ -1164,10 +1152,9 @@ describe("/api/users/:username", () => {
       const loginResponse = await request(app)
         .post("/api/users/login")
         .send({ username: "scotts", password: "your_password_here102" });
-      const token = loginResponse.body.token;
       const response = await request(app)
         .delete("/api/users/scotts")
-        .set("Authorization", `Bearer ${token}`)
+        .set("Cookie", loginResponse.headers["set-cookie"])
         .expect(204);
     });
 
@@ -1178,29 +1165,26 @@ describe("/api/users/:username", () => {
           .expect(401);
         const { msg } = response.body;
 
-        expect(msg).toEqual(
-          "No Authorization header or No Authentication Token provided!"
-        );
+        expect(msg).toEqual("No Authentication Token provided!");
       });
 
       test("should respond with error 401 when Authorization header is malformed", async () => {
         const response = await request(app)
           .delete("/api/users/scotts")
-          .set("Authorization", "Bearer invalid token format")
+          .set("Authorization", "Bearer invalid_token")
           .expect(401);
         const { msg } = response.body;
 
-        expect(msg).toEqual("Malformed Authorization header!");
+        expect(msg).toEqual("No Authentication Token provided!");
       });
 
       test("should respond with error 403 when attempting to delete another user's account", async () => {
         const loginResponse = await request(app)
           .post("/api/users/login")
           .send({ username: "scotts", password: "your_password_here102" });
-        const token = loginResponse.body.token;
         const response = await request(app)
           .delete("/api/users/smithrose")
-          .set("Authorization", `Bearer ${token}`)
+          .set("Cookie", loginResponse.headers["set-cookie"])
           .expect(403);
         const { msg } = response.body;
 
@@ -1222,20 +1206,18 @@ describe("/api/users/login", () => {
           .post("/api/users/login")
           .send(userData)
           .expect(200);
-        const { token, user } = loginResponse.body;
+        const { user } = loginResponse.body;
+        const cookie = loginResponse.headers["set-cookie"];
 
-        expect(token).toBeTruthy();
+        expect(cookie).toBeTruthy();
         expect(user).toEqual({
           id: expect.any(Number),
           email: "something5@outlook.com",
           username: "scotts",
-          password: expect.any(String),
           first_name: "Sophia",
           last_name: "Scott",
           avatar_url: "https://randomuser.me/api/portraits/women/5.jpg",
         });
-
-        global.authToken = token;
       });
     });
 
@@ -1301,14 +1283,25 @@ describe("/api/users/logout", () => {
   describe("POST", () => {
     describe("STATUS 200", () => {
       test("should log out user successfully", async () => {
+        const userData = {
+          username: "scotts",
+          password: "your_password_here102",
+        };
+        const loginResponse = await request(app)
+          .post("/api/users/login")
+          .send(userData)
+          .expect(200);
+
+        expect(loginResponse.status).toBe(200);
+        const cookie = loginResponse.headers["set-cookie"];
+
         const response = await request(app)
           .post("/api/users/logout")
-          .set("Authorization", `Bearer ${global.authToken}`)
+          .set("Cookie", cookie)
           .expect(200);
         const { msg } = response.body;
 
         expect(msg).toEqual("Logged out successfully");
-        global.authToken = null;
       });
     });
 
@@ -1319,15 +1312,14 @@ describe("/api/users/logout", () => {
           .expect(401);
 
         const { msg } = response.body;
-        expect(msg).toEqual(
-          "No Authorization header or No Authentication Token provided!"
-        );
+        expect(msg).toEqual("No Authentication Token provided!");
       });
 
       test("should respond with 401 when authentication token is malformed", async () => {
         const response = await request(app)
           .post("/api/users/logout")
           .set("Authorization", "Bearer malformedToken")
+          .set("Cookie", `access_token=Bearer malformedToken`)
           .expect(401);
 
         const { msg } = response.body;

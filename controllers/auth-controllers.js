@@ -35,13 +35,16 @@ exports.login = async (req, res, next) => {
       }
     );
 
+    res.cookie("access_token", token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production" ? true : false,
+    });
+
     res.json({
-      token,
       user: {
         id: user.user_id,
         email: user.email,
         username: user.username,
-        password: user.password,
         first_name: user.first_name,
         last_name: user.last_name,
         avatar_url: user.avatar_url,
@@ -54,28 +57,8 @@ exports.login = async (req, res, next) => {
 
 exports.logout = async (req, res, next) => {
   try {
-    const authHeader = req.headers["authorization"];
-
-    const parts = authHeader.split(" ");
-    if (parts.length !== 2 || parts[0] !== "Bearer") {
-      throw { msg: "Malformed Authorization header!", code: 401 };
-    }
-
-    const token = parts[1];
-
-    jwt.verify(token, SECRET_KEY, (err, user) => {
-      if (err) {
-        if (err.name === "JsonWebTokenError") {
-          throw { msg: "Invalid token! Authentication Failed", code: 401 };
-        } else if (err.name === "TokenExpiredError") {
-          throw { msg: "Token expired!", code: 401 };
-        } else {
-          throw { msg: "Failed to authenticate token!", code: 401 };
-        }
-      }
-
-      res.send({ msg: "Logged out successfully" });
-    });
+    res.clearCookie("access_token");
+    res.send({ msg: "Logged out successfully" });
   } catch (err) {
     next(err);
   }

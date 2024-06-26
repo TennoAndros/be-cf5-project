@@ -81,15 +81,19 @@ This repo was created using:
 
 **-Production dependencies-**
 
-| Package                 | Version   | Usage                                         |
-| :---------------------- | :-------- | :-------------------------------------------- |
-| <sub>dotenv</sub>       | `^16.4.5` | _Handles environment variable files_          |
-| <sub>express</sub>      | `^4.19.2` | _Routes API requests_                         |
-| <sub>pg-format</sub>    | `^1.0.4`  | _Formats PostgreSQL to prevent SQL injection_ |
-| <sub>pg</sub>           | `^8.12.0` | _Queries PostgreSQL database_                 |
-| <sub>jsonwebtoken</sub> | `^9.0.2`  | _Creates and verifies JSON Web Tokens_        |
-| <sub>bcrypt</sub>       | `^5.1.1`  | _Hashes passwords for secure storage_         |
-| <sub>cors</sub>         | `^2.8.5`  | _Cross-origin resource sharing_               |
+| Package                       | Version   | Usage                                         |
+| :---------------------------- | :-------- | :-------------------------------------------- |
+| <sub>bcrypt</sub>             | `^5.1.1`  | _Hashes passwords for secure storage_         |
+| <sub>cookie-parser</sub>      | `^1.4.6`  | _Parse HTTP request cookies_                  |
+| <sub>cors</sub>               | `^2.8.5`  | _Cross-origin resource sharing_               |
+| <sub>dotenv</sub>             | `^16.4.5` | _Handles environment variable files_          |
+| <sub>express</sub>            | `^4.19.2` | _Routes API requests_                         |
+| <sub>jsonwebtoken</sub>       | `^9.0.2`  | _Creates and verifies JSON Web Tokens_        |
+| <sub>pg</sub>                 | `^8.12.0` | _Queries PostgreSQL database_                 |
+| <sub>pg-format</sub>          | `^1.0.4`  | _Formats PostgreSQL to prevent SQL injection_ |
+| <sub>swagger-jsdoc</sub>      | `^6.2.8`  | _Swagger JSDoc_                               |
+| <sub>swagger-themes</sub>     | `^1.4.3`  | _Themes for Swagger UI_                       |
+| <sub>swagger-ui-express</sub> | `^5.0.1`  | _Swagger UI middleware for Express.js_        |
 
 **-Development dependencies-**
 
@@ -100,9 +104,6 @@ This repo was created using:
 | <sub>jest-sorted</sub>   | `^1.0.15` | _Adds sort testing for jest_                           |
 | <sub>supertest</sub>     | `^7.0.0`  | _Adds simplified web request testing_                  |
 | <sub>cross-env</sub>     | `^7.0.3`  | _Sets and uses environment variables across platforms_ |
-| swagger-jsdoc            | `^6.2.8`  | _Generates Swagger/OpenAPI specification from JSDoc_   |
-| swagger-themes           | `^1.4.3`  | _Themes for Swagger UI_                                |
-| swagger-ui-express       | `^5.0.1`  | _Middleware to serve Swagger UI with Express_          |
 
 ### 3. Seed local databases
 

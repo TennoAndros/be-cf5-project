@@ -546,6 +546,8 @@ paths:
             required:
               - body
               - rating
+        security:
+          - cookieAuth: []
     responses:
       "201":
         description: Review added successfully
@@ -635,6 +637,8 @@ paths:
             required:
               - body
               - rating
+        security:
+          - cookieAuth: []
     responses:
       "200":
         description: Successfully updated review
@@ -697,6 +701,8 @@ paths:
           type: integer
           example: 2
         description: ID of the review to delete
+        security:
+          - cookieAuth: []
     responses:
       "204":
         description: Review deleted successfully
@@ -872,7 +878,6 @@ paths:
                 msg:
                   type: string
                   example: User Not Found!
-
   patch:
     summary: Update user by username
     description: Update user information based on username.
@@ -902,6 +907,8 @@ paths:
                 type: string
                 example: User
             minProperties: 1
+        security:
+          - cookieAuth: []
     responses:
       "200":
         description: Successfully updated user
@@ -977,6 +984,8 @@ paths:
         schema:
           type: string
         description: Username of the user to delete.
+        security:
+          - cookieAuth: []
     responses:
       "204":
         description: User successfully deleted
@@ -1108,6 +1117,8 @@ paths:
       - Logout
     requestBody:
       required: false
+      security:
+        - cookieAuth: []
     responses:
       "200":
         description: Successfully logged out

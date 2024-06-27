@@ -13,8 +13,18 @@ const {
 
 const app = express();
 
+const allowedOrigin = [
+  "http://localhost:5173/users/profile",
+  "https://be-cf5-project.onrender.com/",
+];
+
 app.use(cookieParser());
-app.use(cors());
+app.use(
+  cors({
+    origin: allowedOrigin,
+    credentials: true,
+  })
+);
 
 app.use(express.json());
 app.use("/api", apiRouter);

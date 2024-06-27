@@ -13,15 +13,15 @@ const {
 
 const app = express();
 
-const allowedOrigin = [
-  "http://localhost:5173/",
-  "https://be-cf5-project.onrender.com/",
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://be-cf5-project.onrender.com",
 ];
 
 app.use(cookieParser());
 app.use(
   cors({
-    origin: allowedOrigin,
+    origin: allowedOrigins,
     credentials: true,
   })
 );

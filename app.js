@@ -14,7 +14,7 @@ const {
 const app = express();
 
 const allowedOrigin = [
-  "http://localhost:5173/users/profile",
+  "http://localhost:5173/",
   "https://be-cf5-project.onrender.com/",
 ];
 

@@ -25,80 +25,72 @@ exports.insertUser = async ({
   last_name,
   avatar_url,
 }) => {
-  try {
-    if (!email || !username || !password || !first_name || !last_name) {
-      return Promise.reject({ code: 400, msg: "Missing Required Fields!" });
-    }
-
-    const hashedPassword = await hashPassword(password);
-
-    const { rows } = await db.query(
-      `INSERT INTO users (email, username, password, first_name, last_name, avatar_url) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`,
-      [email, username, hashedPassword, first_name, last_name, avatar_url]
-    );
-
-    return rows[0];
-  } catch (err) {
-    console.log("ERROR", err);
+  if (!email || !username || !password || !first_name || !last_name) {
+    return Promise.reject({ code: 400, msg: "Missing Required Fields!" });
   }
+
+  const hashedPassword = await hashPassword(password);
+
+  const { rows } = await db.query(
+    `INSERT INTO users (email, username, password, first_name, last_name, avatar_url) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`,
+    [email, username, hashedPassword, first_name, last_name, avatar_url]
+  );
+
+  return rows[0];
 };
 
 exports.updateUser = async (loggedInUserId, updates) => {
-  try {
-    const validFields = [
-      "email",
-      "username",
-      "password",
-      "first_name",
-      "last_name",
-      "avatar_url",
-    ];
-    const setClause = [];
-    const values = [];
+  const validFields = [
+    "email",
+    "username",
+    "password",
+    "first_name",
+    "last_name",
+    "avatar_url",
+  ];
+  const setClause = [];
+  const values = [];
 
-    let index = 1;
-    for (const key in updates) {
-      if (validFields.includes(key)) {
-        if (key === "password") {
-          const hashedPassword = await hashPassword(updates[key]);
-          setClause.push(`${key}=$${index}`);
-          values.push(hashedPassword);
-        } else {
-          setClause.push(`${key}=$${index}`);
-          values.push(updates[key]);
-        }
-        index++;
+  let index = 1;
+  for (const key in updates) {
+    if (validFields.includes(key)) {
+      if (key === "password") {
+        const hashedPassword = await hashPassword(updates[key]);
+        setClause.push(`${key}=$${index}`);
+        values.push(hashedPassword);
+      } else {
+        setClause.push(`${key}=$${index}`);
+        values.push(updates[key]);
       }
+      index++;
     }
-
-    if (setClause.length === 0) {
-      return Promise.reject({ code: 400, msg: "No valid fields to update!" });
-    }
-
-    values.push(loggedInUserId);
-    const { rows } = await db.query(
-      `UPDATE users SET ${setClause.join(
-        ", "
-      )} WHERE user_id=$${index} RETURNING *`,
-      values
-    );
-
-    if (rows.length === 0) {
-      return Promise.reject({
-        code: 404,
-        msg: "User Not Found!",
-      });
-    }
-    if (rows[0].user_id !== loggedInUserId) {
-      return Promise.reject({
-        code: 403,
-        msg: "You can only delete your own account!",
-      });
-    }
-    return rows[0];
-  } catch (err) {
-    console.log("ERROR", err);
   }
+
+  if (setClause.length === 0) {
+    return Promise.reject({ code: 400, msg: "No valid fields to update!" });
+  }
+
+  values.push(loggedInUserId);
+  const { rows } = await db.query(
+    `UPDATE users SET ${setClause.join(
+      ", "
+    )} WHERE user_id=$${index} RETURNING *`,
+    values
+  );
+
+  if (rows.length === 0) {
+    return Promise.reject({
+      code: 404,
+      msg: "User Not Found!",
+    });
+  }
+  if (rows[0].user_id !== loggedInUserId) {
+    return Promise.reject({
+      code: 403,
+      msg: "You can only update your own account!",
+    });
+  }
+  return rows[0];
 };
 
 exports.deleteUserByUsername = async (loggedInUserId, deleteUsername) => {

@@ -42,7 +42,7 @@ const seed = async ({ reviewData, genreData, bookData, userData }) => {
     CREATE TABLE reviews (
       review_id SERIAL PRIMARY KEY,
       body TEXT NOT NULL,
-      username VARCHAR(50) REFERENCES users(username) ON DELETE CASCADE NOT NULL,
+      username VARCHAR(50) REFERENCES users(username) ON DELETE CASCADE ON UPDATE CASCADE NOT NULL,
       created_at TIMESTAMP DEFAULT NOW(),
       rating INT CHECK (rating BETWEEN 1 AND 5) NOT NULL,
       book_id INT REFERENCES books(book_id) ON DELETE CASCADE NOT NULL

@@ -31,7 +31,7 @@ exports.login = async (req, res, next) => {
       { userId: user.user_id, username: user.username },
       SECRET_KEY,
       {
-        expiresIn: "1h",
+        expiresIn: "1d",
       }
     );
 

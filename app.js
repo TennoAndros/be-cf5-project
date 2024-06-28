@@ -19,20 +19,20 @@ const allowedOrigins = [
   "https://be-cf5-project.onrender.com",
 ];
 
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (process.env.NODE_ENV === "test" || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true,
+};
+
 app.use(cookieParser());
 
-app.use(
-  cors({
-    origin: function (origin, callback) {
-      if (allowedOrigins.indexOf(origin) !== -1) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-    credentials: true,
-  })
-);
+app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use("/api", apiRouter);

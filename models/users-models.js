@@ -17,6 +17,8 @@ exports.selectUserByUsername = async (username) => {
   return rows[0];
 };
 
+const defaultAvatarUrl = "https://i.imgur.com/iInpiDY.png";
+
 exports.insertUser = async ({
   email,
   username,
@@ -31,9 +33,11 @@ exports.insertUser = async ({
 
   const hashedPassword = await hashPassword(password);
 
+  const finalAvatarUrl = avatar_url ? avatar_url : defaultAvatarUrl;
+
   const { rows } = await db.query(
     `INSERT INTO users (email, username, password, first_name, last_name, avatar_url) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`,
-    [email, username, hashedPassword, first_name, last_name, avatar_url]
+    [email, username, hashedPassword, first_name, last_name, finalAvatarUrl]
   );
 
   return rows[0];

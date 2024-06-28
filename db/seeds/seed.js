@@ -17,7 +17,7 @@ const seed = async ({ reviewData, genreData, bookData, userData }) => {
         password VARCHAR(255) NOT NULL,
         first_name VARCHAR(50) NOT NULL,
         last_name VARCHAR(50) NOT NULL,
-        avatar_url VARCHAR(255) DEFAULT 'https://images.pexels.com/photos/6373499/pexels-photo-6373499.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+        avatar_url VARCHAR(255)
       );`),
     db.query(`
       CREATE TABLE genres (

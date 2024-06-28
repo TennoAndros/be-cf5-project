@@ -35,11 +35,13 @@ exports.login = async (req, res, next) => {
       }
     );
 
-    res.cookie("access_token", token, {
+    const cookieOptions = {
       httpOnly: true,
-      secure: true,
-      sameSite: "None",
-    });
+      secure: process.env.NODE_ENV === "production",
+      sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",
+    };
+
+    res.cookie("access_token", token, cookieOptions);
 
     res.json({
       user: {

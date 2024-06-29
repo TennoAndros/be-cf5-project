@@ -59,6 +59,7 @@ exports.deleteUserByUsername = async (req, res, next) => {
     );
 
     res.sendStatus(204);
+    res.clearCookie("access_token");
   } catch (err) {
     next(err);
   }

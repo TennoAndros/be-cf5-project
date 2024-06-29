@@ -27,13 +27,9 @@ exports.login = async (req, res, next) => {
       throw { msg: "Invalid password!", code: 401 };
     }
 
-    const token = jwt.sign(
-      { userId: user.user_id, username: user.username },
-      SECRET_KEY,
-      {
-        expiresIn: "1d",
-      }
-    );
+    const token = jwt.sign({ userId: user.user_id }, SECRET_KEY, {
+      expiresIn: "1d",
+    });
 
     const cookieOptions = {
       httpOnly: true,

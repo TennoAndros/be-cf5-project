@@ -35,7 +35,7 @@ const seed = async ({ reviewData, genreData, bookData, userData }) => {
       amazon_book_url VARCHAR(255) NOT NULL UNIQUE,
       publisher VARCHAR(255),
       isbn VARCHAR(20) NOT NULL UNIQUE,
-      genre VARCHAR(50) NOT NULL REFERENCES genres(genre) ON DELETE CASCADE
+      genre VARCHAR(50) NOT NULL REFERENCES genres(genre)
     );`);
 
   await db.query(`

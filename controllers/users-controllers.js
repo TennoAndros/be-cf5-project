@@ -57,9 +57,8 @@ exports.deleteUserByUsername = async (req, res, next) => {
       loggedInUserId,
       deleteUsername
     );
-
-    res.sendStatus(204);
     res.clearCookie("access_token");
+    res.sendStatus(204);
   } catch (err) {
     next(err);
   }

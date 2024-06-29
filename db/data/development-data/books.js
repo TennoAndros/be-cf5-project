@@ -1200,7 +1200,7 @@ module.exports = [
   {
     title: "HARRY POTTER",
     image_url:
-      "https://storage.googleapis.com/du-prd/books/images/9780590353427.jpg",
+      "https://m.media-amazon.com/images/I/81q77Q39nEL._AC_UF1000,1000_QL80_.jpg",
     description:
       "A wizard hones his conjuring skills in the service of fighting evil. (Ages 10 and up)",
     author: "J.K. Rowling",
@@ -1485,7 +1485,7 @@ module.exports = [
   {
     title: "THE WOMAN IN THE WINDOW",
     image_url:
-      "https://storage.googleapis.com/du-prd/books/images/9780062905086.jpg",
+      "https://m.media-amazon.com/images/I/7196sTeTolL._AC_UF1000,1000_QL80_.jpg",
     description:
       "An agoraphobic woman spies on her neighbors and witnesses a crime. (Ages 14 and up)",
     author: "A.J. Finn",
@@ -1524,7 +1524,7 @@ module.exports = [
   {
     title: "THE GIRL ON THE TRAIN",
     image_url:
-      "https://storage.googleapis.com/du-prd/books/images/9781594634024.jpg",
+      "https://m.media-amazon.com/images/I/8183Y1myPvL._AC_UF894,1000_QL80_.jpg",
     description:
       "Rachel takes the same commuter train every day, but one day she sees something shocking. (Ages 18 and up)",
     author: "Paula Hawkins",
@@ -1536,8 +1536,7 @@ module.exports = [
   },
   {
     title: "THE DA VINCI CODE",
-    image_url:
-      "https://storage.googleapis.com/du-prd/books/images/9780307474278.jpg",
+    image_url: "https://m.media-amazon.com/images/I/71QlCcawcML.jpg",
     description:
       "A symbologist is caught in a dangerous race through secret passageways of Rome. (Ages 16 and up)",
     author: "Dan Brown",
@@ -1553,7 +1552,7 @@ module.exports = [
     description:
       "This book presents a series of guidelines for writing clean, maintainable code. It covers topics such as meaningful names, functions, comments, formatting, and error handling.",
     image_url:
-      "https://images-na.ssl-images-amazon.com/images/I/51sJ8-1Bl+L._SX376_BO1,204,203,200_.jpg",
+      "https://m.media-amazon.com/images/I/51E2055ZGUL._AC_UF1000,1000_QL80_.jpg",
     amazon_book_url:
       "https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882",
     publisher: "Prentice Hall",
@@ -1566,7 +1565,7 @@ module.exports = [
     description:
       "This book explores the good parts of JavaScript, focusing on the language's elegant features and how to use them effectively. It's a concise guide to writing better JavaScript code.",
     image_url:
-      "https://images-na.ssl-images-amazon.com/images/I/51CcL6B2bjL._SX379_BO1,204,203,200_.jpg",
+      "https://m.media-amazon.com/images/I/7185IMvz88L._AC_UF1000,1000_QL80_.jpg",
     amazon_book_url:
       "https://www.amazon.com/JavaScript-Good-Parts-Douglas-Crockford/dp/0596517742",
     publisher: "O'Reilly Media",
@@ -1579,7 +1578,7 @@ module.exports = [
     description:
       "This book presents design patterns in a unique and engaging way, making them accessible to programmers of all levels. It covers various patterns used in software development and provides practical examples.",
     image_url:
-      "https://images-na.ssl-images-amazon.com/images/I/61MRkv9XxzL._SX430_BO1,204,203,200_.jpg",
+      "https://m.media-amazon.com/images/I/51u3S8BHSpL._AC_UF1000,1000_QL80_.jpg",
     amazon_book_url:
       "https://www.amazon.com/Head-First-Design-Patterns-Brain-Friendly/dp/0596007124",
     publisher: "O'Reilly Media",
@@ -1592,7 +1591,7 @@ module.exports = [
     description:
       "This book is a hands-on, project-based introduction to programming with Python. It covers basic programming concepts, data structures, and best practices through practical examples and projects.",
     image_url:
-      "https://images-na.ssl-images-amazon.com/images/I/518R5Hg3FjL._SX430_BO1,204,203,200_.jpg",
+      "https://m.media-amazon.com/images/I/71uiG3qqKaL._AC_UF1000,1000_QL80_.jpg",
     amazon_book_url:
       "https://www.amazon.com/Python-Crash-Course-2nd-Edition/dp/1593279280",
     publisher: "No Starch Press",
@@ -1605,7 +1604,7 @@ module.exports = [
     description:
       "This book provides a comprehensive introduction to JavaScript programming, covering both the language syntax and the principles of programming. It includes exercises and projects to reinforce learning.",
     image_url:
-      "https://images-na.ssl-images-amazon.com/images/I/91asWtFkG-L.jpg",
+      "https://m.media-amazon.com/images/I/71i34I45G1L._AC_UF1000,1000_QL80_.jpg",
     amazon_book_url:
       "https://www.amazon.com/Eloquent-JavaScript-Modern-Introduction-Programming/dp/1593272820",
     publisher: "No Starch Press",

@@ -768,7 +768,8 @@ module.exports = [
     title: "ATOMIC HABITS",
     image_url:
       "https://storage.googleapis.com/du-prd/books/images/9780735211292.jpg",
-    description: "",
+    description:
+      "If you're having trouble changing your habits, the problem isn't you. The problem is your system. Bad habits repeat themselves again and again not because you don't want to change, but because you have the wrong system for change. You do not rise to the level of your goals. You fall to the level of your systems. Here, you'll get a proven system that can take you to new heights.",
     author: "James Clear",
     publisher: "Avery",
     amazon_book_url:
@@ -780,7 +781,8 @@ module.exports = [
     title: "GOOD ENERGY",
     image_url:
       "https://storage.googleapis.com/du-prd/books/images/9780593712641.jpg",
-    description: "",
+    description:
+      "What if depression, anxiety, infertility, insomnia, heart disease, erectile dysfunction, type 2 diabetes, Alzheimer's, dementia, cancer and many other health conditions that torture and shorten our lives actually have the same root cause? Our ability to prevent and reverse these conditions—and feel incredible today—is under our control and simpler than we think. The key is our metabolic function—the most important and least understood factor in our overall health. As Dr. Casey Means explains in this groundbreaking book, nearly every health problem we face can be explained by how well the cells in our body create and use energy. To live free from frustrating symptoms and life-threatening disease, we need our cells to be optimally powered so that they can create good energy, the essential fuel that impacts every aspect of our physical and mental wellbeing. If you are battling minor signals of “bad energy” inside your body, it is often a warning sign that more life-threatening illness may emerge later in life. But here's the good news: for the first time ever, we can monitor our metabolic health in great detail and learn how to improve it ourselves. Weaving together cutting-edge research and personal stories, as well as groundbreaking data from the health technology company Dr. Means founded, Good Energy offers an essential four-week plan and explains",
     author: "Casey Means with Calley Means",
     publisher: "Avery",
     amazon_book_url:
@@ -792,7 +794,8 @@ module.exports = [
     title: "YOU DESERVE GOOD GELATO",
     image_url:
       "https://storage.googleapis.com/du-prd/books/images/9780593840436.jpg",
-    description: "",
+    description:
+      "In 2021, Kacie decided to leave her life as a pro dancer in New York City and move to Italy – and she never looked back. Okay, that isn't strictly true… In You Deserve Good Gelato, Kacie reflects on everything from travel fails and homesickness to the joy of culture shocks and the power of doing the s*** that scares you. Because life is too short not to.",
     author: "Kacie Rose",
     publisher: "DK Eyewitness Travel",
     amazon_book_url:
@@ -804,7 +807,8 @@ module.exports = [
     title: "THE NEW MENOPAUSE",
     image_url:
       "https://storage.googleapis.com/du-prd/books/images/9780593796252.jpg",
-    description: "",
+    description:
+      "Menopause is inevitable, but suffering through it is not! This is the empowering approach to self-advocacy that pioneering women’s health advocate Dr. Mary Claire Haver takes for women in the midst of hormonal change in The New Menopause. A comprehensive, authoritative book of science-backed information and lived experience, it covers every woman's needs",
     author: "Mary Claire Haver",
     publisher: "Rodale",
     amazon_book_url:
@@ -816,7 +820,8 @@ module.exports = [
     title: "MAKE YOUR BED",
     image_url:
       "https://storage.googleapis.com/du-prd/books/images/9781455570249.jpg",
-    description: "",
+    description:
+      "If you want to change the world, start off by making your bed. On May 17, 2014, Admiral William H. McRaven addressed the graduating class of the University of Texas at Austin on their Commencement day. Taking inspiration from the university's slogan, 'What starts here changes the world,' he shared the ten principles he learned during Navy Seal training that helped him overcome challenges not only in his training and long Naval career, but also throughout his life; and he explained how anyone can use these basic lessons to change themselves - and the world - for the better.",
     author: "William H. McRaven",
     publisher: "Grand Central",
     amazon_book_url:
@@ -828,7 +833,8 @@ module.exports = [
     title: "THE OFFICIAL STARDEW VALLEY COOKBOOK",
     image_url:
       "https://storage.googleapis.com/du-prd/books/images/9781984862051.jpg",
-    description: "",
+    description:
+      "Welcome to Stardew Valley, where each season brings a new crop of bountiful food to make for friends and family. From farm staples like veggies, fruit, milk, and eggs to foraged mushrooms and berries to fresh fish, there’s always something delicious to put on the table. These 50 recipes are based on in-game meals and food, allowing you to cook and eat all your home-grown and fresh-caught ingredients in real life. The Official Stardew Valley Cookbook is organized by season and has recipes from your favorite characters, including the Queen of Sauce and Gus at the Stardrop Saloon. Written in collaboration with independent game creator ConcernedApe and packed with original illustrations and food photography, The Official Stardew Valley Cookbook helps you bring the Valley’s incredible flavors to the dinner table, giving you the energy to take on the world.",
     author: "ConcernedApe and Ryan Novak",
     publisher: "Random House Worlds",
     amazon_book_url:
@@ -840,7 +846,8 @@ module.exports = [
     title: "THE CREATIVE ACT",
     image_url:
       "https://storage.googleapis.com/du-prd/books/images/9780593652886.jpg",
-    description: "",
+    description:
+      "Many famed music producers are known for a particular sound that has its day. Rick Rubin is known for something else: creating a space where artists of all different genres and traditions can home in on who they really are and what they really offer. He has made a practice of helping people transcend their self-imposed expectations in order to reconnect with a state of innocence from which the surprising becomes inevitable. Over the years, as he has thought deeply about where creativity comes from and where it doesn’t, he has learned that being an artist isn’t about your specific output, it’s about your relationship to the world. Creativity has a place in everyone’s life, and everyone can make that place larger. In fact, there are few more important responsibilities.",
     author: "Rick Rubin with Neil Strauss",
     publisher: "Penguin Press",
     amazon_book_url:
@@ -852,7 +859,8 @@ module.exports = [
     title: "THE BOY, THE MOLE, THE FOX AND THE HORSE",
     image_url:
       "https://storage.googleapis.com/du-prd/books/images/9780062976581.jpg",
-    description: "",
+    description:
+      "Charlie Mackesy offers inspiration and hope in uncertain times in this beautiful book, following the tale of a curious boy, a greedy mole, a wary fox and a wise horse who find themselves together in sometimes difficult terrain, sharing their greatest fears and biggest discoveries about vulnerability, kindness, hope, friendship and love. The shared adventures and important conversations between the four friends are full of life lessons that have connected with readers of all ages. ",
     author: "Charlie Mackesy",
     publisher: "HarperOne",
     amazon_book_url:
@@ -864,7 +872,8 @@ module.exports = [
     title: "CHEAPER, FASTER, BETTER",
     image_url:
       "https://storage.googleapis.com/du-prd/books/images/9781954118645.jpg",
-    description: "",
+    description:
+      "Every day the news is filled with stories of extreme weather that threatens our cities, our health, our futures: tornadoes wiping out whole communities; droughts that ignite catastrophic wildfires; storms destroying roads and infrastructure; rising water levels that jeopardize entire nations; new climate-related diseases that threaten our health. Just as World War II raised an existential threat that united Americans in a common cause, the dangers of climate change are now challenging all our previously held notions of the future. Our only hope, as Tom Steyer sees it, is to unite together to take action in a collective movement akin to a war effort.",
     author: "Tom Steyer",
     publisher: "Spiegel & Grau",
     amazon_book_url:
@@ -876,7 +885,8 @@ module.exports = [
     title: "MILLIONAIRE MISSION",
     image_url:
       "https://storage.googleapis.com/du-prd/books/images/9781637745014.jpg",
-    description: "",
+    description:
+      "Brian Preston, host of The Money Guy Show podcast and co-founder of Abound Wealth Management, lays out a nine-step system for building wealth with the money you already have. Millionaire Mission helps you account for your financial blind spots, overcome the fear of making wrong decisions, and take the guesswork out of what to do with your next dollar.Remember PEMDAS from grade school? The acronym that helps break down complex math problems into simple steps? When it comes to managing your money, following a similar process—the Financial Order of Operations—will demystify your dollars and show you the way to build transformative wealth with the tools you already have available",
     author: "Brian Preston",
     publisher: "Matt Holt",
     amazon_book_url:
@@ -1609,6 +1619,20 @@ module.exports = [
       "https://www.amazon.com/Eloquent-JavaScript-Modern-Introduction-Programming/dp/1593272820",
     publisher: "No Starch Press",
     isbn: "1593272820",
+    genre: "Programming",
+  },
+  {
+    title:
+      "Cracking the Coding Interview: 189 Programming Questions and Solutions",
+    author: "Gayle Laakmann McDowell",
+    description:
+      "This book offers 189 programming questions and solutions, covering various aspects of coding interviews for software engineering positions. It provides strategies, tips, and example solutions to help prepare for technical interviews.",
+    image_url:
+      "https://m.media-amazon.com/images/I/61oRH4y27jL._AC_UF1000,1000_QL80_.jpg",
+    amazon_book_url:
+      "https://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/0984782850",
+    publisher: "CareerCup",
+    isbn: "0984782850",
     genre: "Programming",
   },
 ];

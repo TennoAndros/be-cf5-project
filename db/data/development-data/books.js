@@ -1635,4 +1635,17 @@ module.exports = [
     isbn: "0984782850",
     genre: "Programming",
   },
+  {
+    title: "Cradle (Cradle Series Book 1)",
+    author: "Will Wight",
+    description:
+      "In a world where power is everything, a young boy is determined to escape his humble beginnings and ascend to greatness. This novel combines martial arts, magic, and a richly imagined universe.",
+    image_url:
+      "https://images-eu.ssl-images-amazon.com/images/I/81Tbf79ePML._AC_UL600_SR600,600_.jpg",
+    amazon_book_url:
+      "https://www.amazon.com/Unsouled-Cradle-Book-Will-Wight-ebook/dp/B01H1CYBS6",
+    publisher: "CreateSpace Independent Publishing Platform",
+    isbn: "1502919903",
+    genre: "Fantasy",
+  },
 ];

@@ -74,6 +74,15 @@ exports.updateUser = async (loggedInUserId, updates) => {
     return Promise.reject({ code: 400, msg: "No valid fields to update!" });
   }
 
+  const newUsername = updates?.username?.toLowerCase() || "";
+
+  if (newUsername === "admin") {
+    return Promise.reject({
+      code: 403,
+      msg: "Can't have this username!",
+    });
+  }
+
   values.push(loggedInUserId);
   const { rows } = await db.query(
     `UPDATE users SET ${setClause.join(
@@ -102,6 +111,12 @@ exports.deleteUserByUsername = async (loggedInUserId, deleteUsername) => {
     `DELETE FROM users WHERE username=$1 RETURNING *`,
     [deleteUsername]
   );
+
+  if (deleteUsername === "Admin")
+    return Promise.reject({
+      code: 403,
+      msg: "Admin cannot be deleted!",
+    });
 
   if (rows.length === 0) {
     return Promise.reject({

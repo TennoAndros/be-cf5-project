@@ -35,10 +35,15 @@ exports.patchUser = async (req, res, next) => {
 
     const user = await selectUserByUsername(username);
 
+    if (username === "Admin") {
+      return res
+        .status(403)
+        .send({ msg: "Forbidden - Admin cannot change their username!" });
+    }
     if (user.user_id !== loggedInUserId) {
       return res
         .status(403)
-        .send({ msg: "Forbidden - You can only edit your own account" });
+        .send({ msg: "Forbidden - You can only edit your own account!" });
     }
 
     const updatedUser = await updateUser(loggedInUserId, updates);

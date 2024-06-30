@@ -493,20 +493,21 @@ describe("/api/books/:book_id", () => {
   describe("DELETE", () => {
     describe("STATUS 204", () => {
       test("should delete book when authenticated user is admin", async () => {
-        const user = { username: "Admin" };
-        const token = generateToken(user);
+        const loginResponse = await request(app)
+          .post("/api/users/login")
+          .send({ username: "Admin", password: "adminPassCode" });
         const initialBooksResponse = await request(app)
           .get("/api/books")
-          .set("Cookie", `access_token=${token}`);
+          .set("Cookie", loginResponse.headers["set-cookie"]);
         const initialBookCount = initialBooksResponse.body.total_count;
         await request(app)
           .delete("/api/books/1")
-          .set("Cookie", `access_token=${token}`)
+          .set("Cookie", loginResponse.headers["set-cookie"])
           .expect(204);
 
         const booksAfterDeletionResponse = await request(app)
           .get("/api/books")
-          .set("Cookie", `access_token=${token}`);
+          .set("Cookie", loginResponse.headers["set-cookie"]);
         const booksAfterDeletionCount =
           booksAfterDeletionResponse.body.total_count;
 
@@ -1127,6 +1128,42 @@ describe("/api/users/:username", () => {
         expect(msg).toEqual("User Not Found!");
       });
 
+      test("should respond with error 403 if users new username is admin", async () => {
+        const loginResponse = await request(app)
+          .post("/api/users/login")
+          .send({ username: "scotts", password: "your_password_here102" });
+        const updates = {
+          username: "admin",
+        };
+
+        const response = await request(app)
+          .patch("/api/users/scotts")
+          .set("Cookie", loginResponse.headers["set-cookie"])
+          .send(updates)
+          .expect(403);
+
+        const { msg } = response.body;
+        expect(msg).toEqual("Can't have this username!");
+      });
+
+      test("should respond with error 403 if user is admin and tries to change his username", async () => {
+        const loginResponse = await request(app)
+          .post("/api/users/login")
+          .send({ username: "Admin", password: "adminPassCode" });
+        const updates = {
+          username: "newUserName",
+        };
+
+        const response = await request(app)
+          .patch("/api/users/Admin")
+          .set("Cookie", loginResponse.headers["set-cookie"])
+          .send(updates)
+          .expect(403);
+
+        const { msg } = response.body;
+        expect(msg).toEqual("Forbidden - Admin cannot change their username!");
+      });
+
       test("should respond with error 403 if user tries to update another user's account", async () => {
         const loginResponse = await request(app)
           .post("/api/users/login")
@@ -1142,7 +1179,7 @@ describe("/api/users/:username", () => {
           .expect(403);
 
         const { msg } = response.body;
-        expect(msg).toEqual("Forbidden - You can only edit your own account");
+        expect(msg).toEqual("Forbidden - You can only edit your own account!");
       });
     });
   });
@@ -1152,7 +1189,7 @@ describe("/api/users/:username", () => {
       const loginResponse = await request(app)
         .post("/api/users/login")
         .send({ username: "scotts", password: "your_password_here102" });
-      const response = await request(app)
+      await request(app)
         .delete("/api/users/scotts")
         .set("Cookie", loginResponse.headers["set-cookie"])
         .expect(204);
@@ -1189,6 +1226,19 @@ describe("/api/users/:username", () => {
         const { msg } = response.body;
 
         expect(msg).toEqual("You can only delete your own account!");
+      });
+
+      test("should respond with error 403 when attempting to delete admin", async () => {
+        const loginResponse = await request(app)
+          .post("/api/users/login")
+          .send({ username: "Admin", password: "adminPassCode" });
+        const response = await request(app)
+          .delete("/api/users/Admin")
+          .set("Cookie", loginResponse.headers["set-cookie"])
+          .expect(403);
+        const { msg } = response.body;
+
+        expect(msg).toEqual("Admin cannot be deleted!");
       });
     });
   });

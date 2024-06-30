@@ -970,7 +970,7 @@ paths:
               properties:
                 msg:
                   type: string
-                  example: Forbidden - You can only edit your own account
+                  example: Forbidden - You can only edit your own account or Forbidden - Admin cannot change their username!
 
   delete:
     summary: Delete user by username
@@ -1018,7 +1018,7 @@ paths:
               properties:
                 msg:
                   type: string
-                  example: You can only delete your own account!
+                  example: You can only delete your own account! or Admin cannot be deleted!
 /api/users/login:
   post:
     summary: Login user

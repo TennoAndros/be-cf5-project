@@ -14,6 +14,7 @@ const {
 const app = express();
 
 const allowedOrigins = [
+  "https://cf5-book-talk.netlify.app",
   "http://localhost:5173",
   "http://localhost:9090",
   "https://be-cf5-project.onrender.com",
@@ -21,7 +22,11 @@ const allowedOrigins = [
 
 const corsOptions = {
   origin: (origin, callback) => {
-    if (process.env.NODE_ENV === "test" || !origin || allowedOrigins.includes(origin)) {
+    if (
+      process.env.NODE_ENV === "test" ||
+      !origin ||
+      allowedOrigins.includes(origin)
+    ) {
       callback(null, true);
     } else {
       callback(new Error("Not allowed by CORS"));
